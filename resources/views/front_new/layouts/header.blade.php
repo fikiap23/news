@@ -2,9 +2,9 @@
 <section class="top-bar-section py-lg-2 py-3 top-bar">
     <div class="container">
         <div class="row align-items-center justify-content-between">
-            <div class="col-lg-1 col-sm-3 col-3 p-2">
+            <div class="col-lg-1 col-sm-3 col-3 ">
                 <a href="/" class="top-bar-logo ">
-                    <img src="{{ $settings['logo'] }}" alt="" class="img-fluid w-full " />
+                    <img src="{{ $settings['logo'] }}" alt="" style="width: 130px" />
                 </a>
             </div>
             <div class="col-xl-7 col-md-8 col-9 ">
@@ -496,7 +496,7 @@
                         <div class="offcanvas-content pt-60">
                             <div class="news-logo mb-5">
                                 <a href="/">
-                                    <img src="{{ $settings['logo'] }}" alt="" class="w-100 h-100" />
+                                    <img src="{{ $settings['logo'] }}" alt="" style="width: 130px" />
                                 </a>
                             </div>
                             <div class="contact-desc">
