@@ -17,7 +17,7 @@ class SettingTableSeeder extends Seeder
         $logoUrl = '/assets/image/infyom-logo.png';
         $favicon = '/assets/image/favicon-infyom.png';
 
-        Setting::create(['key' => 'application_name', 'value' => 'InfyNews']);
+        Setting::create(['key' => 'application_name', 'value' => 'PTSP']);
         Setting::create(['key' => 'contact_no', 'value' => '+91 70963 36561']);
         Setting::create(['key' => 'email', 'value' => 'test@email.com']);
         Setting::create(['key' => 'copy_right_text', 'value' => 'All Rights Reserved ©2022']);

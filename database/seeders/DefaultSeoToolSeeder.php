@@ -17,10 +17,10 @@ class DefaultSeoToolSeeder extends Seeder
         $seoTools =
             [
                 'lang_id' => '1',
-                'site_title' => 'InfyNews',
+                'site_title' => 'PTSP',
                 'home_title' => 'Home',
-                'site_description' => 'Get Latest News',
-                'keyword' => 'world news website',
+                'site_description' => 'PTSP Kab. Sumedang',
+                'keyword' => 'PTSP Kab. Sumedang',
                 'google_analytics' => '',
             ];
         SeoTool::create($seoTools);
