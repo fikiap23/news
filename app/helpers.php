@@ -118,8 +118,10 @@ function getAlbums($langId)
  */
 function getAlbumCategory($albumId, $langId): array
 {
-    return \App\Models\AlbumCategory::where('lang_id', $langId)->where('album_id', $albumId)->pluck('name',
-        'id')->toArray();
+    return \App\Models\AlbumCategory::where('lang_id', $langId)->where('album_id', $albumId)->pluck(
+        'name',
+        'id'
+    )->toArray();
 }
 
 /**
@@ -288,7 +290,7 @@ function getPopularNews()
     $countPosts = DB::table('analytics')->select(
         'post_id',
         DB::raw('count("post_id") as total_count')
-        )->limit(6)
+    )->limit(6)
         ->groupBy('post_id')
         ->orderBy('total_count', 'desc')
         ->get();
@@ -327,12 +329,14 @@ function getPostViewCount($id)
  */
 function getPopularTags()
 {
-    $countPostsTags = DB::table('analytics')->select('post_id',
-        DB::raw('count("post_id") as total_count'))
-            ->limit(6)
-            ->groupBy('post_id')
-            ->orderBy('total_count', 'desc')
-            ->get();
+    $countPostsTags = DB::table('analytics')->select(
+        'post_id',
+        DB::raw('count("post_id") as total_count')
+    )
+        ->limit(6)
+        ->groupBy('post_id')
+        ->orderBy('total_count', 'desc')
+        ->get();
 
     static $popularTags = [];
     $postData = Post::toBase()->whereVisibility(Post::VISIBILITY_ACTIVE)
@@ -374,7 +378,16 @@ function getPoll()
 function getOption(): array
 {
     return [
-        'option1', 'option2', 'option3', 'option4', 'option5', 'option6', 'option7', 'option8', 'option9', 'option10',
+        'option1',
+        'option2',
+        'option3',
+        'option4',
+        'option5',
+        'option6',
+        'option7',
+        'option8',
+        'option9',
+        'option10',
     ];
 }
 
@@ -426,7 +439,7 @@ function getPopulerCategories()
     $postCount = DB::table('analytics')->select(
         'post_id',
         DB::raw('count("post_id") as total_count')
-        )->limit(10)
+    )->limit(10)
         ->groupBy('post_id')
         ->orderBy('total_count', 'desc')
         ->get();
@@ -461,7 +474,7 @@ function getNavUrl($url)
     if ($contain) {
         return $url;
     } else {
-        return 'http://'.$url;
+        return 'http://' . $url;
     }
 }
 
@@ -487,7 +500,7 @@ function getReadingTime($body)
         $m += 1;
     }
 
-    $time = $m.' minute'.($m == 1 ? '' : 's');
+    $time = $m . ' minute' . ($m == 1 ? '' : 's');
 
     return $time;
 }
@@ -502,7 +515,7 @@ function getTrendingPost()
     $postsAnalytics = DB::table('analytics')->select(
         'post_id',
         DB::raw('count("post_id") as total_count')
-        )->limit(10)
+    )->limit(10)
         ->groupBy('post_id')
         ->orderBy('total_count', 'desc')
         ->get();
@@ -656,18 +669,13 @@ function getCurrentVersion()
 
     return $composerData['version'];
 }
-function checkAdSpaced($name)
-{
-    $check = Setting::where('key', $name)->pluck('value')->first();
 
-    return $check;
-}
 function getAdImageDesktop($id)
 {
     $agent = new Agent();
-    if($agent->isMobile()){
+    if ($agent->isMobile()) {
         $image = AdSpaces::whereAdSpaces($id)->whereAdView(AdSpaces::MOBILE)->first();
-    }else {
+    } else {
         $image = AdSpaces::whereAdSpaces($id)->whereAdView(AdSpaces::DESKTOP)->first();
     }
 
@@ -688,7 +696,7 @@ function getCurrencies()
 {
     $currencies = Currency::all();
     foreach ($currencies as $currency) {
-        $currencyList[$currency->id] = $currency->currency_icon.' - '.$currency->currency_name;
+        $currencyList[$currency->id] = $currency->currency_icon . ' - ' . $currency->currency_name;
     }
 
     return $currencyList;
@@ -743,7 +751,7 @@ function getCurrentPlanDetails()
 
     $frequency = $currentSubscription->plan_frequency == Plan::MONTHLY ? 'Monthly' : 'Yearly';
 
-//    $days = $currentSubscription->plan_frequency == Plan::MONTHLY ? 30 : 365;
+    //    $days = $currentSubscription->plan_frequency == Plan::MONTHLY ? 30 : 365;
 
     $perDayPrice = round($currentPlan->price / $totalDays, 2);
     if (!empty($currentSubscription->trial_ends_at) || $isExpired) {
@@ -758,7 +766,7 @@ function getCurrentPlanDetails()
     }
 
     return [
-        'name'             => $currentPlan->name.' / '.$frequency,
+        'name'             => $currentPlan->name . ' / ' . $frequency,
         'trialDays'        => $currentPlan->trial_days,
         'startAt'          => Carbon::parse($currentSubscription->starts_at)->format('jS M, Y'),
         'endsAt'           => Carbon::parse($currentSubscription->ends_at)->format('jS M, Y'),
@@ -842,7 +850,7 @@ function getProratedPlanData($planIDChosenByUser)
 
         return [
             'startDate'        => $startsAt,
-            'name'             => $subscriptionPlan->name.' / '.$frequency,
+            'name'             => $subscriptionPlan->name . ' / ' . $frequency,
             'trialDays'        => $subscriptionPlan->trial_days,
             'remainingBalance' => $remainingBalance,
             'endDate'          => $endsAt->format('jS M, Y'),
@@ -854,7 +862,7 @@ function getProratedPlanData($planIDChosenByUser)
     }
 
     return [
-        'name'             => $subscriptionPlan->name.' / '.$frequency,
+        'name'             => $subscriptionPlan->name . ' / ' . $frequency,
         'trialDays'        => $subscriptionPlan->trial_days,
         'startDate'        => $startsAt,
         'endDate'          => $endsAt->format('jS M, Y'),
@@ -899,7 +907,22 @@ function getPaymentGateway()
 function zeroDecimalCurrencies(): array
 {
     return [
-        'BIF', 'CLP', 'DJF', 'GNF', 'JPY', 'KMF', 'KRW', 'MGA', 'PYG', 'RWF', 'UGX', 'VND', 'VUV', 'XAF', 'XOF', 'XPF',
+        'BIF',
+        'CLP',
+        'DJF',
+        'GNF',
+        'JPY',
+        'KMF',
+        'KRW',
+        'MGA',
+        'PYG',
+        'RWF',
+        'UGX',
+        'VND',
+        'VUV',
+        'XAF',
+        'XOF',
+        'XPF',
     ];
 }
 
@@ -911,8 +934,31 @@ function setStripeApiKey()
 function getPayPalSupportedCurrencies()
 {
     return [
-        'AUD', 'BRL', 'CAD', 'CNY', 'CZK', 'DKK', 'EUR', 'HKD', 'HUF', 'ILS', 'JPY', 'MYR', 'MXN', 'TWD', 'NZD', 'NOK',
-        'PHP', 'PLN', 'GBP', 'RUB', 'SGD', 'SEK', 'CHF', 'THB', 'USD',
+        'AUD',
+        'BRL',
+        'CAD',
+        'CNY',
+        'CZK',
+        'DKK',
+        'EUR',
+        'HKD',
+        'HUF',
+        'ILS',
+        'JPY',
+        'MYR',
+        'MXN',
+        'TWD',
+        'NZD',
+        'NOK',
+        'PHP',
+        'PLN',
+        'GBP',
+        'RUB',
+        'SGD',
+        'SEK',
+        'CHF',
+        'THB',
+        'USD',
     ];
 }
 
@@ -958,13 +1004,13 @@ function checkManuallyPaymentStatus()
 
 function getLanguageCategory($langId)
 {
-    $category = Category::whereLangId($langId)->pluck('name','id')->toArray();
-    
+    $category = Category::whereLangId($langId)->pluck('name', 'id')->toArray();
+
     return $category;
 }
 function getCategorySubCategory($categoryId)
 {
-    $subCategory = SubCategory::whereParentCategoryId($categoryId)->pluck('name','id')->toArray();
+    $subCategory = SubCategory::whereParentCategoryId($categoryId)->pluck('name', 'id')->toArray();
 
     return $subCategory;
 }
@@ -973,7 +1019,6 @@ function getFrontLanguage()
     $language = Language::whereFrontLanguageStatus(Language::ACTIVE)->pluck('name', 'id');
 
     return $language;
-
 }
 function getLoginUserRole()
 {
@@ -981,6 +1026,6 @@ function getLoginUserRole()
 }
 function checkLoginUserFollow($userId)
 {
-$following = Followers::whereFollowing(getLogInUserId())->whereFollowers($userId)->first();
-return $following ;
+    $following = Followers::whereFollowing(getLogInUserId())->whereFollowers($userId)->first();
+    return $following;
 }
