@@ -94,7 +94,7 @@ body {
 }
 
 .top-bar-section .language-dropdown .nav-link.active, .top-bar-section .language-dropdown .nav-link:hover {
-    color: #17b978
+    color: #ff7300
 }
 
 @media (min-width: 575px)and (max-width: 991px) {
@@ -181,7 +181,7 @@ body {
 }
 
 .top-bar-section .navbar .navbar-nav .nav-item .nav-link.active, .top-bar-section .navbar .navbar-nav .nav-item .nav-link:hover {
-    color: #17b978
+    color: #ff7300
 }
 
 .top-bar-section .navbar .dropdown .dropdown-toggle {
@@ -196,7 +196,7 @@ body {
 }
 
 .top-bar-section .navbar .dropdown .dropdown-toggle.active, .top-bar-section .navbar .dropdown .dropdown-toggle:hover, .top-bar-section .navbar .dropdown .dropdown-toggle:focus {
-    color: #17b978
+    color: #ff7300
 }
 
 .top-bar-section .navbar .dropdown .dropdown-nav, .top-bar-section .navbar .dropdown .dropdown-sub-nav .dropdown-sub-list {
@@ -230,7 +230,7 @@ body {
 }
 
 .top-bar-section .navbar .dropdown .dropdown-nav a.active, .top-bar-section .navbar .dropdown .dropdown-nav a:hover {
-    color: #17b978
+    color: #ff7300
 }
 
 @media (max-width: 991px) {
@@ -282,7 +282,7 @@ header .nav .nav-item .nav-link {
 }
 
 header .nav .nav-item .nav-link.active, header .nav .nav-item .nav-link:hover {
-    color: #17b978
+    color: #ff7300
 }
 
 header .nav .dropdown .dropdown-toggle {
@@ -297,7 +297,7 @@ header .nav .dropdown .dropdown-toggle {
 }
 
 header .nav .dropdown .dropdown-toggle.active, header .nav .dropdown .dropdown-toggle:hover, header .nav .dropdown .dropdown-toggle:focus {
-    color: #17b978
+    color: #ff7300
 }
 
 header .nav .dropdown .dropdown-nav, header .nav .dropdown .dropdown-sub-nav .dropdown-sub-list {
@@ -334,7 +334,7 @@ header .nav .dropdown .dropdown-nav a {
 }
 
 header .nav .dropdown .dropdown-nav a.active, header .nav .dropdown .dropdown-nav a:hover {
-    color: #17b978
+    color: #ff7300
 }
 
 header .nav .dropdown .dropdown-nav .dropdown-sub-nav .dropdown-sub-list {
@@ -357,7 +357,7 @@ header .header-icon a i {
 }
 
 header .header-icon a i.active, header .header-icon a i:hover {
-    color: #17b978
+    color: #ff7300
 }
 
 header .header-icon .dropdown-toggle::after {
@@ -392,7 +392,7 @@ header .header-icon .dropdown-menu .custom-input-control {
 }
 
 header .header-icon .dropdown-menu .search-form-box .form-group .search-submit {
-    background-color: #17b978;
+    background-color: #ff7300;
     border: none;
     border-radius: 3px;
     color: #fff;
@@ -407,7 +407,7 @@ header .header-icon .dropdown-menu .search-form-box .form-group .search-submit {
 }
 
 footer .categories a:hover, footer .last-line a:hover {
-    color: #17b978 !important
+    color: #ff7300 !important
 }
 
 footer .footer-info .card {

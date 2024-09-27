@@ -52,8 +52,8 @@
 }
 
 .dark-mode .form-check-input:checked, .dark-mode .sports-left-section .pagination .page-item .active, .dark-mode .sports-left-section .pagination .page-item .page-link:hover {
-    background-color: #17b978 !important;
-    border: 1px solid #17b978 !important
+    background-color: #ff7300 !important;
+    border: 1px solid #ff7300 !important
 }
 
 .dark-mode .section-heading, .dark-mode .trending-post .card, .dark-mode .popular-news-post .card, .dark-mode .offcanvas .offcanvas-content .contact-desc {

@@ -16,7 +16,7 @@
                                     style="color: black; margin-right: 10px; font-size: 30px"></i>
                                 <div class="d-flex flex-column" style="font-size: 12px">
                                     <span>Kirim Email</span>
-                                    <span style="color: #ff6600">dpmptsp@sumedangkab.go.id</span>
+                                    <span style="color: #ff7300">dpmptsp@sumedangkab.go.id</span>
                                 </div>
                             </div>
 
@@ -25,7 +25,7 @@
                                     style="color: black; margin-right: 10px; font-size: 30px"></i>
                                 <div class="d-flex flex-column">
                                     <span>Hubungi Kami</span>
-                                    <span style="color: #ff6600">0821-1617-1515</span>
+                                    <span style="color: #ff7300">0821-1617-1515</span>
                                 </div>
                             </div>
                         </div>
@@ -68,12 +68,24 @@
                                 </ul>
                             </div>
                         @else
-                            <div class="d-flex">
+                            <div class="d-flex justify-center items-center gap-2">
                                 <a href="{{ route('login') }}"
                                     class="fs-14 text-primary fw-6  login-btn d-none d-sm-block"
                                     data-turbo="false">{{ __('messages.common.login') }}</a>
+                                {{-- <a href="javascript:void(0)" data-turbo="false" title="Switch to Light mode">
+                                    <i class="fa-solid fa-moon text-primary fs-2 apply-dark-mode"></i>
+                                </a> --}}
                             </div>
                         @endif
+                        <div
+                            class="col-xl-2 col-lg-2 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
+                            <a href="javascript:void(0)" data-turbo="false" title="Switch to Light mode"
+                                onclick="myFunction()">
+                                <i id="dark-mode-landing"
+                                    class="fa-solid fa-moon text-primary fs-2 apply-dark-mode"></i>
+                            </a>
+                        </div>
+
                         <button class="dropdown border-0 bg-transparent position-relative me-2 d-lg-none" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <a href="javascript:void(0)"><i class="fa-solid fa-magnifying-glass fs-15"></i></a>

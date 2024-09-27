@@ -546,37 +546,38 @@ form {
 }
 
 .breaking-slider {
-    .swiper-wrapper{
+    .swiper-wrapper {
         height: 30px;
         display: block;
     }
-    .swiper-slide-active{
+    .swiper-slide-active {
         visibility: visible !important;
     }
 
-    .swiper-slide{
+    .swiper-slide {
         visibility: hidden;
     }
 }
 
-.w-300px{
+.w-300px {
     width: 300px !important;
 }
 
 @media (min-width: 992px) and (max-width: 1125px) {
-    .custom-label-laptop{
+    .custom-label-laptop {
         width: 200px !important;
     }
 }
 .mh-30px {
-    max-height: 30px !important
+    max-height: 30px !important;
 }
 
 .mh-40px {
-    max-height: 40px !important
+    max-height: 40px !important;
 }
 
-.image.image-circle, .image.image-circle>img {
+.image.image-circle,
+.image.image-circle > img {
     display: inline-block;
     flex-shrink: 0;
     position: relative;
@@ -585,20 +586,20 @@ form {
 }
 
 .h-40px {
-    height: 40px !important
+    height: 40px !important;
 }
 
-.mobile-search{
+.mobile-search {
     background-color: #fff;
     border: none;
     box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-    inset: 20px 0 auto auto!important;
+    inset: 20px 0 auto auto !important;
     padding: 10px;
     width: 320px;
     z-index: 999;
 
     .search-submit {
-        background-color: #17b978;
+        background-color: #ff7300;
         border: none;
         border-radius: 3px;
         color: #fff;
@@ -608,19 +609,19 @@ form {
         right: 5px;
         top: 50%;
         transform: translateY(-50%);
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         width: 40px;
     }
 
     .custom-input-control {
-        border: 0!important;
+        border: 0 !important;
         border-radius: 3px;
         box-shadow: none;
-        color: #8a8f95!important;
-        font-size: 14px!important;
-        height: 40px!important;
+        color: #8a8f95 !important;
+        font-size: 14px !important;
+        height: 40px !important;
         line-height: 14px;
-        padding: 10px 65px 10px 20px!important;
+        padding: 10px 65px 10px 20px !important;
     }
 }
 
@@ -636,28 +637,32 @@ form {
     .js-cookie-consent-agree {
         padding: 10px 20px;
         box-shadow: none;
-        background-color: #3ac48c;
+        background-color: #ff9f00;
         color: white;
         margin-left: 10px;
         font-size: 14px;
-        border: 2px solid #3ac48c;
+        border: 2px solid #ff9f00;
     }
 }
 
-.footer{
+.footer {
     h3 {
         font-size: 18px;
         line-height: 28px;
     }
 }
 
-.front-custom-page-div{
-    img{
+.front-custom-page-div {
+    img {
         max-width: 100%;
     }
 }
 
-.trending-post-section,.hot-categories-section,.popular-news-section,.popular-tag-section,.comment-section{
+.trending-post-section,
+.hot-categories-section,
+.popular-news-section,
+.popular-tag-section,
+.comment-section {
     h1 {
         font-size: 24px;
         line-height: 34px;
@@ -680,25 +685,25 @@ form {
     }
 }
 
-.pagination{
+.pagination {
     flex-wrap: wrap;
 }
-.max-h-290px{
+.max-h-290px {
     max-height: 290px;
 }
-.max-w-350px{
+.max-w-350px {
     max-width: 350px;
 }
-.ad-space-url-mobile{
-    img{
+.ad-space-url-mobile {
+    img {
         height: 290px;
         width: 350px;
         object-fit: cover;
     }
 }
-.ad-space-url-desktop{
+.ad-space-url-desktop {
     margin-top: 15px;
-    img{
+    img {
         height: 100px;
         max-width: 100%;
         object-fit: cover;
@@ -720,11 +725,11 @@ form {
     right: 24px;
     display: inline-block;
     min-width: 16px;
-    opacity: .8;
+    opacity: 0.8;
     font-weight: 400;
     color: #fff;
     font-size: 10px;
-    background: black
+    background: black;
 }
 
 .post-reaction {
@@ -740,126 +745,133 @@ form {
     }
 }
 .mt-60 {
-    @media (max-width:991px) {
-        margin-top:-60px;
+    @media (max-width: 991px) {
+        margin-top: -60px;
     }
 }
 
 .card {
     .admin-card-image {
-        border-radius:5px 5px 0 0 !important;
-        width: 420px ;
-        height: 250px
+        border-radius: 5px 5px 0 0 !important;
+        width: 420px;
+        height: 250px;
     }
     .admin-post-card-body {
-        border: 1px solid rgb(120,120,120,0.5) !important;
-        border-radius: 0px 0px 5px 5px  !important;
-        padding:15px !important;
+        border: 1px solid rgb(120, 120, 120, 0.5) !important;
+        border-radius: 0px 0px 5px 5px !important;
+        padding: 15px !important;
 
-        h5{
+        h5 {
             color: #101010;
             font-weight: 600 !important;
             font-size: 16px;
             line-height: 160%;
         }
-        p{
+        p {
             color: #666666;
             font-weight: 500;
             font-size: 14px;
             line-height: 160%;
         }
-
     }
 }
 .main-admin-card {
     position: relative;
     right: 0;
     top: -100px;
-    @media (max-width:991px) {
-        position:relative;
+    @media (max-width: 991px) {
+        position: relative;
     }
 }
 .admin-card {
-
     background-color: white;
-    border: 1px solid rgb(120,120,120,0.5) !important;
-    padding:20px!important;
+    border: 1px solid rgb(120, 120, 120, 0.5) !important;
+    padding: 20px !important;
     .card {
         flex-direction: row !important;
     }
 }
 .admin-img {
     width: 80px;
-    min-width:80px;
+    min-width: 80px;
     height: 80px;
     border-radius: 50px !important;
 }
 .admin-card-body {
-    border:0 !important;
+    border: 0 !important;
 }
 .follow-card {
-    border: 1px solid #CBCBCB;
+    border: 1px solid #cbcbcb;
     border-radius: 5px;
-    padding:20px;
+    padding: 20px;
 }
-.follow-image , .tooltip-img {
-    width:40px;
-    height:40px;
-    min-width:40px;
-    border-radius:50px;
+.follow-image,
+.tooltip-img {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50px;
     background-color: black;
 }
 .profile-posts-tag {
-    display:inline-block;
-    background-color:$primary !important;
-    color:$white;
+    display: inline-block;
+    background-color: $primary !important;
+    color: $white;
     position: absolute;
     right: 0;
     top: 0;
-    padding:8px 15px;
-    font-size:14px;
+    padding: 8px 15px;
+    font-size: 14px;
 }
 .img-tooltip {
-    border: 1px solid #CBCBCB;
+    border: 1px solid #cbcbcb;
     border-radius: 5px;
     background-color: white;
     width: 274px;
-    min-width:274px;
-    padding:10px;
-    position:absolute;
-    bottom:113%;
-    display:none;
-    z-index:99;
+    min-width: 274px;
+    padding: 10px;
+    position: absolute;
+    bottom: 113%;
+    display: none;
+    z-index: 99;
     .after-arrow {
         position: absolute;
         z-index: 0;
-        color:#CBCBCB;
+        color: #cbcbcb;
         bottom: -15px;
         left: 14px;
     }
 }
 
 .follow-tooltip:hover .img-tooltip {
-    display:block !important;
+    display: block !important;
 }
 
 .dark-mode .news-desc {
-    div,p,samp,span,h1,h2,h3,h4,h5,h6 {
+    div,
+    p,
+    samp,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         background-color: black !important;
         color: white !important;
     }
 }
-.w-30px{
+.w-30px {
     width: 30px !important;
 }
-.h-30px{
+.h-30px {
     height: 30px !important;
 }
 
-.popular-tags{
-    .tag{
-        border: 1px solid #17b978;
-        border-radius:50px;
-
+.popular-tags {
+    .tag {
+        border: 1px solid #ff7300;
+        border-radius: 50px;
     }
 }

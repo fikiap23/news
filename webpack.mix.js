@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,27 +11,39 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.
+mix
     // postCss('resources/css/app.css', 'public/css', [
     //     require('postcss-import'),
     //     require('tailwindcss'),
     //     require('autoprefixer'),
     // ]).
-    css('resources/assets/css/newstyle.css', 'public/assets/css/').
-    css('resources/assets/css/audio.css', 'public/assets/css/').
-    css('node_modules/lightbox2/src/css/lightbox.css', 'public/assets/css/').
-    css('node_modules/@yaireo/tagify/dist/tagify.css', 'public/assets/css/');
+    .css("resources/assets/css/newstyle.css", "public/assets/css/")
+    .css("resources/assets/css/audio.css", "public/assets/css/")
+    .css("node_modules/lightbox2/src/css/lightbox.css", "public/assets/css/")
+    .css("node_modules/@yaireo/tagify/dist/tagify.css", "public/assets/css/");
 
 // theme images
-mix.copyDirectory('resources/theme/images', 'public/images')
-mix.copyDirectory('node_modules/ckeditor4/skins/moono-lisa/icons.png', 'public/ckeditor4/skins/moono-lisa/icons.png')
-mix.copyDirectory('node_modules/ckeditor4/skins/moono-lisa/images', 'public/ckeditor4/skins/moono-lisa/images')
-mix.copyDirectory('node_modules/ckeditor4/plugins/specialchar/dialogs/lang', 'public/ckeditor4/plugins/specialchar/dialogs/lang')
-mix.copyDirectory('node_modules/ckeditor4/plugins/magicline/images', 'public/ckeditor4/plugins/magicline/images')
-mix.copyDirectory('resources/theme/webfonts', 'public/assets/webfonts')
-mix.copyDirectory('resources/theme/webfonts', 'public/webfonts')
-mix.copyDirectory('resources/theme/fonts', 'public/fonts')
-mix.copyDirectory('resources/assets/js/skins', 'public/assets/js/skins')
+mix.copyDirectory("resources/theme/images", "public/images");
+mix.copyDirectory(
+    "node_modules/ckeditor4/skins/moono-lisa/icons.png",
+    "public/ckeditor4/skins/moono-lisa/icons.png"
+);
+mix.copyDirectory(
+    "node_modules/ckeditor4/skins/moono-lisa/images",
+    "public/ckeditor4/skins/moono-lisa/images"
+);
+mix.copyDirectory(
+    "node_modules/ckeditor4/plugins/specialchar/dialogs/lang",
+    "public/ckeditor4/plugins/specialchar/dialogs/lang"
+);
+mix.copyDirectory(
+    "node_modules/ckeditor4/plugins/magicline/images",
+    "public/ckeditor4/plugins/magicline/images"
+);
+mix.copyDirectory("resources/theme/webfonts", "public/assets/webfonts");
+mix.copyDirectory("resources/theme/webfonts", "public/webfonts");
+mix.copyDirectory("resources/theme/fonts", "public/fonts");
+mix.copyDirectory("resources/assets/js/skins", "public/assets/js/skins");
 
 // mix.babel('node_modules/masonry-layout/dist/masonry.pkgd.min.js',
 //     'public/assets/js/masonry.pkgd.min.js');
@@ -44,48 +56,83 @@ mix.copyDirectory('resources/assets/js/skins', 'public/assets/js/skins')
 // mix.babel('node_modules/sortablejs/Sortable.js',
 //     'public/assets/js/sortable.js');
 // third-party css
-mix.styles([
-    'resources/theme/css/third-party.css',
-    // 'node_modules/intl-tel-input/build/css/intlTelInput.css',
-    'public/web/plugins/custom/tinymce/skins/ui/oxide/skin.css',
-    'public/web/plugins/custom/tinymce/skins/ui/oxide/content.css',
-    'public/web/plugins/custom/tinymce/skins/content/default/content.css',
-    'node_modules/@yaireo/tagify/dist/tagify.css',
-    'node_modules/emojionearea/dist/emojionearea.min.css',
-    'node_modules/lightbox2/src/css/lightbox.css',
-], 'public/assets/css/third-party.css')
+mix.styles(
+    [
+        "resources/theme/css/third-party.css",
+        // 'node_modules/intl-tel-input/build/css/intlTelInput.css',
+        "public/web/plugins/custom/tinymce/skins/ui/oxide/skin.css",
+        "public/web/plugins/custom/tinymce/skins/ui/oxide/content.css",
+        "public/web/plugins/custom/tinymce/skins/content/default/content.css",
+        "node_modules/@yaireo/tagify/dist/tagify.css",
+        "node_modules/emojionearea/dist/emojionearea.min.css",
+        "node_modules/lightbox2/src/css/lightbox.css",
+    ],
+    "public/assets/css/third-party.css"
+);
 
 // light theme css
-mix.styles('resources/theme/css/style.css','public/assets/css/style.css');
-mix.styles('resources/theme/css/plugins.css', 'public/assets/css/plugins.css');
-mix.styles('node_modules/ckeditor4/skins/moono-lisa/editor.css', 'public/ckeditor4/skins/moono-lisa/editor.css');
+mix.styles("resources/theme/css/style.css", "public/assets/css/style.css");
+mix.styles("resources/theme/css/plugins.css", "public/assets/css/plugins.css");
+mix.styles(
+    "node_modules/ckeditor4/skins/moono-lisa/editor.css",
+    "public/ckeditor4/skins/moono-lisa/editor.css"
+);
 
-mix.styles('node_modules/ckeditor4/plugins/scayt/dialogs/dialog.css', 'public/ckeditor4/plugins/scayt/dialogs/dialog.css');
-mix.styles('node_modules/ckeditor4/plugins/scayt/skins/moono-lisa/scayt.css', 'public/ckeditor4/plugins/scayt/skins/moono-lisa/scayt.css');
-mix.styles('node_modules/ckeditor4/plugins/dialog/styles/dialog.css', 'public/ckeditor4/plugins/dialog/styles/dialog.css');
-mix.styles('node_modules/ckeditor4/plugins/tableselection/styles/tableselection.css', 'public/ckeditor4/plugins/tableselection/styles/tableselection.css');
-mix.styles('node_modules/ckeditor4/contents.css', 'public/ckeditor4/contents.css');
-mix.styles('node_modules/ckeditor4/skins/moono-lisa/dialog.css', 'public/ckeditor4/skins/moono-lisa/dialog.css');
-
+mix.styles(
+    "node_modules/ckeditor4/plugins/scayt/dialogs/dialog.css",
+    "public/ckeditor4/plugins/scayt/dialogs/dialog.css"
+);
+mix.styles(
+    "node_modules/ckeditor4/plugins/scayt/skins/moono-lisa/scayt.css",
+    "public/ckeditor4/plugins/scayt/skins/moono-lisa/scayt.css"
+);
+mix.styles(
+    "node_modules/ckeditor4/plugins/dialog/styles/dialog.css",
+    "public/ckeditor4/plugins/dialog/styles/dialog.css"
+);
+mix.styles(
+    "node_modules/ckeditor4/plugins/tableselection/styles/tableselection.css",
+    "public/ckeditor4/plugins/tableselection/styles/tableselection.css"
+);
+mix.styles(
+    "node_modules/ckeditor4/contents.css",
+    "public/ckeditor4/contents.css"
+);
+mix.styles(
+    "node_modules/ckeditor4/skins/moono-lisa/dialog.css",
+    "public/ckeditor4/skins/moono-lisa/dialog.css"
+);
 
 // dark theme css
-mix.styles('resources/theme/css/style.dark.css','public/assets/css/style.dark.css');
-mix.styles('resources/theme/css/plugins.dark.css', 'public/assets/css/plugins.dark.css');
+mix.styles(
+    "resources/theme/css/style.dark.css",
+    "public/assets/css/style.dark.css"
+);
+mix.styles(
+    "resources/theme/css/plugins.dark.css",
+    "public/assets/css/plugins.dark.css"
+);
 
 // third-party js
-mix.scripts([
-    'resources/theme/js/vendor.js',
-    'resources/theme/js/plugins.js',
-    'node_modules/@yaireo/tagify/dist/tagify.js',
-    'node_modules/chart.js/dist/chart.js',
-    'node_modules/sortablejs/Sortable.js',
-    'public/web/plugins/custom/tinymce/tinymce.bundle.js',
-    'node_modules/@simonwep/pickr/dist/pickr.min.js',
-    'node_modules/emojionearea/dist/emojionearea.min.js',
-    'node_modules/lightbox2/src/js/lightbox.js'
-], 'public/assets/js/third-party.js').version();
+mix.scripts(
+    [
+        "resources/theme/js/vendor.js",
+        "resources/theme/js/plugins.js",
+        "node_modules/@yaireo/tagify/dist/tagify.js",
+        "node_modules/chart.js/dist/chart.js",
+        "node_modules/sortablejs/Sortable.js",
+        "public/web/plugins/custom/tinymce/tinymce.bundle.js",
+        "node_modules/@simonwep/pickr/dist/pickr.min.js",
+        "node_modules/emojionearea/dist/emojionearea.min.js",
+        "node_modules/lightbox2/src/js/lightbox.js",
+    ],
+    "public/assets/js/third-party.js"
+).version();
 
-mix.sass('resources/assets/css/full-screen.scss', 'assets/css/full-screen.css').version()
+mix.sass(
+    "resources/assets/css/full-screen.scss",
+    "assets/css/full-screen.css"
+).version();
 // sass('resources/assets/css/style.scss', 'assets/css/style.css').
 //     sass('resources/assets/css/web/custom.scss', 'assets/css/web/custom.css').
 //     sass('resources/assets/css/custom.scss', 'assets/css/custom.css').
@@ -99,28 +146,38 @@ mix.sass('resources/assets/css/full-screen.scss', 'assets/css/full-screen.css').
 // 'node_modules/ckeditor4/ckeditor.js',
 //     'node_modules/ckeditor4/styles.js',
 //     'node_modules/ckeditor4/config.js',
-mix.js('node_modules/ckeditor4/ckeditor.js',
-        'public/ckeditor4/ckeditor.js').
-    js('node_modules/ckeditor4/config.js',
-        'public/ckeditor4/config.js').
-    js('node_modules/ckeditor4/lang/en.js',
-        'public/ckeditor4/lang/en.js').
-    js('node_modules/ckeditor4/styles.js',
-        'public/ckeditor4/styles.js').
-   js('node_modules/ckeditor4/plugins/link/dialogs/anchor.js',
-        'public/ckeditor4/plugins/link/dialogs/anchor.js').
-js('node_modules/ckeditor4/plugins/image/dialogs/image.js',
-        'public/ckeditor4/plugins/image/dialogs/image.js').
-js('node_modules/ckeditor4/plugins/table/dialogs/table.js',
-        'public/ckeditor4/plugins/table/dialogs/table.js').
-js('node_modules/ckeditor4/plugins/specialchar/dialogs/specialchar.js',
-        'public/ckeditor4/plugins/specialchar/dialogs/specialchar.js').
-js('node_modules/ckeditor4/plugins/about/dialogs/about.js',
-        'public/ckeditor4/plugins/about/dialogs/about.js').
-js('node_modules/ckeditor4/plugins/pastetools/filter/common.js',
-        'public/ckeditor4/plugins/pastetools/filter/common.js').
-js('node_modules/ckeditor4/plugins/pastefromword/filter/default.js',
-        'public/ckeditor4/plugins/pastefromword/filter/default.js');
+mix.js("node_modules/ckeditor4/ckeditor.js", "public/ckeditor4/ckeditor.js")
+    .js("node_modules/ckeditor4/config.js", "public/ckeditor4/config.js")
+    .js("node_modules/ckeditor4/lang/en.js", "public/ckeditor4/lang/en.js")
+    .js("node_modules/ckeditor4/styles.js", "public/ckeditor4/styles.js")
+    .js(
+        "node_modules/ckeditor4/plugins/link/dialogs/anchor.js",
+        "public/ckeditor4/plugins/link/dialogs/anchor.js"
+    )
+    .js(
+        "node_modules/ckeditor4/plugins/image/dialogs/image.js",
+        "public/ckeditor4/plugins/image/dialogs/image.js"
+    )
+    .js(
+        "node_modules/ckeditor4/plugins/table/dialogs/table.js",
+        "public/ckeditor4/plugins/table/dialogs/table.js"
+    )
+    .js(
+        "node_modules/ckeditor4/plugins/specialchar/dialogs/specialchar.js",
+        "public/ckeditor4/plugins/specialchar/dialogs/specialchar.js"
+    )
+    .js(
+        "node_modules/ckeditor4/plugins/about/dialogs/about.js",
+        "public/ckeditor4/plugins/about/dialogs/about.js"
+    )
+    .js(
+        "node_modules/ckeditor4/plugins/pastetools/filter/common.js",
+        "public/ckeditor4/plugins/pastetools/filter/common.js"
+    )
+    .js(
+        "node_modules/ckeditor4/plugins/pastefromword/filter/default.js",
+        "public/ckeditor4/plugins/pastefromword/filter/default.js"
+    );
 //     js('resources/assets/js/categories/categories.js',
 //         'public/assets/js/categories/categories.js').
 //     js('resources/assets/js/seoTools/seoTools.js',
@@ -178,11 +235,19 @@ js('node_modules/ckeditor4/plugins/pastefromword/filter/default.js',
 //     js('resources/assets/js/fullscreen/fullscreen.js',
 //     'public/assets/js/fullscreen/fullscreen.js');
 
-mix.copyDirectory('node_modules/lightbox2/src/images',
-    'public/front_web/images').version();
+mix.copyDirectory(
+    "node_modules/lightbox2/src/images",
+    "public/front_web/images"
+).version();
 
-mix.sass('resources/assets/scss/custom.scss', 'public/front_web/css/custom.css');
-mix.sass('resources/assets/scss/custom-dark.scss', 'public/front_web/css/custom-dark.css');
+mix.sass(
+    "resources/assets/scss/custom.scss",
+    "public/front_web/css/custom.css"
+);
+mix.sass(
+    "resources/assets/scss/custom-dark.scss",
+    "public/front_web/css/custom-dark.css"
+);
 
 //front theme
 // mix.sass('resources/assets/front/scss/custom.scss', 'public/front_web/build/scss/custom.css');
@@ -196,8 +261,10 @@ mix.sass('resources/assets/scss/custom-dark.scss', 'public/front_web/css/custom-
 // mix.sass('resources/assets/front/scss/sports.scss', 'public/front_web/build/scss/sports.css');
 // mix.sass('resources/assets/front/scss/terms&conditions.scss', 'public/front_web/build/scss/terms&conditions.css');
 
-
-mix.sass('resources/assets/front/scss/custom.scss', 'public/front/scss/custom.css');
+mix.sass(
+    "resources/assets/front/scss/custom.scss",
+    "public/front/scss/custom.css"
+);
 // mix.sass('resources/assets/front/scss/dark-mode.scss', 'public/front/scss/dark-mode.css');
 // mix.sass('resources/assets/front/scss/contact-us.scss', 'public/front/scss/contact-us.css');
 // mix.sass('resources/assets/front/scss/gallery.scss', 'public/front/scss/gallery.css');
@@ -210,92 +277,106 @@ mix.sass('resources/assets/front/scss/custom.scss', 'public/front/scss/custom.cs
 
 // mix.styles('node_modules/lightbox2/src/css/lightbox.css', 'public/front_web/css/lightbox.css');
 //
-mix.babel('node_modules/vanilla-lazyload/dist/lazyload.js',
-    'public/assets/js/lazyload/lazyload.js');
+mix.babel(
+    "node_modules/vanilla-lazyload/dist/lazyload.js",
+    "public/assets/js/lazyload/lazyload.js"
+);
 
+mix.js(
+    [
+        "resources/assets/js/turbo.js",
+        "resources/assets/js/custom/helpers.js",
+        "resources/assets/js/custom/custom.js",
+        "resources/assets/js/roles/roles.js",
+        "resources/assets/js/settings/settings.js",
+        "resources/assets/js/categories/categories.js",
+        "resources/assets/js/seoTools/seoTools.js",
+        "resources/assets/js/sub_category/sub_category.js",
+        "resources/assets/js/poll/poll.js",
+        "resources/assets/js/dashboard/dashboard.js",
+        "resources/assets/js/staff/staff.js",
+        "resources/assets/js/page/page.js",
+        "resources/assets/js/page/creat-edit.js",
+        "resources/assets/js/album-category/album-category.js",
+        "resources/assets/js/users/user-profile.js",
+        "resources/assets/js/menu/menu.js",
+        "resources/assets/js/navigation/navigation.js",
+        "resources/assets/js/album/album.js",
+        "resources/assets/js/comment/comment.js",
+        "resources/assets/js/languages/languages.js",
+        "resources/assets/js/languages/language_translate.js",
+        "resources/assets/js/gallery/gallery.js",
+        "resources/assets/js/gallery/create_edit.js",
+        "resources/assets/js/side_bar_menu_search/side_bar_menu_search.js",
+        "resources/assets/js/add_post/create_edit.js",
+        "resources/assets/js/news_letter/news_letter.js",
+        "resources/assets/js/contact/contact.js",
+        "resources/assets/js/fullscreen/fullscreen.js",
+        "resources/assets/js/rss-feed/create_edit.js",
+        "resources/assets/js/ad_banner/ad_banner.js",
+        "resources/assets/js/bulk_post/bulk-post.js",
+        "resources/assets/js/plan/plans.js",
+        "resources/assets/js/subscription/upgrade.js",
+        "resources/assets/js/emoji/emoji.js",
+    ],
+    "public/assets/js/pages.js"
+).version();
 
+mix.scripts(
+    [
+        "resources/theme/js/vendor.js",
+        "resources/theme/js/plugins.js",
+        "public/front_web/js/swiper.min.js",
+        "public/front_web/js/slick.min.js",
+        "public/front_web/js/toastr.min.js",
+        "public/front_web/js/lightbox.js",
+        "public/messages.js",
+        "node_modules/masonry-layout/dist/masonry.pkgd.min.js",
+        "node_modules/amplitudejs/dist/amplitude.js",
+        "public/front_web/js/jquery.mixitup.min.js",
+        "node_modules/vanilla-lazyload/dist/lazyload.js",
+    ],
+    "public/assets/js/front-third-party.js"
+);
 
-mix.js([
-    'resources/assets/js/turbo.js',
-    'resources/assets/js/custom/helpers.js',
-    'resources/assets/js/custom/custom.js',
-    'resources/assets/js/roles/roles.js',
-    'resources/assets/js/settings/settings.js',
-    'resources/assets/js/categories/categories.js',
-    'resources/assets/js/seoTools/seoTools.js',
-    'resources/assets/js/sub_category/sub_category.js',
-    'resources/assets/js/poll/poll.js',
-    'resources/assets/js/dashboard/dashboard.js',
-    'resources/assets/js/staff/staff.js',
-    'resources/assets/js/page/page.js',
-    'resources/assets/js/page/creat-edit.js',
-    'resources/assets/js/album-category/album-category.js',
-    'resources/assets/js/users/user-profile.js',
-    'resources/assets/js/menu/menu.js',
-    'resources/assets/js/navigation/navigation.js',
-    'resources/assets/js/album/album.js',
-    'resources/assets/js/comment/comment.js',
-    'resources/assets/js/languages/languages.js',
-    'resources/assets/js/languages/language_translate.js',
-    'resources/assets/js/gallery/gallery.js',
-    'resources/assets/js/gallery/create_edit.js',
-    'resources/assets/js/side_bar_menu_search/side_bar_menu_search.js',
-    'resources/assets/js/add_post/create_edit.js',
-    'resources/assets/js/news_letter/news_letter.js',
-    'resources/assets/js/contact/contact.js',
-    'resources/assets/js/fullscreen/fullscreen.js',
-    'resources/assets/js/rss-feed/create_edit.js',
-    'resources/assets/js/ad_banner/ad_banner.js',
-    'resources/assets/js/bulk_post/bulk-post.js',
-    'resources/assets/js/plan/plans.js',
-    'resources/assets/js/subscription/upgrade.js',
-    'resources/assets/js/emoji/emoji.js',
-],'public/assets/js/pages.js').version();
-
-mix.scripts([
-    'resources/theme/js/vendor.js',
-    'resources/theme/js/plugins.js',
-    'public/front_web/js/swiper.min.js',
-    'public/front_web/js/slick.min.js',
-    'public/front_web/js/toastr.min.js',
-    'public/front_web/js/lightbox.js',
-    'public/messages.js',
-    'node_modules/masonry-layout/dist/masonry.pkgd.min.js',
-    'node_modules/amplitudejs/dist/amplitude.js',
-    'public/front_web/js/jquery.mixitup.min.js',
-    'node_modules/vanilla-lazyload/dist/lazyload.js'
-    ],'public/assets/js/front-third-party.js');
-
-mix.js([
-    'resources/assets/js/turbo.js',
-    'resources/assets/js/custom/helpers.js',
-    'resources/assets/js/web/custom.js',
-    'resources/assets/js/front/gallery-page.js',
-    'resources/assets/js/front/video-page.js',
-    'resources/assets/js/front/audio.js',
-    'resources/assets/js/front/home.js',
-    'resources/assets/js/post-reaction/post_reaction.js',
-],'public/assets/js/front-pages.js')
+mix.js(
+    [
+        "resources/assets/js/turbo.js",
+        "resources/assets/js/custom/helpers.js",
+        "resources/assets/js/web/custom.js",
+        "resources/assets/js/front/gallery-page.js",
+        "resources/assets/js/front/video-page.js",
+        "resources/assets/js/front/audio.js",
+        "resources/assets/js/front/home.js",
+        "resources/assets/js/post-reaction/post_reaction.js",
+    ],
+    "public/assets/js/front-pages.js"
+);
 //
-mix.styles([
-    'public/front_web/css/all.min.css',
-    'public/front_web/scss/bootstrap.css',
-    'public/front_web/css/toastr.css',
-    'public/front_web/css/slick.css',
-    'public/front_web/css/slick-theme.css',
-    'node_modules/lightbox2/src/css/lightbox.css',
-    'public/assets/css/lightbox.css',
-    'public/front_web/css/swiper.min.css',
-    'resources/assets/css/audio.css'
-],'public/css/front-third-party.css');
+mix.styles(
+    [
+        "public/front_web/css/all.min.css",
+        "public/front_web/scss/bootstrap.css",
+        "public/front_web/css/toastr.css",
+        "public/front_web/css/slick.css",
+        "public/front_web/css/slick-theme.css",
+        "node_modules/lightbox2/src/css/lightbox.css",
+        "public/assets/css/lightbox.css",
+        "public/front_web/css/swiper.min.css",
+        "resources/assets/css/audio.css",
+    ],
+    "public/css/front-third-party.css"
+);
 
+mix.sass("resources/assets/front/scss/main.scss", "public/css/front-pages.css");
 
-mix.sass('resources/assets/front/scss/main.scss' ,'public/css/front-pages.css');
-
-mix.js([
-    'resources/assets/js/custom/helpers.js',
-    'resources/assets/js/users/user-profile.js',
-    'resources/assets/js/custom/custom.js',
-    'resources/assets/js/web/custom.js',
-    'resources/assets/js/side_bar_menu_search/side_bar_menu_search.js',
-],'public/assets/js/auth-pages.js')
+mix.js(
+    [
+        "resources/assets/js/custom/helpers.js",
+        "resources/assets/js/users/user-profile.js",
+        "resources/assets/js/custom/custom.js",
+        "resources/assets/js/web/custom.js",
+        "resources/assets/js/side_bar_menu_search/side_bar_menu_search.js",
+    ],
+    "public/assets/js/auth-pages.js"
+);

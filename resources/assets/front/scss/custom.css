@@ -136,7 +136,7 @@
 .tags {
     font-size: 10px;
     padding: 6px 10px;
-    background-color: #17b978;
+    background-color: #ff7300;
     color: #fff !important;
     top: 0;
     left: 0
@@ -234,7 +234,7 @@ li {
 }
 
 .social-icon i:hover {
-    color: #17b978 !important
+    color: #ff7300 !important
 }
 
 .btn {
@@ -248,8 +248,8 @@ li {
 
 .btn-primary {
     color: #fff !important;
-    background-color: #17b978;
-    border: 1px solid #17b978 !important
+    background-color: #ff7300;
+    border: 1px solid #ff7300 !important
 }
 
 .card {
@@ -310,7 +310,7 @@ img {
 .section-heading h2:after {
     content: "";
     display: block;
-    background-color: #17b978;
+    background-color: #ff7300;
     top: 50%;
     left: 200px;
     position: absolute;
@@ -338,7 +338,7 @@ img {
 }
 
 .section-heading .section-heading-right .nav-item .nav-link:hover, .section-heading .section-heading-right .nav-item .nav-link.active {
-    color: #17b978 !important
+    color: #ff7300 !important
 }
 
 .section-heading .section-heading-right .nav-item .nav-link:hover:after, .section-heading .section-heading-right .nav-item .nav-link.active:after {
@@ -354,7 +354,7 @@ img {
 .section-heading .section-heading-right .nav-item .nav-link:after {
     content: "";
     display: none;
-    background-color: #17b978;
+    background-color: #ff7300;
     top: 141%;
     position: absolute;
     width: 100%;
@@ -561,7 +561,7 @@ form .form-control {
 
 .theme-switch-box-wrap .theme-switch-box {
     align-items: center;
-    background: #17b978;
+    background: #ff7300;
     border-radius: 1.5rem;
     display: grid;
     gap: 8px;
