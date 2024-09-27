@@ -9,76 +9,74 @@
 @section('content')
     <div class="home-page">
         <!-- start hero section -->
-        <section class="hero-section pt-60">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach ($sliderPosts as $sliderPost)
-                                <div
-                                    class="hero-image carousel-item @if ($loop->iteration <= 1) active @endif position-relative ">
-                                    <a href="{{ route('detailPage', $sliderPost->slug) }}">
-                                        {{--                                            <img data-src="{{ $sliderPost->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" alt=""/> --}}
-                                        @if ($sliderPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
-                                            <button class="common-music-icon slider-music-icon" type="button">
-                                                <i class="icon fa-solid fa-music text-white"></i>
-                                            </button>
-                                            <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
-                                        @elseif($sliderPost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
-                                            @php
-                                                $thumbUrl =
-                                                    !empty($sliderPost->postVideo) &&
-                                                    !empty($sliderPost->postVideo->thumbnail_image_url)
-                                                        ? $sliderPost->postVideo->thumbnail_image_url
-                                                        : null;
-                                                $thumbImage =
-                                                    !empty($sliderPost->postVideo) &&
-                                                    !empty($sliderPost->postVideo->uploaded_thumb)
-                                                        ? $sliderPost->postVideo->uploaded_thumb
-                                                        : asset('front_web/images/default.jpg');
-                                            @endphp
-                                            <button class="common-music-icon slider-music-icon" type="button">
-                                                <i class="icon fa-solid fa-play text-white"></i>
-                                            </button>
-                                            <img src="{{ !empty($thumbUrl) ? $thumbUrl : $thumbImage }}" class="w-100 h-100"
-                                                alt="" />
-                                        @else
-                                            <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
-                                        @endif
-                                    </a>
-                                    <a href="{{ route('categoryPage', $sliderPost->category->slug) }}"
-                                        class="tags position-absolute fw-7 {{ getColorClass($sliderPost->category->id) }}">{!! $sliderPost->category->name !!}</a>
-                                    <div class="hero-content position-absolute px-40 mb-sm-4 mb-3 w-100">
-                                        <h1 class="text-white pb-2"><a href="{{ route('detailPage', $sliderPost->slug) }}"
-                                                class="text-decoration-none text-white">{!! \Illuminate\Support\Str::limit($sliderPost->title, 85, '...') !!}</a></h1>
-                                        <div class="desc d-sm-flex align-items-center justify-content-between">
-                                            <p class="fs-14 text-white mb-sm-0 mb-1"><a
-                                                    href="{{ route('userDetails', $sliderPost->user->username ?? $sliderPost->user->id) }}"
-                                                    class="text-white">{{ __('messages.common.by') }}
-                                                    {{ $sliderPost->user->full_name }}</a></p>
-                                            <div class="desc d-flex">
-                                                <p class="fs-14 text-white mb-0">
-                                                    {{ ucfirst(__('messages.common.' . strtolower($sliderPost->created_at->format('F')))) }}
-                                                    {{ $sliderPost->created_at->format('d, Y') }}</p>
-                                                <span class=" text-primary px-sm-4 px-2"> | </span>
-                                                <p class="fs-14 text-white mb-0">{{ $sliderPost->comment_count }}</p>
-                                            </div>
+        <section class="hero-section pt-40">
+            <div class="w-full">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @foreach ($sliderPosts as $sliderPost)
+                            <div
+                                class="hero-image carousel-item @if ($loop->iteration <= 1) active @endif position-relative ">
+                                <a href="{{ route('detailPage', $sliderPost->slug) }}">
+                                    {{--                                            <img data-src="{{ $sliderPost->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" alt=""/> --}}
+                                    @if ($sliderPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                        <button class="common-music-icon slider-music-icon" type="button">
+                                            <i class="icon fa-solid fa-music text-white"></i>
+                                        </button>
+                                        <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
+                                    @elseif($sliderPost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                        @php
+                                            $thumbUrl =
+                                                !empty($sliderPost->postVideo) &&
+                                                !empty($sliderPost->postVideo->thumbnail_image_url)
+                                                    ? $sliderPost->postVideo->thumbnail_image_url
+                                                    : null;
+                                            $thumbImage =
+                                                !empty($sliderPost->postVideo) &&
+                                                !empty($sliderPost->postVideo->uploaded_thumb)
+                                                    ? $sliderPost->postVideo->uploaded_thumb
+                                                    : asset('front_web/images/default.jpg');
+                                        @endphp
+                                        <button class="common-music-icon slider-music-icon" type="button">
+                                            <i class="icon fa-solid fa-play text-white"></i>
+                                        </button>
+                                        <img src="{{ !empty($thumbUrl) ? $thumbUrl : $thumbImage }}" class="w-100 h-100"
+                                            alt="" />
+                                    @else
+                                        <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
+                                    @endif
+                                </a>
+                                <a href="{{ route('categoryPage', $sliderPost->category->slug) }}"
+                                    class="tags position-absolute fw-7 {{ getColorClass($sliderPost->category->id) }}">{!! $sliderPost->category->name !!}</a>
+                                <div class="hero-content position-absolute px-40 mb-sm-4 mb-3 w-100">
+                                    <h1 class="text-white pb-2"><a href="{{ route('detailPage', $sliderPost->slug) }}"
+                                            class="text-decoration-none text-white">{!! \Illuminate\Support\Str::limit($sliderPost->title, 85, '...') !!}</a></h1>
+                                    <div class="desc d-sm-flex align-items-center justify-content-between">
+                                        <p class="fs-14 text-white mb-sm-0 mb-1"><a
+                                                href="{{ route('userDetails', $sliderPost->user->username ?? $sliderPost->user->id) }}"
+                                                class="text-white">{{ __('messages.common.by') }}
+                                                {{ $sliderPost->user->full_name }}</a></p>
+                                        <div class="desc d-flex">
+                                            <p class="fs-14 text-white mb-0">
+                                                {{ ucfirst(__('messages.common.' . strtolower($sliderPost->created_at->format('F')))) }}
+                                                {{ $sliderPost->created_at->format('d, Y') }}</p>
+                                            <span class=" text-primary px-sm-4 px-2"> | </span>
+                                            <p class="fs-14 text-white mb-0">{{ $sliderPost->comment_count }}</p>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="prev">
-                            <i class="icon fa-solid fa-arrow-left text-white"></i>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="next">
-                            <i class="icon fa-solid fa-arrow-right text-white"></i>
-                        </button>
+                            </div>
+                        @endforeach
                     </div>
-
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <i class="icon fa-solid fa-arrow-left text-white"></i>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <i class="icon fa-solid fa-arrow-right text-white"></i>
+                    </button>
                 </div>
+
             </div>
         </section>
         <!-- end hero section -->
@@ -724,33 +722,6 @@
     @endif
     <!-- end featured-post-section -->
 
-    <!-- start blog-section -->
-    <section class="blog-section bg-black py-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xxl-6  col-lg-8 text-center">
-                    <div class="blog">
-                        <h2 class="fw-7 text-white pb-lg-3 mb-md-4 mb-3">{{ __('messages.common.get_the_best') }}
-                        </h2>
-                        <div class="email-box position-relative">
-                            {{ Form::open(['route' => 'subscribe.store', 'class' => 'subscribe-form-style-2', 'id' => 'subscriberForm']) }}
-                            <input type="email" class="fs-14 text-gray subscribe-form" name="email"
-                                id="email_2" placeholder="{{ __('messages.common.your_email') }}" required>
-                            <button type="submit"
-                                class="button btn-primary d-none d-sm-block position-absolute fs-14 subscribe-btn">{{ __('messages.common.subscribe') }}</button>
-                            <button type="submit"
-                                class="button btn-primary d-flex align-items-center justify-content-center px-3 d-sm-none position-absolute subscribe-btn">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                            <div class="form-response1" id="formResponse"></div>
-                            {{ Form::close() }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end blog-section -->
     <!-- end sub-section -->
 </div>
 @endsection
