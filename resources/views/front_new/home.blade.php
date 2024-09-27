@@ -12,128 +12,72 @@
         <section class="hero-section pt-60">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-8">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                @foreach ($sliderPosts as $sliderPost)
-                                    <div
-                                        class="hero-image carousel-item @if ($loop->iteration <= 1) active @endif position-relative ">
-                                        <a href="{{ route('detailPage', $sliderPost->slug) }}">
-                                            {{--                                            <img data-src="{{ $sliderPost->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" alt=""/> --}}
-                                            @if ($sliderPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
-                                                <button class="common-music-icon slider-music-icon" type="button">
-                                                    <i class="icon fa-solid fa-music text-white"></i>
-                                                </button>
-                                                <img src="{{ $sliderPost->post_image }}" class="w-100 h-100"
-                                                    alt="" />
-                                            @elseif($sliderPost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
-                                                @php
-                                                    $thumbUrl =
-                                                        !empty($sliderPost->postVideo) &&
-                                                        !empty($sliderPost->postVideo->thumbnail_image_url)
-                                                            ? $sliderPost->postVideo->thumbnail_image_url
-                                                            : null;
-                                                    $thumbImage =
-                                                        !empty($sliderPost->postVideo) &&
-                                                        !empty($sliderPost->postVideo->uploaded_thumb)
-                                                            ? $sliderPost->postVideo->uploaded_thumb
-                                                            : asset('front_web/images/default.jpg');
-                                                @endphp
-                                                <button class="common-music-icon slider-music-icon" type="button">
-                                                    <i class="icon fa-solid fa-play text-white"></i>
-                                                </button>
-                                                <img src="{{ !empty($thumbUrl) ? $thumbUrl : $thumbImage }}"
-                                                    class="w-100 h-100" alt="" />
-                                            @else
-                                                <img src="{{ $sliderPost->post_image }}" class="w-100 h-100"
-                                                    alt="" />
-                                            @endif
-                                        </a>
-                                        <a href="{{ route('categoryPage', $sliderPost->category->slug) }}"
-                                            class="tags position-absolute fw-7 {{ getColorClass($sliderPost->category->id) }}">{!! $sliderPost->category->name !!}</a>
-                                        <div class="hero-content position-absolute px-40 mb-sm-4 mb-3 w-100">
-                                            <h1 class="text-white pb-2"><a
-                                                    href="{{ route('detailPage', $sliderPost->slug) }}"
-                                                    class="text-decoration-none text-white">{!! \Illuminate\Support\Str::limit($sliderPost->title, 85, '...') !!}</a></h1>
-                                            <div class="desc d-sm-flex align-items-center justify-content-between">
-                                                <p class="fs-14 text-white mb-sm-0 mb-1"><a
-                                                        href="{{ route('userDetails', $sliderPost->user->username ?? $sliderPost->user->id) }}"
-                                                        class="text-white">{{ __('messages.common.by') }}
-                                                        {{ $sliderPost->user->full_name }}</a></p>
-                                                <div class="desc d-flex">
-                                                    <p class="fs-14 text-white mb-0">
-                                                        {{ ucfirst(__('messages.common.' . strtolower($sliderPost->created_at->format('F')))) }}
-                                                        {{ $sliderPost->created_at->format('d, Y') }}</p>
-                                                    <span class=" text-primary px-sm-4 px-2"> | </span>
-                                                    <p class="fs-14 text-white mb-0">{{ $sliderPost->comment_count }}</p>
-                                                </div>
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach ($sliderPosts as $sliderPost)
+                                <div
+                                    class="hero-image carousel-item @if ($loop->iteration <= 1) active @endif position-relative ">
+                                    <a href="{{ route('detailPage', $sliderPost->slug) }}">
+                                        {{--                                            <img data-src="{{ $sliderPost->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" alt=""/> --}}
+                                        @if ($sliderPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                            <button class="common-music-icon slider-music-icon" type="button">
+                                                <i class="icon fa-solid fa-music text-white"></i>
+                                            </button>
+                                            <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
+                                        @elseif($sliderPost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                            @php
+                                                $thumbUrl =
+                                                    !empty($sliderPost->postVideo) &&
+                                                    !empty($sliderPost->postVideo->thumbnail_image_url)
+                                                        ? $sliderPost->postVideo->thumbnail_image_url
+                                                        : null;
+                                                $thumbImage =
+                                                    !empty($sliderPost->postVideo) &&
+                                                    !empty($sliderPost->postVideo->uploaded_thumb)
+                                                        ? $sliderPost->postVideo->uploaded_thumb
+                                                        : asset('front_web/images/default.jpg');
+                                            @endphp
+                                            <button class="common-music-icon slider-music-icon" type="button">
+                                                <i class="icon fa-solid fa-play text-white"></i>
+                                            </button>
+                                            <img src="{{ !empty($thumbUrl) ? $thumbUrl : $thumbImage }}" class="w-100 h-100"
+                                                alt="" />
+                                        @else
+                                            <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
+                                        @endif
+                                    </a>
+                                    <a href="{{ route('categoryPage', $sliderPost->category->slug) }}"
+                                        class="tags position-absolute fw-7 {{ getColorClass($sliderPost->category->id) }}">{!! $sliderPost->category->name !!}</a>
+                                    <div class="hero-content position-absolute px-40 mb-sm-4 mb-3 w-100">
+                                        <h1 class="text-white pb-2"><a href="{{ route('detailPage', $sliderPost->slug) }}"
+                                                class="text-decoration-none text-white">{!! \Illuminate\Support\Str::limit($sliderPost->title, 85, '...') !!}</a></h1>
+                                        <div class="desc d-sm-flex align-items-center justify-content-between">
+                                            <p class="fs-14 text-white mb-sm-0 mb-1"><a
+                                                    href="{{ route('userDetails', $sliderPost->user->username ?? $sliderPost->user->id) }}"
+                                                    class="text-white">{{ __('messages.common.by') }}
+                                                    {{ $sliderPost->user->full_name }}</a></p>
+                                            <div class="desc d-flex">
+                                                <p class="fs-14 text-white mb-0">
+                                                    {{ ucfirst(__('messages.common.' . strtolower($sliderPost->created_at->format('F')))) }}
+                                                    {{ $sliderPost->created_at->format('d, Y') }}</p>
+                                                <span class=" text-primary px-sm-4 px-2"> | </span>
+                                                <p class="fs-14 text-white mb-0">{{ $sliderPost->comment_count }}</p>
                                             </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                                data-bs-slide="prev">
-                                <i class="icon fa-solid fa-arrow-left text-white"></i>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                                data-bs-slide="next">
-                                <i class="icon fa-solid fa-arrow-right text-white"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mt-lg-0  mt-sm-5 mt-4">
-                        <div class="row">
-                            @foreach ($headlinePosts as $row)
-                                <div class="col-sm-6 mb-4 pb-xl-1 ">
-                                    <div class="card position-relative">
-                                        <div class="card-img-top">
-                                            <a href="{{ route('detailPage', $row->slug) }}">
-                                                {{--                                                <img data-src="{{ $row->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" alt="" class="w-100 h-100 lazy"> --}}
-                                                @if ($row->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
-                                                    <button class="common-music-icon small-music-icon" type="button">
-                                                        <i class="icon fa-solid fa-music text-white"></i>
-                                                    </button>
-                                                    <img src="{{ $row->post_image }}" class="w-100 h-100" alt="" />
-                                                @elseif($row->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
-                                                    @php
-                                                        $thumbUrl =
-                                                            !empty($row->postVideo) &&
-                                                            !empty($row->postVideo->thumbnail_image_url)
-                                                                ? $row->postVideo->thumbnail_image_url
-                                                                : null;
-                                                        $thumbImage =
-                                                            !empty($row->postVideo) &&
-                                                            !empty($row->postVideo->uploaded_thumb)
-                                                                ? $row->postVideo->uploaded_thumb
-                                                                : asset('front_web/images/default.jpg');
-                                                    @endphp
-                                                    <button class="common-music-icon small-music-icon" type="button">
-                                                        <i class="icon fa-solid fa-play text-white"></i>
-                                                    </button>
-                                                    <img src="{{ !empty($thumbUrl) ? $thumbUrl : $thumbImage }}"
-                                                        class="w-100 h-100" alt="" />
-                                                @else
-                                                    <img src="{{ $row->post_image }}" class="w-100 h-100" alt="" />
-                                                @endif
-                                            </a>
-                                        </div>
-                                        <a href="{{ route('categoryPage', $row->category->slug) }}"
-                                            class="tags position-absolute  fw-7 {{ getColorClass($row->category->id) }}">{!! $row->category->name !!}</a>
-                                        <div class="card-body">
-                                            <h5 class="card-title mb-1 fs-16 text-black fw-6">
-                                                <a href="{{ route('detailPage', $row->slug) }}"
-                                                    class="fs-16 text-black fw-6">{!! \Illuminate\Support\Str::limit($row->title, 40, '...') !!}</a>
-                                            </h5>
-                                            <span
-                                                class="card-text fs-12 text-gray">{{ ucfirst(__('messages.common.' . strtolower($row->created_at->format('M')))) }}
-                                                {{ $row->created_at->format('d, Y') }}</span>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <i class="icon fa-solid fa-arrow-left text-white"></i>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                            <i class="icon fa-solid fa-arrow-right text-white"></i>
+                        </button>
                     </div>
+
                 </div>
             </div>
         </section>
