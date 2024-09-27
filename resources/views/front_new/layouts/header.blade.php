@@ -34,38 +34,49 @@
                     <div
                         class="col-xl-2 col-lg-2 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
                         @if (getLogInUser())
-                            <div class="language-dropdown ms-2 d-none d-sm-block">
-                                <a class="nav-link p-0 fs-14 pe-3" href="javascript:void(0)" id="dropdownMenuButton1">
-                                    {{ getLogInUser()->last_name }}
-                                    <i class="fa-solid fa-angle-down icon fs-12"></i>
-                                </a>
-                                <ul class="nav submenu language-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li class="nav-item languageSelection">
-                                        @if (Auth::user()->hasRole('customer'))
-                                            <a class="nav-link fs-14 d-flex align-items-center" data-turbo="false"
-                                                href="{{ route('customer.dashboard') }}">
-                                                {{ __('messages.details.admin_panel') }}
-                                            </a>
-                                        @endif
-                                        @if (!Auth::user()->hasRole('customer'))
-                                            <a class="nav-link fs-14 d-flex align-items-center" data-turbo="false"
-                                                href="{{ route('admin.dashboard') }}">
-                                                {{ __('messages.details.admin_panel') }}
-                                            </a>
-                                        @endif
-                                    </li>
-                                    <li class="nav-item languageSelection">
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="post">
-                                            @csrf
-                                        </form>
-                                        <a href="{{ url('logout') }}"
-                                            onclick="event.preventDefault();
+                            <div class="d-flex justify-center items-center">
+                                <div class="language-dropdown mt-1 d-none d-sm-block">
+                                    <a class="nav-link p-0 fs-14 pe-3" href="javascript:void(0)"
+                                        id="dropdownMenuButton1">
+                                        {{ getLogInUser()->last_name }}
+                                        <i class="fa-solid fa-angle-down icon fs-12"></i>
+                                    </a>
+                                    <ul class="nav submenu language-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li class="nav-item languageSelection">
+                                            @if (Auth::user()->hasRole('customer'))
+                                                <a class="nav-link fs-14 d-flex align-items-center" data-turbo="false"
+                                                    href="{{ route('customer.dashboard') }}">
+                                                    {{ __('messages.details.admin_panel') }}
+                                                </a>
+                                            @endif
+                                            @if (!Auth::user()->hasRole('customer'))
+                                                <a class="nav-link fs-14 d-flex align-items-center" data-turbo="false"
+                                                    href="{{ route('admin.dashboard') }}">
+                                                    {{ __('messages.details.admin_panel') }}
+                                                </a>
+                                            @endif
+                                        </li>
+                                        <li class="nav-item languageSelection">
+                                            <form id="logout-form" action="{{ url('/logout') }}" method="post">
+                                                @csrf
+                                            </form>
+                                            <a href="{{ url('logout') }}"
+                                                onclick="event.preventDefault();
                                         localStorage.clear();  document.getElementById('logout-form').submit();"
-                                            class="nav-link fs-14 d-flex align-items-center">
-                                            {{ __('messages.details.logout') }}
-                                        </a>
-                                    </li>
-                                </ul>
+                                                class="nav-link fs-14 d-flex align-items-center">
+                                                {{ __('messages.details.logout') }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div
+                                    class="col-xl-2 col-lg-2 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
+                                    <a href="javascript:void(0)" data-turbo="false" title="Switch to Light mode"
+                                        onclick="myFunction()">
+                                        <i id="dark-mode-landing"
+                                            class="fa-solid fa-moon text-primary fs-2 apply-dark-mode"></i>
+                                    </a>
+                                </div>
                             </div>
                         @else
                             <div class="d-flex justify-center items-center gap-2">
@@ -76,15 +87,15 @@
                                     <i class="fa-solid fa-moon text-primary fs-2 apply-dark-mode"></i>
                                 </a> --}}
                             </div>
+                            <div
+                                class="col-xl-2 col-lg-2 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
+                                <a href="javascript:void(0)" data-turbo="false" title="Switch to Light mode"
+                                    onclick="myFunction()">
+                                    <i id="dark-mode-landing"
+                                        class="fa-solid fa-moon text-primary fs-2 apply-dark-mode"></i>
+                                </a>
+                            </div>
                         @endif
-                        <div
-                            class="col-xl-2 col-lg-2 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
-                            <a href="javascript:void(0)" data-turbo="false" title="Switch to Light mode"
-                                onclick="myFunction()">
-                                <i id="dark-mode-landing"
-                                    class="fa-solid fa-moon text-primary fs-2 apply-dark-mode"></i>
-                            </a>
-                        </div>
 
                         <button class="dropdown border-0 bg-transparent position-relative me-2 d-lg-none" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
