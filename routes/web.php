@@ -214,8 +214,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::resource('emoji', EmojiController::class);
         Route::get('emoji-status/{id}', [EmojiController::class, 'changeEmojiStatus'])->name('emoji.status');
     });
-
-    Route::resource('ad-spaces', AdSpacesController::class);
 });
 Route::post('slug', [PostController::class, 'slug'])->name('post-slug');
 Route::get('db-download', [DBDownloadController::class, 'DbDownload'])->name('db-download');

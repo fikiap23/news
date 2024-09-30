@@ -76,12 +76,6 @@
             {{ __('messages.menus') }}
         </a>
     </li>
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/ad-spaces*') ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/ad-spaces*') ? 'active' : '' }}"
-            href="{{ route('ad-spaces.create') }}">
-            {{ __('messages.ad_space.ad_space') }}
-        </a>
-    </li>
 
     <li
         class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/navigation*') ? 'd-none' : '' }}">

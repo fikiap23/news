@@ -148,7 +148,6 @@
 @endcan
 
 @can('manage_seo_tools')
-
     <li class="nav-item {{ Request::is('admin/seo-tools*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('seo-tools.index') }}">
             <span class="aside-menu-icon pe-3">
@@ -157,7 +156,6 @@
             <span class="aside-menu-title">{!! __('messages.seo-tools') !!}</span>
         </a>
     </li>
-
 @endcan
 @can('manage_language')
     <li class="nav-item {{ Request::is('admin/languages*') ? 'active' : '' }}">
@@ -200,32 +198,24 @@
         </a>
     </li>
 @endcan
-@can('manage_ad')
-    <li class="nav-item {{ Request::is('admin/ad-spaces*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('ad-spaces.create') }}">
+
+@can('manage_contacts')
+    <li class="nav-item {{ Request::is('admin/contacts*') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('contacts.index') }}">
             <span class="aside-menu-icon pe-3">
-                <i class="fa-solid fa-rectangle-ad"></i> </span>
-            <span class="aside-menu-title">{!! __('messages.ad_space.ad_space') !!}</span>
+                <i class="fas fa-id-badge fs-4"></i>
+            </span>
+            <span class="aside-menu-title">{!! __('messages.contacts') !!}</span>
         </a>
     </li>
-    @endif
-    @can('manage_contacts')
-        <li class="nav-item {{ Request::is('admin/contacts*') ? 'active' : '' }}">
-            <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('contacts.index') }}">
-                <span class="aside-menu-icon pe-3">
-                    <i class="fas fa-id-badge fs-4"></i>
-                </span>
-                <span class="aside-menu-title">{!! __('messages.contacts') !!}</span>
-            </a>
-        </li>
-    @endcan
-    @can('manage_settings')
-        <li class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
-            <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('setting.index') }}">
-                <span class="aside-menu-icon pe-3">
-                    <i class="fas fa-cog fs-4"></i>
-                </span>
-                <span class="aside-menu-title">{!! __('messages.settings') !!}</span>
-            </a>
-        </li>
-    @endcan
+@endcan
+@can('manage_settings')
+    <li class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('setting.index') }}">
+            <span class="aside-menu-icon pe-3">
+                <i class="fas fa-cog fs-4"></i>
+            </span>
+            <span class="aside-menu-title">{!! __('messages.settings') !!}</span>
+        </a>
+    </li>
+@endcan
