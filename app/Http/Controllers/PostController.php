@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\BulkPostExport;
-use App\Http\Requests\CreateBulkPostRequest;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\ImageUploadReuest;
 use App\Http\Requests\OpenAIRequest;
@@ -134,13 +132,13 @@ class PostController extends AppBaseController
 
     public function show($id)
     {
-        $post =Post::whereId($id)->withoutGlobalScope(AuthoriseUserActivePostScope::class)
-                    ->withoutGlobalScope(LanguageScope::class)
-                    ->withoutGlobalScope(PostDraftScope::class)
-                    ->with('PostReaction','user','language','category','subCategory')->first();
+        $post = Post::whereId($id)->withoutGlobalScope(AuthoriseUserActivePostScope::class)
+            ->withoutGlobalScope(LanguageScope::class)
+            ->withoutGlobalScope(PostDraftScope::class)
+            ->with('PostReaction', 'user', 'language', 'category', 'subCategory')->first();
         $countEmoji = PostReactionEmojiAlias::wherePostId($post->id)->get()->groupBy('emoji_id');
         $emojis = Emoji::whereStatus(Emoji::ACTIVE)->get();
-        return view('post.show',compact('post','countEmoji','emojis'));
+        return view('post.show', compact('post', 'countEmoji', 'emojis'));
     }
 
     /**
@@ -152,7 +150,7 @@ class PostController extends AppBaseController
         $sectionName = ($request->get('section') === null) ? 'post_format' : $request->get('section');
 
 
-if ($request->get('section') != null) {
+        if ($request->get('section') != null) {
             if ($sectionName == Post::ARTICLE) {
                 $sectionType = Post::ARTICLE_TYPE_ACTIVE;
             } elseif ($sectionName == Post::GALLERY) {
@@ -190,8 +188,7 @@ if ($request->get('section') != null) {
         $allStaff = User::where('type', User::STAFF)->pluck('first_name', 'id');
 
         if ($sectionName == Post::POST_FORMAT) {
-            if (Auth::user()->hasRole('customer'))
-            {
+            if (Auth::user()->hasRole('customer')) {
                 return redirect()->route('customer.post_format');
             }
             return redirect()->route(Post::POST_FORMAT);
@@ -219,7 +216,7 @@ if ($request->get('section') != null) {
             $sectionType = Post::AUDIO_TYPE_ACTIVE;
             $sectionAdd = Post::ADD_AUDIO;
             $addRouteSection = Post::AUDIO;
-        } elseif ($sectionName == Post::OPEN_AI_CREATE){
+        } elseif ($sectionName == Post::OPEN_AI_CREATE) {
             $sectionType = Post::OPEN_AI_ACTIVE;
             $sectionAdd = Post::ADD_AI;
             $addRouteSection = Post::AI;
@@ -235,7 +232,13 @@ if ($request->get('section') != null) {
     public function edit($post)
     {
         $post = Post::withoutGlobalScope(LanguageScope::class)->withoutGlobalScope(PostDraftScope::class)->with([
-            'language', 'category', 'subCategory', 'postArticle', 'postAudios', 'postGalleries.media', 'postSortLists.media',
+            'language',
+            'category',
+            'subCategory',
+            'postArticle',
+            'postAudios',
+            'postGalleries.media',
+            'postSortLists.media',
         ])->findOrFail($post);
         $sectionType = $post->post_types;
         $allStaff = User::where('type', User::STAFF)->pluck('first_name', 'id');
@@ -281,7 +284,6 @@ if ($request->get('section') != null) {
         if (Auth::user()->hasRole('customer')) {
             return redirect(route('customer-posts.index'));
         }
-
     }
 
     /**
@@ -406,63 +408,10 @@ if ($request->get('section') != null) {
         return $this->sendResponse($embedData, __('messages.placeholder.data_retried'));
     }
 
-    public function bulkPost()
-    {
-        return view('bulk_post.index');
-    }
 
-    public function idsList()
-    {
-        $lang = Language::with('Categories.subCategories')->get();
-
-        $html = view('bulk_post.ids-data', compact('lang'))->render();
-
-        return $this->sendResponse($html, __('messages.placeholder.data_retried'));
-    }
-
-    public function documentation()
-    {
-        $html = view('bulk_post.documentation')->render();
-
-        return $this->sendResponse($html, __('messages.placeholder.data_retried'));
-    }
-
-    public function export()
-    {
-        $users = [
-            [
-                'id' => 1,
-                'name' => 'Hardik',
-                'email' => 'hardik@gmail.com',
-            ],
-        ];
-
-        return Excel::download(new BulkPostExport($users), 'csv_template.csv');
-    }
-
-    public function bulkPostStore(CreateBulkPostRequest $request): Redirector|Application|RedirectResponse
-    {
-
-        $input = $request->all();
-
-        $validation = Validator::make($input, [
-            'bulk_post' => 'required',
-        ]);
-        $this->errors = $validation->messages();
-        if (!$validation->passes()) {
-            Flash::error(__('messages.placeholder.please_enter_CSV_files'));
-        }
-        if ($validation->passes()) {
-            $excel = Excel::import(new BulkPostImport, $request->file('bulk_post'), null, \Maatwebsite\Excel\Excel::CSV);
-            Flash::success(__('messages.placeholder.bulk_post_created_successfully'));
-        }
-
-
-        return redirect(route('bulk-post-index'));
-    }
     public function openAi(OpenAIRequest $request)
     {
-       $input = $request->all();
+        $input = $request->all();
         $client = new \GuzzleHttp\Client();
 
         $data = \Illuminate\Support\Facades\Http::withToken(config('services.open_ai.open_ai_key'))
@@ -473,19 +422,19 @@ if ($request->get('section') != null) {
                 'model' => $input['openAiModel'],
                 'prompt' => $input['postTitle'],
                 "temperature" => (float)$input['Temperature'],
-                "max_tokens"=> (int)$input['MaximumLength'],
+                "max_tokens" => (int)$input['MaximumLength'],
                 "top_p" => (float)$input['InputTopPId'],
             ]);
-        if(isset($data->json()['error']) ){
+        if (isset($data->json()['error'])) {
             return $this->sendError($data->json()['error']['message']);
-        }else{
+        } else {
             $text = $data->json()['choices'][0]['text'];
             return $this->sendResponse($text, __('messages.placeholder.content_generated_successfully'));
         }
     }
     public function slug(Request $request)
     {
-       $text = $request->text;
+        $text = $request->text;
         $slugify = new Slugify();
         $slug = $slugify->slugify($text);
         return $this->sendResponse($slug, __('messages.placeholder.content_generated_successfully'));

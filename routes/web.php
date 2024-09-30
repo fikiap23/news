@@ -80,25 +80,7 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::post('categories/{category}/update', [CategoryController::class, 'update'])->name('category.update');
         Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
-    Route::middleware('permission:cash_payment')->group(function () {
-        Route::get('cash-payment', [CashPaymentController::class, 'index'])->name('cash-payment');
-        Route::get(
-            'subscribed-user-plans',
-            [SubscriptionController::class, 'subscribedUserPlans']
-        )->name('subscribed.user.plans');
-        Route::get(
-            '/subscribedPlan/{id}/edit',
-            [SubscriptionController::class, 'userSubscribedPlanEdit']
-        )->name('subscription.user.plan.edit');
-        Route::get(
-            '/subscribedPlan/{id}/update',
-            [SubscriptionController::class, 'userSubscribedPlanUpdate']
-        )->name('subscription.user.plan.update');
 
-        //sub category
-        Route::get('/download-attachment/{id}', [SubscriptionController::class, 'downloadAttachment']);
-    });
-    Route::get('/planSubscription/{id}', [SubscriptionController::class, 'planStatus'])->name('subscription.status');
     Route::middleware('permission:manage_sub_categories')->group(function () {
         Route::resource('sub-categories', SubCategoryController::class);
     });
@@ -174,11 +156,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::get('post-type', [PostController::class, 'postType'])->name('post_type');
         Route::post('open-ai', [PostController::class, 'openAi'])->name('open_ai');
         Route::post('get-video', [PostController::class, 'getVideoByUrl'])->name('get-video-by-url');
-        Route::get('bulk-post', [PostController::class, 'bulkPost'])->name('bulk-post-index');
-        Route::get('bulk-post-ids-list', [PostController::class, 'idsList'])->name('bulk-post-ids-list');
-        Route::get('bulk-post-documentation', [PostController::class, 'Documentation'])->name('bulk-post-documentation');
-        Route::get('export', [PostController::class, 'export'])->name('export-csv');
-        Route::post('bulk-post-store', [PostController::class, 'bulkPostStore'])->name('bulk-post-store');
     });
     Route::middleware('permission:manage_rss_feeds')->group(function () {
         Route::resource('rss-feed', RssFeedController::class);
