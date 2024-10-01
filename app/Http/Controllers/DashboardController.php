@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\RssFeed;
 use App\Models\User;
 use App\Repositories\DashboardRepository;
 use App\Scopes\LanguageScope;
@@ -39,10 +38,7 @@ class DashboardController extends AppBaseController
         $postsDraft = Post::withoutGlobalScope(LanguageScope::class)->withoutGlobalScope(PostDraftScope::class)->where('status', Post::STATUS_DRAFT)->count();
         $users = User::with('media')->where('type', 2)
             ->latest()->orderBy('id', 'desc')->take(5)->get();
-        $rss = RssFeed::count();
-        $rssPost = Post::withoutGlobalScope(LanguageScope::class)->withoutGlobalScope(PostDraftScope::class)->whereIsRss(true)->count();
-
-        return view('dashboard.index', compact('posts', 'postsDraft', 'users', 'rss', 'rssPost'));
+        return view('dashboard.index', compact('posts', 'postsDraft', 'users'));
     }
 
     /**

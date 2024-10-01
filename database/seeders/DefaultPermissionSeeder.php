@@ -65,11 +65,6 @@ class DefaultPermissionSeeder extends Seeder
 
             ],
             [
-                'name' => 'manage_rss_feeds',
-                'display_name' => 'Manage Rss Feeds',
-
-            ],
-            [
                 'name' => 'manage_mail_setting',
                 'display_name' => 'Manage Mail Setting',
             ],

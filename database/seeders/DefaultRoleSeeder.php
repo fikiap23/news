@@ -63,7 +63,7 @@ class DefaultRoleSeeder extends Seeder
         $userRole = Role::whereName('user')->first();
 
         /** @var User $user */
-        $user = User::whereEmail('admin@infynews.com')->first();
+        $user = User::whereEmail('fikiap23@gmail.com')->first();
 
         $allPermission = Permission::pluck('name', 'id');
         $adminRole->givePermissionTo($allPermission);
@@ -72,22 +72,26 @@ class DefaultRoleSeeder extends Seeder
         }
 
         $staffPermission = Permission::whereIn('name', [
-            'manage_all_post', 'manage_categories', 'manage_sub_categories',
-            'manage_albums', 'manage_albums_category', 'manage_gallery_image', 'manage_polls',
+            'manage_all_post',
+            'manage_categories',
+            'manage_sub_categories',
+            'manage_albums',
+            'manage_albums_category',
+            'manage_gallery_image',
+            'manage_polls',
         ])->pluck('name', 'id');
 
         $staffRole->givePermissionTo($staffPermission);
 
         $moderator = Permission::whereIn('name', [
-            'manage_categories', 'manage_albums_category', 'manage_gallery',
-            'manage_pages', 'manage_all_post',
+            'manage_categories',
+            'manage_albums_category',
+            'manage_gallery',
+            'manage_pages',
+            'manage_all_post',
         ])->pluck('name', 'id');
 
         $moderatorRole->givePermissionTo($moderator);
-
-        $author = Permission::where('name', 'manage_rss_feeds')->pluck('name', 'id');
-
-        $authorRole->givePermissionTo($author);
 
         $userPermission = Permission::where('name', 'manage_all_post')->pluck('name', 'id');
 
