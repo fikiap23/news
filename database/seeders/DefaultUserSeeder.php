@@ -20,10 +20,10 @@ class DefaultUserSeeder extends Seeder
             [
                 'first_name' => 'Super',
                 'last_name' => 'Admin',
-                'contact' => '1234567890',
+                'contact' => '081234567890',
                 'gender' => '1',
                 'type' => '1',
-                'email' => 'admin@infynews.com',
+                'email' => 'fikiap23@gmail.com',
                 'email_verified_at' => Carbon::now(),
                 'password' => Hash::make('123456'),
             ],
