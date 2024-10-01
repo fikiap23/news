@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdSpacesController;
 use App\Http\Controllers\AlbumCategoriesController;
 use App\Http\Controllers\AlbumController;
-use App\Http\Controllers\CashPaymentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
@@ -19,17 +17,14 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\RssFeedController;
 use App\Http\Controllers\seoToolsController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialAuthController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubCategoryController;
-use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -138,11 +133,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     Route::middleware('permission:manage_albums_category')->group(function () {
         Route::resource('album-categories', AlbumCategoriesController::class);
     });
-    //Plans
-    Route::middleware('permission:manage_plans')->group(function () {
-        Route::resource('plans', PlanController::class);
-        Route::put('plans/{plan}/is_default', [PlanController::class, 'planMakeDefault'])->name('plan.make-default');
-    });
     //Add-Post Route
     Route::middleware('permission:manage_all_post')->group(function () {
         Route::resource('posts', PostController::class);
@@ -156,10 +146,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::get('post-type', [PostController::class, 'postType'])->name('post_type');
         Route::post('open-ai', [PostController::class, 'openAi'])->name('open_ai');
         Route::post('get-video', [PostController::class, 'getVideoByUrl'])->name('get-video-by-url');
-    });
-    Route::middleware('permission:manage_rss_feeds')->group(function () {
-        Route::resource('rss-feed', RssFeedController::class);
-        Route::post('rss-feed/manuallyUpdate/{rssFeed}', [RssFeedController::class, 'manuallyUpdate'])->name('rss-feed.manuallyUpdate');
     });
 
     Route::middleware('permission:manage_albums')->group(function () {
@@ -268,4 +254,3 @@ Route::middleware('xss', 'setLanguage')->group(function () {
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/upgrade.php';
-require __DIR__ . '/customer.php';
