@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\AdSpaces;
 use App\Models\Analytic;
 use App\Models\Category;
 use App\Models\Followers;
@@ -9,28 +8,21 @@ use App\Models\MailSetting;
 use App\Models\Menu;
 use App\Models\Navigation;
 use App\Models\Page;
-use App\Models\PaymentGateway;
-use App\Models\Plan;
 use App\Models\Poll;
 use App\Models\PollResult;
 use App\Models\Post;
 use App\Models\SeoTool;
 use App\Models\Setting;
 use App\Models\SubCategory;
-use App\Models\Subscription;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-use App\Models\Currency;
-use Jenssegers\Agent\Agent;
-use Stripe\Stripe;
 
 /**
  * @return Authenticatable|null
@@ -68,10 +60,6 @@ function getLogInUserId()
  */
 function getDashboardURL()
 {
-
-    if (Auth::user()->hasRole('customer')) {
-        return RouteServiceProvider::CUSTOMER;
-    }
     if (Auth::user()->hasRole('clinic_admin')) {
         return RouteServiceProvider::HOME;
     }
@@ -670,36 +658,9 @@ function getCurrentVersion()
     return $composerData['version'];
 }
 
-function getAdImageDesktop($id)
-{
-    $agent = new Agent();
-    if ($agent->isMobile()) {
-        $image = AdSpaces::whereAdSpaces($id)->whereAdView(AdSpaces::MOBILE)->first();
-    } else {
-        $image = AdSpaces::whereAdSpaces($id)->whereAdView(AdSpaces::DESKTOP)->first();
-    }
-
-    return $image;
-}
-function getAdImageMobile($id)
-{
-    $image = AdSpaces::whereAdSpaces($id)->whereAdView(AdSpaces::MOBILE)->first();
-
-    return $image;
-}
 function GetMail()
 {
     return MailSetting::first();
-}
-
-function getCurrencies()
-{
-    $currencies = Currency::all();
-    foreach ($currencies as $currency) {
-        $currencyList[$currency->id] = $currency->currency_icon . ' - ' . $currency->currency_name;
-    }
-
-    return $currencyList;
 }
 
 function removeCommaFromNumbers($number)
@@ -707,171 +668,10 @@ function removeCommaFromNumbers($number)
     return (gettype($number) == 'string' && !empty($number)) ? str_replace(',', '', $number) : $number;
 }
 
-function getCurrentSubscription()
-{
-    $subscription = Subscription::with(['plan.currency'])
-        ->whereUserId(getLogInUserId())
-        ->where('status', Subscription::ACTIVE)->latest()->first();
-
-    return $subscription;
-}
 
 function currencyFormat($number, $currencyCode = null)
 {
     return  $currencyCode . number_format($number, 2);
-}
-
-function getCurrentPlanDetails()
-{
-    $currentSubscription = getCurrentSubscription();
-    $isExpired = $currentSubscription->isExpired();
-    $currentPlan = $currentSubscription->plan;
-
-    if ($currentPlan->price != $currentSubscription->plan_amount) {
-        $currentPlan->price = $currentSubscription->plan_amount;
-    }
-
-    $startsAt = Carbon::now();
-    $totalDays = Carbon::parse($currentSubscription->starts_at)->diffInDays($currentSubscription->ends_at);
-    $usedDays = Carbon::parse($currentSubscription->starts_at)->diffInDays($startsAt);
-    if ($totalDays > $usedDays) {
-        $usedDays = Carbon::parse($currentSubscription->starts_at)->diffInDays($startsAt);
-    } else {
-        $usedDays = $totalDays;
-    }
-    if ($totalDays > $usedDays) {
-        $remainingDays = $totalDays - $usedDays;
-    } else {
-        $remainingDays = 0;
-    }
-
-    if ($totalDays == 0) {
-        $totalDays = 1;
-    }
-
-    $frequency = $currentSubscription->plan_frequency == Plan::MONTHLY ? 'Monthly' : 'Yearly';
-
-    //    $days = $currentSubscription->plan_frequency == Plan::MONTHLY ? 30 : 365;
-
-    $perDayPrice = round($currentPlan->price / $totalDays, 2);
-    if (!empty($currentSubscription->trial_ends_at) || $isExpired) {
-        $remainingBalance = 0.00;
-        $usedBalance = 0.00;
-    } else {
-        $isJPYCurrency = !empty($currentPlan->currency) && isJPYCurrency($currentPlan->currency->currency_code);
-        $remainingBalance = $currentPlan->price - ($perDayPrice * $usedDays);
-        $remainingBalance = $isJPYCurrency ? round($remainingBalance) : $remainingBalance;
-        $usedBalance = $currentPlan->price - $remainingBalance;
-        $usedBalance = $isJPYCurrency ? round($usedBalance) : $usedBalance;
-    }
-
-    return [
-        'name'             => $currentPlan->name . ' / ' . $frequency,
-        'trialDays'        => $currentPlan->trial_days,
-        'startAt'          => Carbon::parse($currentSubscription->starts_at)->format('jS M, Y'),
-        'endsAt'           => Carbon::parse($currentSubscription->ends_at)->format('jS M, Y'),
-        'usedDays'         => $usedDays,
-        'remainingDays'    => $remainingDays,
-        'totalDays'        => $totalDays,
-        'usedBalance'      => $usedBalance,
-        'remainingBalance' => $remainingBalance,
-        'isExpired'        => $isExpired,
-        'currentPlan'      => $currentPlan,
-    ];
-}
-
-function getProratedPlanData($planIDChosenByUser)
-{
-    /** @var Plan $subscriptionPlan */
-    $subscriptionPlan = Plan::findOrFail($planIDChosenByUser);
-
-    if ($subscriptionPlan->frequency == Plan::MONTHLY) {
-
-        $newPlanDays = 30;
-        $frequency = 'Monthly';
-    } else {
-        if ($subscriptionPlan->frequency == Plan::YEARLY) {
-            $newPlanDays = 365;
-            $frequency = 'Yearly';
-        } else {
-            $newPlanDays = 36500;
-            $frequency = 'Unlimited';
-        }
-    }
-
-    $currentSubscription = getCurrentSubscription();
-    $startsAt = Carbon::now();
-
-    $carbonParseStartAt = Carbon::parse($currentSubscription->starts_at);
-    $currentSubsTotalDays = $carbonParseStartAt->diffInDays($currentSubscription->ends_at);
-    $usedDays = $carbonParseStartAt->copy()->diffInDays($startsAt);
-    $totalExtraDays = 0;
-    $totalDays = $newPlanDays;
-
-    $endsAt = Carbon::now()->addDays($newPlanDays);
-
-    $startsAt = $startsAt->copy()->format('jS M, Y');
-
-    if ($usedDays <= 0) {
-        $startsAt = $carbonParseStartAt->copy()->format('jS M, Y');
-    }
-
-    if (!$currentSubscription->isExpired() && !checkIfPlanIsInTrial($currentSubscription)) {
-        $amountToPay = 0;
-
-        $currentPlan = $currentSubscription->plan; // TODO: take fields from subscription
-
-        // checking if the current active subscription plan has the same price and frequency in order to process the calculation for the proration
-        $planPrice = $currentPlan->price;
-        $planFrequency = $currentPlan->frequency;
-        if ($planPrice != $currentSubscription->plan_amount || $planFrequency != $currentSubscription->plan_frequency) {
-            $planPrice = $currentSubscription->plan_amount;
-            $planFrequency = $currentSubscription->plan_frequency;
-        }
-
-        $perDayPrice = round($planPrice / $currentSubsTotalDays, 2);
-        $isJPYCurrency = !empty($subscriptionPlan->currency) && isJPYCurrency($subscriptionPlan->currency->currency_code);
-
-        $remainingBalance = $isJPYCurrency
-            ? round($planPrice - ($perDayPrice * $usedDays))
-            : round($planPrice - ($perDayPrice * $usedDays), 2);
-
-        if ($remainingBalance < $subscriptionPlan->price) { // adjust the amount in plan
-            $amountToPay = $isJPYCurrency
-                ? round($subscriptionPlan->price - $remainingBalance)
-                : round($subscriptionPlan->price - $remainingBalance, 2);
-        } else {
-
-            $perDayPriceOfNewPlan = round($subscriptionPlan->price / $newPlanDays, 2);
-            $totalExtraDays = round($remainingBalance / $perDayPriceOfNewPlan);
-            $endsAt = Carbon::now()->addDays($totalExtraDays);
-            $totalDays = $totalExtraDays;
-        }
-
-        return [
-            'startDate'        => $startsAt,
-            'name'             => $subscriptionPlan->name . ' / ' . $frequency,
-            'trialDays'        => $subscriptionPlan->trial_days,
-            'remainingBalance' => $remainingBalance,
-            'endDate'          => $endsAt->format('jS M, Y'),
-            'amountToPay'      => $amountToPay,
-            'usedDays'         => $usedDays,
-            'totalExtraDays'   => $totalExtraDays,
-            'totalDays'        => $totalDays,
-        ];
-    }
-
-    return [
-        'name'             => $subscriptionPlan->name . ' / ' . $frequency,
-        'trialDays'        => $subscriptionPlan->trial_days,
-        'startDate'        => $startsAt,
-        'endDate'          => $endsAt->format('jS M, Y'),
-        'remainingBalance' => 0,
-        'amountToPay'      => $subscriptionPlan->price,
-        'usedDays'         => $usedDays,
-        'totalExtraDays'   => $totalExtraDays,
-        'totalDays'        => $totalDays,
-    ];
 }
 
 function checkIfPlanIsInTrial($currentSubscription)
@@ -882,26 +682,6 @@ function checkIfPlanIsInTrial($currentSubscription)
     }
 
     return false;
-}
-
-function isJPYCurrency($code)
-{
-    return Currency::JPY_CODE == $code;
-}
-
-function getPaymentGateway()
-{
-    $paymentGateway = Subscription::PAYMENT_GATEWAY;
-    $selectedPaymentGateways = PaymentGateway::pluck('payment_gateway')->toArray();
-    foreach ($selectedPaymentGateways as $key => $gateway) {
-        $gateWayKey = array_search($gateway, $paymentGateway, true);
-
-        if (!checkPaymentGateway($gateWayKey)) {
-            unset($selectedPaymentGateways[$key]);
-        }
-    }
-
-    return array_intersect($paymentGateway, $selectedPaymentGateways);
 }
 
 function zeroDecimalCurrencies(): array
@@ -924,11 +704,6 @@ function zeroDecimalCurrencies(): array
         'XOF',
         'XPF',
     ];
-}
-
-function setStripeApiKey()
-{
-    Stripe::setApiKey(config('services.stripe.secret_key'));
 }
 
 function getPayPalSupportedCurrencies()
@@ -960,46 +735,6 @@ function getPayPalSupportedCurrencies()
         'THB',
         'USD',
     ];
-}
-
-function getloginuserplan()
-{
-
-    return Subscription::with('plan')->whereUserId(getLogInUserId())->whereStatus(Subscription::ACTIVE)->first();
-}
-
-function checkPaymentGateway($paymentGateway): bool
-{
-
-    if ($paymentGateway == Plan::STRIPE) {
-        if (config('services.stripe.key') && config('services.stripe.secret_key')) {
-            return true;
-        }
-
-        return false;
-    }
-
-    if ($paymentGateway == Plan::PAYPAL) {
-        if (config('paypal.mode') == 'sandbox') {
-            if (config('paypal.sandbox.client_id') && config('paypal.sandbox.client_secret')) {
-                return true;
-            }
-        }
-        if (config('paypal.mode') == 'live') {
-            if (config('paypal.live.client_id') && config('paypal.live.client_secret')) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    return true;
-}
-
-function checkManuallyPaymentStatus()
-{
-    return Subscription::whereUserId(getLogInUserId())->latest()->first();
 }
 
 function getLanguageCategory($langId)

@@ -191,9 +191,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     Route::resource('gallery-images', GalleryController::class);
     Route::get('album-list', [GalleryController::class, 'getAlbums'])->name('album-list');
     Route::get('album-category-list', [GalleryController::class, 'getCategory'])->name('album-category-list');
-    Route::middleware('permission:manage_news_letter')->group(function () {
-        Route::resource('news-letter', NewsLetterController::class);
-    });
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {

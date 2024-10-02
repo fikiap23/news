@@ -128,14 +128,6 @@
     </li>
 
     <li
-        class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/news-letter*') ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/news-letter*') ? 'active' : '' }}"
-            href="{{ route('news-letter.index') }}">
-            {{ __('messages.news_letters') }}
-        </a>
-    </li>
-
-    <li
         class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/post-comments*') ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/post-comments*') ? 'active' : '' }}"
             href="{{ route('post-comments.index') }}">

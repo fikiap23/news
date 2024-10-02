@@ -167,16 +167,7 @@
         </a>
     </li>
 @endcan
-@can('manage_news_letter')
-    <li class="nav-item {{ Request::is('admin/news-letter*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('news-letter.index') }}">
-            <span class="aside-menu-icon pe-3">
-                <i class="fas fa-newspaper fs-4"></i>
-            </span>
-            <span class="aside-menu-title">{!! __('messages.news_letters') !!}</span>
-        </a>
-    </li>
-@endcan
+
 @can('manage_comment')
     <li class="nav-item {{ Request::is('admin/post-comments*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page"

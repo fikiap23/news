@@ -8,7 +8,6 @@ use App\Mail\SubscriberMail;
 use App\Mail\TestMail;
 use App\Models\Setting;
 use App\Models\BulkMail;
-use App\Models\Subscriber;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
@@ -41,11 +40,6 @@ class NewsLetterTable extends LivewireTableComponent
         ];
     }
 
-    public function query(): Builder
-    {
-        return Subscriber::query();
-    }
-
     public function rowView(): string
     {
         return 'livewire-tables.rows.news_letter_table';
@@ -73,25 +67,6 @@ class NewsLetterTable extends LivewireTableComponent
         ];
     }
 
-    public function exportSelected()
-    {
-        if ($this->selectedRowsQuery->count() > 0) {
-            $data = $this->selectedRowsQuery->get();
-            $Contact = [];
-            foreach ($data as $user) {
-                $users = [
-                    'email' => $user->email,
-                ];
-                $Contact[] = $users;
-            }
-            krsort($Contact);
-            return Excel::download(new SubscriberExport($Contact), 'Subscriber.csv');
-        }
-
-        $message = __('messages.mails.select_mail');
-
-        $this->dispatchBrowserEvent('error', $message);
-    }
     public function bulkMail()
     {
         if ($this->selectedRowsQuery->count() > 0) {

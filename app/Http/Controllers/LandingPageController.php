@@ -14,7 +14,6 @@ use App\Models\Post;
 use App\Models\PostReactionEmoji;
 use App\Models\Setting;
 use App\Models\SubCategory;
-use App\Models\Subscriber;
 use App\Models\User;
 use App\Scopes\LanguageScope;
 use Illuminate\Contracts\Foundation\Application;
@@ -134,7 +133,15 @@ class LandingPageController extends AppBaseController
         }
 
         $post = Post::with([
-            'category', 'postArticle', 'postVideo', 'postAudios', 'postGalleries', 'postSortLists.media', 'postSortLists', 'media', 'rssFeed',
+            'category',
+            'postArticle',
+            'postVideo',
+            'postAudios',
+            'postGalleries',
+            'postSortLists.media',
+            'postSortLists',
+            'media',
+            'rssFeed',
         ])->where('slug', $slug)->whereVisibility(Post::VISIBILITY_ACTIVE)->firstOrFail();
 
         $data['showCaptcha'] = Setting::where('key', 'show_captcha')->first()->value;
@@ -203,42 +210,6 @@ class LandingPageController extends AppBaseController
         } else {
             return redirect(route('front.home'));
         }
-    }
-
-    /**
-     * @param $slug
-     * @return Application
-     */
-
-    /**
-     * @param $slug
-     * @return Application
-     */
-
-    /**
-     * @param $slug
-     * @param $id
-     * @return Application
-     */
-
-    /**
-     * @param  Request  $request
-     * @return mixed
-     */
-    public function saveSubscribeUser(Request $request)
-    {
-        $request->validate(
-            [
-                'email' => 'required|email:filter|email|unique:subscribers,email',
-            ],
-            [
-                'email.unique' => __('messages.placeholder.this_email_is_already_subscribed'),
-            ]
-        );
-
-        Subscriber::create($request->all());
-
-        return $this->sendSuccess(__('messages.placeholder.subscribed_successfully'));
     }
 
     public function saveCommentsUser(CreateCommentRequest $request)
