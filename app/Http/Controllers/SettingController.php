@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateSettingRequest;
-use App\Models\PaymentGateway;
-use App\Models\Plan;
 use App\Models\Setting;
 use App\Repositories\SettingRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -40,11 +38,12 @@ class SettingController extends AppBaseController
     public function index(Request $request)
     {
         $setting = Setting::pluck('value', 'key')->toArray();
-        $selectedPaymentGateways = PaymentGateway::pluck('payment_gateway')->toArray();
         $sectionName = ($request->get('section') === null) ? 'general' : $request->get('section');
 
-        return view("setting.$sectionName",
-            compact('sectionName', 'setting', 'selectedPaymentGateways'));
+        return view(
+            "setting.$sectionName",
+            compact('sectionName', 'setting')
+        );
     }
 
     /**
@@ -74,25 +73,4 @@ class SettingController extends AppBaseController
 
         return Redirect::back();
     }
-
-    public function paymentUpdate(Request $request)
-    {
-
-        $paymentGateways = $request->payment_gateway;
-
-        PaymentGateway::query()->delete();
-
-        if (isset($paymentGateways)) {
-            foreach ($paymentGateways as $paymentGateway) {
-                PaymentGateway::updateOrCreate(['payment_gateway_id' => $paymentGateway],
-                    [
-                        'payment_gateway' => Plan::PAYMENT_METHOD[$paymentGateway],
-                    ]);
-            }
-            Flash::success(__('messages.placeholder.settings_updated_successfully'));
-
-            return Redirect::back();
-        }
-    }
-
 }

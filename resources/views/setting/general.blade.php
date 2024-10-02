@@ -55,14 +55,6 @@
                         {{ Form::select('front_language', getLanguage(), $setting['front_language'] ?? null, ['class' => 'form-select ', 'id' => 'selectLanguage', 'data-dropdown-parent' => '#kt_account_profile_details_form', 'placeholder' => __('messages.common.select_language'), 'data-control' => 'select2', 'required', 'aria-label' => 'Select a Language', 'data-control' => 'select2']) }}
                     </div>
                 </div>
-                <div class="row mb-5">
-                    <div class="col-lg-4">
-                        {{ Form::label('rss_feed_update_time', __('messages.setting.rss_feed_auto_update') . ' :', ['class' => 'form-label required']) }}
-                    </div>
-                    <div class="col-lg-8">
-                        {{ Form::select('rss_feed_update_time', \App\Models\Setting::AUTO_UPDATE_RSS_FEED, $setting['rss_feed_update_time'] ?? null, ['class' => 'form-select ', 'id' => 'selectRssFeed', 'data-dropdown-parent' => '#kt_account_profile_details_form', 'placeholder' => __('messages.setting.select_time'), 'data-control' => 'select2', 'required', 'aria-label' => 'Select a Rss Feed', 'data-control' => 'select2']) }}
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -151,39 +143,6 @@
             </div>
             {{ Form::open(['route' => 'payment-setting.update', 'files' => true, 'id' => 'kt_account_profile_details_form', 'class' => 'form']) }}
             {{ Form::hidden('sectionName', $sectionName . '_1') }}
-            <div class="card-body pt-0">
-                <div class="card-body   p-3">
-                    <div class="row mb-6">
-                        <div class="table-responsive px-0">
-                            <table>
-                                <tbody class="d-flex flex-wrap">
-                                    @foreach (\App\Models\Plan::PAYMENT_METHOD as $key => $paymentGateway)
-                                        @if (checkPaymentGateway($key))
-                                            <tr class="w-100 d-flex justify-content-between">
-                                                <td class="p-2">
-                                                    <div class="form-check form-check-custom">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="{{ $key }}" name="payment_gateway[]"
-                                                            id="{{ $key }}"
-                                                            {{ in_array($paymentGateway, $selectedPaymentGateways) ? 'checked' : '' }} />
-                                                        <label class="form-label" for="{{ $key }}">
-                                                            {{ __('messages.setting.' . $paymentGateway) }}
-                                                            {{--                                                        {{$paymentGateway}} --}}
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-start ">
-                    {{ Form::submit(__('messages.user.save_changes'), ['class' => 'btn btn-primary']) }}
-                </div>
-            </div>
             {{ Form::close() }}
         </div>
     </div>
