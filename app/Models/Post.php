@@ -43,9 +43,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property int $scheduled_post
  * @property string|null $scheduled_post_time
  * @property int $status
- * @property string|null $rss_link
- * @property int $is_rss
- * @property int|null $rss_id
  * @property int $created_by
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -77,14 +74,11 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @method static Builder|Post whereDescription($value)
  * @method static Builder|Post whereFeatured($value)
  * @method static Builder|Post whereId($value)
- * @method static Builder|Post whereIsRss($value)
  * @method static Builder|Post whereKeywords($value)
  * @method static Builder|Post whereLangId($value)
  * @method static Builder|Post whereOptionalUrl($value)
  * @method static Builder|Post wherePostTypes($value)
  * @method static Builder|Post whereRecommended($value)
- * @method static Builder|Post whereRssId($value)
- * @method static Builder|Post whereRssLink($value)
  * @method static Builder|Post whereScheduledPost($value)
  * @method static Builder|Post whereScheduledPostTime($value)
  * @method static Builder|Post whereShowOnHeadline($value)
@@ -104,7 +98,6 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property-read Collection|PostReactionEmoji[] $PostReaction
  * @property-read int|null $post_reaction_count
  * @property-read PostAudio|null $postAudios
- * @property-read RssFeed|null $rssFeed
  * @method static Builder|Post whereScheduledDeletePostTime($value)
  */
 class Post extends Model implements HasMedia
@@ -114,10 +107,32 @@ class Post extends Model implements HasMedia
     protected $table = 'posts';
 
     protected $fillable = [
-        'created_by', 'title', 'slug', 'description', 'keywords', 'visibility', 'featured', 'breaking', 'slider',
-        'recommended', 'show_registered_user', 'tags', 'optional_url', 'additional_images ', 'files', 'lang_id',
-        'category_id', 'sub_category_id', 'scheduled_post', 'scheduled_post_time', 'status', 'post_types', 'section',
-        'show_on_headline', 'rss_link', 'is_rss', 'rss_id','scheduled_delete_post_time','scheduled_post_delete',
+        'created_by',
+        'title',
+        'slug',
+        'description',
+        'keywords',
+        'visibility',
+        'featured',
+        'breaking',
+        'slider',
+        'recommended',
+        'show_registered_user',
+        'tags',
+        'optional_url',
+        'additional_images ',
+        'files',
+        'lang_id',
+        'category_id',
+        'sub_category_id',
+        'scheduled_post',
+        'scheduled_post_time',
+        'status',
+        'post_types',
+        'section',
+        'show_on_headline',
+        'scheduled_delete_post_time',
+        'scheduled_post_delete',
     ];
 
     protected $casts = [
@@ -142,9 +157,6 @@ class Post extends Model implements HasMedia
         'status' => 'integer',
         'post_types' => 'integer',
         'show_on_headline' => 'integer',
-        'is_rss' => 'boolean',
-        'rss_id' => 'integer',
-        'rss_link' => 'string',
         'scheduled_post_delete' => 'integer'
     ];
 
@@ -176,9 +188,7 @@ class Post extends Model implements HasMedia
 
     const FEATURED_DEACTIVE = 0;
 
-    const RSS_POST = 1;
 
-    const NOT_RSS_POST = 0;
 
     const HEADLINE_ACTIVE = 1;
 
@@ -270,12 +280,12 @@ class Post extends Model implements HasMedia
     ];
     const TEXT_DAVINCI_003 = 'text-davinci-003';
     const TEXT_CURIE_001 = 'text-curie-001';
-    const TEXT_BABBAGE_001 ='text-babbage-001';
+    const TEXT_BABBAGE_001 = 'text-babbage-001';
     const TEXT_ADA_001 = 'text-ada-001';
     const TEXT_DAVINCI_002 = 'text-davinci-002';
     const TEXT_DAVINCI_001 = 'text-davinci-001';
     const DAVINCI_INSTRUCT_BETA = 'davinci-instruct-beta';
-    const DAVINCI ='davinci';
+    const DAVINCI = 'davinci';
     const CURIE_INSTRUCT_BETA = 'curie-instruct-beta';
     const CURIE = 'curie';
     const BABBAGE = 'babbage';
@@ -298,7 +308,7 @@ class Post extends Model implements HasMedia
         self::CODE_DAVINCI_002 => 'Code Davinci 002',
         self::CODE_CUSHMAN_001 => 'Code Cushman 001',
 
-        ];
+    ];
     const OFF = 1;
     const MOST_LIKELY = 2;
     const LEAST_LIKELY = 3;
@@ -346,11 +356,6 @@ class Post extends Model implements HasMedia
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
-    }
-
-    public function rssFeed(): BelongsTo
-    {
-        return $this->belongsTo(RssFeed::class, 'rss_id');
     }
 
     /**
@@ -493,7 +498,8 @@ class Post extends Model implements HasMedia
     {
         return $this->hasMany(Comment::class, 'post_id');
     }
-    public  function  PostReaction(){
-        return $this->hasMany(PostReactionEmoji::class ,'post_id','id');
+    public  function  PostReaction()
+    {
+        return $this->hasMany(PostReactionEmoji::class, 'post_id', 'id');
     }
 }

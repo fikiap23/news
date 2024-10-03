@@ -140,8 +140,7 @@ class LandingPageController extends AppBaseController
             'postGalleries',
             'postSortLists.media',
             'postSortLists',
-            'media',
-            'rssFeed',
+            'media'
         ])->where('slug', $slug)->whereVisibility(Post::VISIBILITY_ACTIVE)->firstOrFail();
 
         $data['showCaptcha'] = Setting::where('key', 'show_captcha')->first()->value;
