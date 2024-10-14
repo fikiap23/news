@@ -40,11 +40,10 @@ class PostReactionEmoji extends Model
     ];
 
     const LIKE = 1;
-    const DISLIKE = 2;
+    // const DISLIKE = 2;
     const FUNNY = 3;
     const LOVE = 4;
-    const ANGRY = 5;
-    const SAD = 6;
+    // const ANGRY = 5;
+    // const SAD = 6;
     const WOW = 7;
-
 }
