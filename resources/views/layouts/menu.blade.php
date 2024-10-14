@@ -147,7 +147,7 @@
         </a>
     </li>
 @endcan
-@can('manage_language')
+{{-- @can('manage_language')
     <li class="nav-item {{ Request::is('admin/languages*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('languages.index') }}">
             <span class="aside-menu-icon pe-3">
@@ -156,7 +156,7 @@
             <span class="aside-menu-title">{!! __('messages.languages') !!}</span>
         </a>
     </li>
-@endcan
+@endcan --}}
 
 @can('manage_comment')
     <li class="nav-item {{ Request::is('admin/post-comments*') ? 'active' : '' }}">

@@ -16,6 +16,7 @@ use App\Http\Controllers\MailSettingController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\NewsLetterController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\seoToolsController;
