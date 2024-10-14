@@ -105,16 +105,6 @@
         </a>
     </li>
 @endcan
-@can('manage_polls')
-    <li class="nav-item {{ Request::is('admin/polls*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('polls.index') }}">
-            <span class="aside-menu-icon pe-3">
-                <i class="fas fa-list fs-4"></i>
-            </span>
-            <span class="aside-menu-title">{!! __('messages.polls') !!}</span>
-        </a>
-    </li>
-@endcan
 
 @can('manage_categories')
     <li class="nav-item {{ Request::is('admin/categories*') ? 'active' : '' }}">

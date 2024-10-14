@@ -101,9 +101,6 @@ class LandingPageController extends AppBaseController
         start_measure('render', 'getPopularTags');
         $data['getPopularTags'] = getPopularTags();
         stop_measure('render', 'getPopularTags');
-        start_measure('render', 'getPoll');
-        $data['getPoll'] = getPoll();
-        stop_measure('render', 'getPoll');
         start_measure('render', 'getOption');
         $data['getOption'] = getOption();
         stop_measure('render', 'getOption');

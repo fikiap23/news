@@ -101,12 +101,6 @@
         </a>
     </li>
 
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/polls*') ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/polls*') ? 'active' : '' }}" href="{{ route('polls.index') }}">
-            {{ __('messages.polls') }}
-        </a>
-    </li>
-
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/roles*') ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/roles*') ? 'active' : '' }}" href="{{ route('roles.index') }}">
             {{ __('messages.roles_permissions') }}

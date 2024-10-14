@@ -16,8 +16,6 @@ use App\Http\Controllers\MailSettingController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\NewsLetterController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PollController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\seoToolsController;
@@ -177,10 +175,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::post('language-change', [NavigationController::class, 'languageChange'])->name('language.change');
     });
 
-    Route::middleware('permission:manage_polls')->group(function () {
-        Route::resource('polls', PollController::class);
-        Route::get('polls-vote-result/{id}', [PollController::class, 'pollResult'])->name('polls-vote-result');
-    });
 
     //comment
     Route::middleware('permission:manage_polls')->group(function () {
@@ -235,9 +229,6 @@ Route::middleware('xss', 'setLanguage')->group(function () {
 
     Route::get('follow/{user}', [FollowersController::class, 'store'])->name('followUser');
     Route::get('nu-follow/{user}', [FollowersController::class, 'unFollow'])->name('UnFollowUser');
-
-    //vote poll route
-    Route::post('vote-poll', [PollController::class, 'votePoll'])->name('vote.poll');
 
     //pages
     Route::get('page/{slug}', [PageController::class, 'showPageSlug'])->name('pages.show-page-slug');

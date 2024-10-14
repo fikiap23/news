@@ -78,7 +78,6 @@ class DefaultRoleSeeder extends Seeder
             'manage_albums',
             'manage_albums_category',
             'manage_gallery_image',
-            'manage_polls',
         ])->pluck('name', 'id');
 
         $staffRole->givePermissionTo($staffPermission);

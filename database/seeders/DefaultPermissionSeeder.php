@@ -69,10 +69,6 @@ class DefaultPermissionSeeder extends Seeder
                 'display_name' => 'Manage Mail Setting',
             ],
             [
-                'name' => 'manage_polls',
-                'display_name' => 'Manage polls',
-            ],
-            [
                 'name' => 'manage_all_user_can_vote',
                 'display_name' => 'Manage All User Can Vote',
             ],

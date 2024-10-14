@@ -8,8 +8,6 @@ use App\Models\MailSetting;
 use App\Models\Menu;
 use App\Models\Navigation;
 use App\Models\Page;
-use App\Models\Poll;
-use App\Models\PollResult;
 use App\Models\Post;
 use App\Models\SeoTool;
 use App\Models\Setting;
@@ -348,17 +346,6 @@ function getPopularTags()
     return array_unique($tagArr);
 }
 
-/**
- * @return Poll[]|Builder[]|Collection
- */
-function getPoll()
-{
-    if (! Auth::check()) {
-        return Poll::where('lang_id', getFrontSelectLanguage())->where('vote_permission', 1)->whereStatus(1)->limit(3)->get();
-    } else {
-        return Poll::where('lang_id', getFrontSelectLanguage())->whereStatus(1)->limit(3)->get();
-    }
-}
 
 /**
  * @return string[]
@@ -379,33 +366,7 @@ function getOption(): array
     ];
 }
 
-/**
- * @param  int  $pollId
- * @return array
- */
-function getPollStatistics($pollId): array
-{
-    $pollResults = PollResult::with('poll')->wherePollId($pollId)->get();
-    $resultsAns = $pollResults->pluck('answer')->toArray();
-    $totalPollResults = count($pollResults);
-    $totalPerAns = array_count_values($resultsAns);
-    $optionAns = [];
-    foreach ($pollResults as $result) {
-        $poll = $result->poll;
-        foreach (getOption() as $option) {
-            if (! empty($poll->$option)) {
-                $optionAns[$poll->$option] = ! empty($totalPerAns[$poll->$option])
-                    ? intval($totalPerAns[$poll->$option] * 100 / $totalPollResults) : 0;
-            }
-        }
-    }
 
-    $data['totalPollResults'] = $totalPollResults;
-    $data['optionAns'] = $optionAns;
-    $data['pollId'] = $pollId;
-
-    return $data;
-}
 
 /**
  * @param $id
