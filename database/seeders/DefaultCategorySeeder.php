@@ -33,22 +33,6 @@ class DefaultCategorySeeder extends Seeder
                 'lang_id' => 1,
             ],
             [
-                'name' => 'Music',
-                'slug' => 'music',
-                'show_in_menu' => 0,
-                'show_in_home_page' => 1,
-                'color' => '#d514a5',
-                'lang_id' => 2,
-            ],
-            [
-                'name' => 'Technology',
-                'slug' => 'technology',
-                'show_in_menu' => 0,
-                'show_in_home_page' => 0,
-                'color' => '#2a10ac',
-                'lang_id' => 2,
-            ],
-            [
                 'name' => 'Sports',
                 'slug' => 'sports',
                 'show_in_menu' => 1,

@@ -42,22 +42,6 @@ class DefaultPageSeeder extends Seeder
                 'lang_id' => 1,
                 'parent_menu_link' => 2,
             ],
-            [
-                'name' => 'future of gaming',
-                'title' => 'technology used in gaming',
-                'slug' => 'technology-used-in-gaming',
-                'meta_title' => 'Usage of new technology in gaming',
-                'meta_description' => 'Which new technology used in gaming Read now !!',
-                'location' => 4,
-                'Visibility' => 1,
-                'show_title' => 1,
-                'show_right_column' => 0,
-                'show_breadcrumb' => 1,
-                'permission' => 1,
-                'content' => '22032022.jpg',
-                'lang_id' => 2,
-                'parent_menu_link' => 3,
-            ],
         ];
         foreach ($pages as $page) {
             Page::create($page);

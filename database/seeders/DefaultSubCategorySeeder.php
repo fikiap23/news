@@ -19,16 +19,9 @@ class DefaultSubCategorySeeder extends Seeder
             [
                 'name' => 'World Wide Sports',
                 'show_in_menu' => 1,
-                'parent_category_id' => 5,
+                'parent_category_id' => 1,
                 'lang_id' => 1,
                 'slug' => 'world-wide-sports',
-            ],
-            [
-                'name' => 'Arabic music',
-                'show_in_menu' => 0,
-                'parent_category_id' => 3,
-                'lang_id' => 2,
-                'slug' => 'arabic-music',
             ],
             [
                 'name' => 'Mobile Gaming',
@@ -38,16 +31,9 @@ class DefaultSubCategorySeeder extends Seeder
                 'slug' => 'mobile-gaming',
             ],
             [
-                'name' => 'Wild life',
-                'show_in_menu' => 1,
-                'parent_category_id' => 1,
-                'lang_id' => 2,
-                'slug' => 'wild-life',
-            ],
-            [
                 'name' => 'Great Technology',
                 'show_in_menu' => 1,
-                'parent_category_id' => 4,
+                'parent_category_id' => 3,
                 'lang_id' => 1,
                 'slug' => 'great-technology',
             ],
@@ -57,7 +43,7 @@ class DefaultSubCategorySeeder extends Seeder
             $subCategoryId = SubCategory::create($subCategory);
 
             $navigationOrder = Navigation::whereNavigationableType(SubCategory::class)
-                    ->whereParentId($subCategory['parent_category_id'])->count() + 1;
+                ->whereParentId($subCategory['parent_category_id'])->count() + 1;
 
             Navigation::create([
                 'navigationable_type' => SubCategory::class,

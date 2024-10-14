@@ -2,16 +2,16 @@
 
 return [
 
-    'add_new' => 'Tambah Baru',
-    'cancel' => 'Batal',
-    'save' => 'Simpan',
+    'add_new' => 'Add New',
+    'cancel' => 'Cancel',
+    'save' => 'Save',
     'edit' => 'Edit',
     'detail' => 'Detail',
-    'back' => 'Kembali',
-    'action' => 'Aksi',
+    'back' => 'Back',
+    'action' => 'Action',
     'id' => 'Id',
-    'created_at' => 'Dibuat Pada',
-    'updated_at' => 'Diperbarui Pada',
-    'deleted_at' => 'Dihapus Pada',
-    'are_you_sure' => 'Apakah Anda yakin?',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+    'deleted_at' => 'Deleted At',
+    'are_you_sure' => 'Are you sure?',
 ];

@@ -16,30 +16,10 @@ class DefaultLanguageSeeder extends Seeder
     {
         $languages = [
             [
-                'name' => 'English',
-                'iso_code' => 'en',
+                'name' => 'Indonesia',
+                'iso_code' => 'id',
                 'is_default' => true,
-            ],
-            [
-                'name' => 'Arabic',
-                'iso_code' => 'ar',
-                'is_default' => false,
 
-            ],
-            [
-                'name' => 'Chinese',
-                'iso_code' => 'zh',
-                'is_default' => false,
-            ],
-            [
-                'name' => 'Spanish',
-                'iso_code' => 'es',
-                'is_default' => false,
-            ],
-            [
-                'name' => 'German',
-                'iso_code' => 'de',
-                'is_default' => false,
             ],
         ];
         foreach ($languages as $language) {
