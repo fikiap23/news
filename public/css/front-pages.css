@@ -1758,7 +1758,8 @@ header .nav .nav-item .nav-link {
   }
 }
 header .nav .nav-item .nav-link.active, header .nav .nav-item .nav-link:hover {
-  color: #ff7300;
+  background-color: #ff7300;
+  color: #fff !important;
 }
 header .nav .dropdown .dropdown-toggle {
   padding: 0 40px 0 0;
@@ -1786,7 +1787,7 @@ header .nav .dropdown .dropdown-sub-nav .dropdown-sub-list {
   z-index: 1000;
 }
 header .nav .dropdown .dropdown-nav {
-  top: 60px;
+  top: 90px;
 }
 @media (max-width: 991px) {
   header .nav .dropdown .dropdown-nav {

@@ -9,7 +9,7 @@
 @section('content')
     <div class="home-page">
         <!-- start hero section -->
-        <section class="hero-section pt-40">
+        <section class="hero-section ">
             <div class="w-full">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
