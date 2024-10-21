@@ -206,6 +206,7 @@ Route::prefix('admin')->middleware(['auth', 'verified.user'])->group(function ()
 
 Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('front.home');
+    Route::get('/news', [LandingPageController::class, 'newsIndex'])->name('front.home-news');
     Route::post('/comments', [LandingPageController::class, 'saveCommentsUser'])->name('comment.store');
     Route::delete('/comments/{comment}', [LandingPageController::class, 'destroyComment'])->name('comment.destroy');
     Route::post('subscribe', [LandingPageController::class, 'saveSubscribeUser'])->name('subscribe.store');

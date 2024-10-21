@@ -109,6 +109,86 @@ class LandingPageController extends AppBaseController
     }
 
     /**
+     * @return Application
+     */
+    public function newsIndex()
+    {
+        //Header
+        start_measure('render', 'sliderPosts');
+        $data['sliderPosts'] = Post::with('category', 'user')->withCount('comment')
+            ->orderBy('created_at', 'desc')
+            ->whereSlider(1)
+            ->whereVisibility(Post::VISIBILITY_ACTIVE)
+            ->get();
+        stop_measure('render', 'sliderPosts');
+        start_measure('render', 'categories');
+        $data['categories'] = Category::with('posts', 'posts.user')
+            ->whereHas('posts', function ($q) {
+                return $q->where('visibility', Post::VISIBILITY_ACTIVE);
+            })->whereShowInHomePage(1)->get();
+        stop_measure('render', 'categories');
+        start_measure('render', 'headlinePosts');
+        $headlinePosts = Post::with('category', 'user')->whereVisibility(Post::VISIBILITY_ACTIVE)->where('show_on_headline', 1);
+        stop_measure('render', 'headlinePosts');
+        start_measure('render', 'firstHeadlinePost');
+        $data['firstHeadlinePost'] = $headlinePosts->first();
+        stop_measure('render', 'firstHeadlinePost');
+        start_measure('render', 'headlinePosts');
+        $data['headlinePosts'] = $headlinePosts->latest()->take(4)->get();
+        stop_measure('render', 'headlinePosts');
+        start_measure('render', 'breakingPosts');
+        $data['breakingPosts'] = $headlinePosts->skip(1)->take(3)->get();
+        stop_measure('render', 'breakingPosts');
+        start_measure('render', 'featurePosts');
+        $featurePosts = Post::with('category', 'user')->where('featured', 1)->whereVisibility(Post::VISIBILITY_ACTIVE);
+        stop_measure('render', 'featurePosts');
+        start_measure('render', 'firstFeaturePost');
+        $data['firstFeaturePost'] = $featurePosts->first();
+        stop_measure('render', 'firstFeaturePost');
+        start_measure('render', 'topStoryPosts');
+        $data['topStoryPosts'] = Post::with('category', 'user')->where('recommended', 1)->whereVisibility(Post::VISIBILITY_ACTIVE)
+            ->orderBy('id', 'desc')->take(4)->get();
+        stop_measure('render', 'topStoryPosts');
+        start_measure('render', 'latestPosts');
+        $data['latestPosts'] = Post::with('user', 'category')->whereVisibility(Post::VISIBILITY_ACTIVE)->orderBy('created_at', 'desc')->take(4)->get();
+        stop_measure('render', 'latestPosts');
+        start_measure('render', 'postCategory');
+        $data['postCategory'] = Category::with(['posts' => function (HasMany $q) {
+            $q->orderByDesc('created_at');
+        }])->whereHas('posts', function ($q) {
+            return $q->where('visibility', Post::VISIBILITY_ACTIVE)->where('show_on_headline', 1);
+        })->where('show_in_home_page', 1)->latest()->take(4)->get();
+        stop_measure('render', 'postCategory');
+        start_measure('render', 'featurePostCategory');
+        $data['featurePostCategory'] = Category::whereHas('posts', function ($q) {
+            return $q->where('visibility', Post::VISIBILITY_ACTIVE)->where('featured', '=', 1);
+        })->where('show_in_home_page', 1)->latest()->take(4)->get();
+        stop_measure('render', 'featurePostCategory');
+
+
+        start_measure('render', 'getTrendingPosts');
+        $data['getTrendingPosts'] = getTrendingPost();
+        stop_measure('render', 'getTrendingPosts');
+        start_measure('render', 'getPopulerCategories');
+        $data['getPopulerCategories'] = getPopulerCategories();
+        stop_measure('render', 'getPopulerCategories');
+        start_measure('render', 'getPopularNews');
+        $data['getPopularNews'] = getPopularNews();
+        stop_measure('render', 'getPopularNews');
+        start_measure('render', 'getRecommendedPost');
+        $data['getRecommendedPost'] = getRecommendedPost();
+        stop_measure('render', 'getRecommendedPost');
+        start_measure('render', 'getPopularTags');
+        $data['getPopularTags'] = getPopularTags();
+        stop_measure('render', 'getPopularTags');
+        start_measure('render', 'getOption');
+        $data['getOption'] = getOption();
+        stop_measure('render', 'getOption');
+
+        return view('front_new.home-news')->with($data);
+    }
+
+    /**
      * @param  Request  $request
      * @param $slug
      * @param  null  $id
