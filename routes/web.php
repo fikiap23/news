@@ -223,6 +223,7 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/terms-conditions', [LandingPageController::class, 'displayTerms'])->name('page.Terms');
     Route::get('/support', [LandingPageController::class, 'displayTerms'])->name('page.support');
     Route::get('/privacy', [LandingPageController::class, 'displayTerms'])->name('page.privacy');
+    Route::get('/visi-misi', [LandingPageController::class, 'visiMisi'])->name('visi-misi');
 
     Route::get('/contact-save', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');

@@ -1,4 +1,4 @@
-@extends('front_new.layouts.app')
+@extends('front_new.layouts.app-news')
 @section('title')
     {!! !empty(getSEOTools()->home_title) ? getSEOTools()->home_title : __('messages.details.home') !!}
 @endsection
