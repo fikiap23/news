@@ -228,11 +228,24 @@
                             </a>
                             <ul class="dropdown-nav ps-0">
                                 <li><a class="fs-14 fw-6" href="/page1">Sejarah</a></li>
-                                <li><a class="fs-14 fw-6" href="/page2">Visi & Misi</a></li>
+                                <li><a class="fs-14 fw-6" href="/visi-misi">Visi & Misi</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Struktur Organisasi</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Tugas Pokok dan Fungsi</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Daftar Pegawai</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Prestasi</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link fs-14 fw-6 d-flex flex-column justify-content-center align-items-center text-black"
+                                aria-current="page" href="/">
+                                <span class="" style="margin-left: 30px">Pelayanan</span>
+                                <span class="text-gray" style=" font-size: 12px ; margin-left: 30px">Pelayanan
+                                    Perizinan</span>
+                            </a>
+                            <ul class="dropdown-nav ps-0">
+                                <li><a class="fs-14 fw-6" href="/page1">Standar Pelayanan</a></li>
+                                <li><a class="fs-14 fw-6" href="/visi-misi">Tracking Izin</a></li>
+                                <li><a class="fs-14 fw-6" href="/page2">Validasi SK</a></li>
                             </ul>
                         </li>
                         <li class="border-gray border-end"
@@ -244,8 +257,14 @@
                                 <span class="text-gray" style=" font-size: 12px ; margin-left: 30px">Informasi</span>
                             </a>
                             <ul class="dropdown-nav ps-0">
-                                <li><a class="fs-14 fw-6" href="/page1">Berita</a></li>
+                                <li><a class="fs-14 fw-6" href="/news">Berita</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-14 fw-6 mt-2" href="https://sipetis.sumedangkab.go.id"
+                                id="sipetis" target="_blank"><img style="height: 20px;"
+                                    src="https://sipetis.sumedangkab.go.id/assets/media/logos/sipetis-dark.png"
+                                    alt="Canvas Logo"></a>
                         </li>
                     </ul>
                 </nav>
@@ -312,23 +331,12 @@
                                         class="fa-brands fa-facebook-f text-gray fs-18 me-3"></i> </a>
                                 <a href="{{ $settings['twitter_url'] }}" target="_blank"> <i
                                         class="fa-brands fa-twitter text-gray fs-18 me-3"></i> </a>
-                                <a href="{{ $settings['linkedin_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-linkedin-in  text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['pinterest_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-pinterest text-gray fs-18 me-3"></i></a>
                                 <a href="{{ $settings['instagram_url'] }}" target="_blank"> <i
                                         class="fa-brands fa-instagram  text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['vk_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-vk text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['telegram_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-telegram text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['youtube_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-youtube text-gray fs-18 "></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
