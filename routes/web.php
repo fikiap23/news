@@ -15,7 +15,6 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MailSettingController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
-use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
@@ -224,6 +223,7 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/support', [LandingPageController::class, 'displayTerms'])->name('page.support');
     Route::get('/privacy', [LandingPageController::class, 'displayTerms'])->name('page.privacy');
     Route::get('/visi-misi', [LandingPageController::class, 'visiMisi'])->name('visi-misi');
+    Route::get('/service-standard', [LandingPageController::class, 'serviceStandard'])->name('standar-pelayanan');
 
     Route::get('/contact-save', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');

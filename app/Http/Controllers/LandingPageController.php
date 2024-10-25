@@ -426,9 +426,15 @@ class LandingPageController extends AppBaseController
      */
     public function visiMisi()
     {
-
-
         return view('front_new.visi-misi');
+    }
+
+    /** 
+     * @return Application|Factory|View
+     */
+    public function serviceStandard()
+    {
+        return view('front_new.service-standards');
     }
 
     public function audioDetails(Request $request)

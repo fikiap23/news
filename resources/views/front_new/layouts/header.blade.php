@@ -243,7 +243,7 @@
                                     Perizinan</span>
                             </a>
                             <ul class="dropdown-nav ps-0">
-                                <li><a class="fs-14 fw-6" href="/page1">Standar Pelayanan</a></li>
+                                <li><a class="fs-14 fw-6" href="/service-standard">Standar Pelayanan</a></li>
                                 <li><a class="fs-14 fw-6" href="/visi-misi">Tracking Izin</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Validasi SK</a></li>
                             </ul>
