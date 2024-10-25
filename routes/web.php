@@ -15,7 +15,6 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MailSettingController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
-use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
@@ -206,6 +205,7 @@ Route::prefix('admin')->middleware(['auth', 'verified.user'])->group(function ()
 
 Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('front.home');
+    Route::get('/news', [LandingPageController::class, 'newsIndex'])->name('front.home-news');
     Route::post('/comments', [LandingPageController::class, 'saveCommentsUser'])->name('comment.store');
     Route::delete('/comments/{comment}', [LandingPageController::class, 'destroyComment'])->name('comment.destroy');
     Route::post('subscribe', [LandingPageController::class, 'saveSubscribeUser'])->name('subscribe.store');
@@ -222,6 +222,8 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/terms-conditions', [LandingPageController::class, 'displayTerms'])->name('page.Terms');
     Route::get('/support', [LandingPageController::class, 'displayTerms'])->name('page.support');
     Route::get('/privacy', [LandingPageController::class, 'displayTerms'])->name('page.privacy');
+    Route::get('/visi-misi', [LandingPageController::class, 'visiMisi'])->name('visi-misi');
+    Route::get('/service-standard', [LandingPageController::class, 'serviceStandard'])->name('standar-pelayanan');
 
     Route::get('/contact-save', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');

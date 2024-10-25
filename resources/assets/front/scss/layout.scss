@@ -203,7 +203,8 @@ header {
 
                 &.active,
                 &:hover {
-                    color: $primary;
+                    background-color: $primary;
+                    color: #fff !important;
                 }
             }
         }
@@ -227,7 +228,8 @@ header {
                 min-width: 200px;
                 background-color: $white;
                 display: none;
-                transition: transform 0.3s cubic-bezier(0.88, -0.72, 0, 1), opacity 0.3s ease-in-out;
+                transition: transform 0.3s cubic-bezier(0.88, -0.72, 0, 1),
+                    opacity 0.3s ease-in-out;
                 transform: translateY(-1rem);
                 list-style: none;
                 margin: 0;
@@ -236,7 +238,7 @@ header {
                 z-index: 1000;
             }
             .dropdown-nav {
-                top: 60px;
+                top: 90px;
 
                 @media (max-width: 991px) {
                     width: 100%;
@@ -350,4 +352,51 @@ footer {
             }
         }
     }
+}
+
+/* ----------------------------------------------------------------
+	Content
+-----------------------------------------------------------------*/
+
+#content {
+    position: relative;
+    background-color: #fff;
+}
+
+.content-wrap {
+    position: relative;
+    padding: 20px 0;
+    overflow: hidden;
+    .container {
+        position: relative;
+    }
+    p {
+        line-height: 1.8;
+    }
+}
+
+.grid-container,
+.grid-inner {
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.grid-inner {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.grid-container {
+    transition: height 0.4s ease;
+}
+
+.dropcap {
+    float: left;
+    font-size: 42px;
+    line-height: 1;
+    margin: 0 5px 0 0;
+    text-transform: uppercase;
 }

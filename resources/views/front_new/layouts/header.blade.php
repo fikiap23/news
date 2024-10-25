@@ -80,62 +80,48 @@
                                     @php
                                         $nav = getHeaderElement();
                                     @endphp
-                                    @foreach ($nav['navigations'] as $key => $navigation)
-                                        @if (
-                                            $navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||
-                                                $navigation->navigationable_type == \App\Models\Menu::class)
-                                            @php
-                                                $isSubNav = count($nav['navigationsTakeData'][$navigation->id]) > 0;
-                                                $subNavLangs = $nav['navigationsTakeData'][$navigation->id];
-                                                $menuName = $navigation->navigationable->name
-                                                    ? $navigation->navigationable->name
-                                                    : $navigation->navigationable->title;
-                                                $langId = false;
-                                                foreach ($subNavLangs as $subNavLang) {
-                                                    if ($langId) {
-                                                        continue;
-                                                    }
-                                                    if (
-                                                        $subNavLang['navigationable_type'] ==
-                                                        \App\Models\SubCategory::class
-                                                    ) {
-                                                        $langId = $subNavLang
-                                                            ->navigationable()
-                                                            ->where('lang_id', getFrontSelectLanguage())
-                                                            ->exists();
-                                                    }
-                                                }
-                                            @endphp
-                                            <div class="set">
-                                                <a href="{{ route('categoryPage', ['category' => $navigation->navigationable->slug]) }}"
-                                                    class="fs-14 fw-6">
-                                                    {!! $navigation->navigationable->name ? $navigation->navigationable->name : $navigation->navigationable->title !!}
-                                                </a>
-                                                @if (($langId || $navigation->navigationable_type == \App\Models\Menu::class) && $isSubNav)
-                                                    <a href="#" class="p-0" data-turbo="false"><i
-                                                            class="fa fa-plus"></i></a>
-                                                @endif
-                                                @if ($langId || $navigation->navigationable_type == \App\Models\Menu::class)
-                                                    @if ($isSubNav)
-                                                        <div class="content">
-                                                            @foreach ($nav['navigationsTakeData'] as $key => $navSub)
-                                                                @if ($key == $navigation->id)
-                                                                    @foreach ($navSub as $sub)
-                                                                        <li><a class="fs-14 fw-6"
-                                                                                @if ($sub->navigationable->link !== null) href="{{ getNavUrl($sub->navigationable->link) }}"
-                                                                               @else
-                                                                                   href="{{ route('categoryPage', ['category' => $navigation->navigationable->slug, 'slug' => $sub->navigationable->slug]) }}" @endif>
-                                                                                {!! $sub->navigationable->name ? $sub->navigationable->name : $sub->navigationable->title !!}</a>
-                                                                        </li>
-                                                                    @endforeach
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                    @endif
-                                                @endif
-                                            </div>
-                                        @endif
-                                    @endforeach
+                                    <div class="set">
+                                        <a href="/category/some-category-slug" class="fs-14 fw-6">Category Name 1</a>
+                                        <a href="#" class="p-0" data-turbo="false"><i
+                                                class="fa fa-plus"></i></a>
+                                        <div class="content">
+                                            <li><a class="fs-14 fw-6"
+                                                    href="/category/some-category-slug/sub-category-1">Subcategory Name
+                                                    1</a></li>
+                                            <li><a class="fs-14 fw-6"
+                                                    href="/category/some-category-slug/sub-category-2">Subcategory Name
+                                                    2</a></li>
+                                        </div>
+                                    </div>
+
+                                    <div class="set">
+                                        <a href="/category/another-category-slug" class="fs-14 fw-6">Category Name 2</a>
+                                        <a href="#" class="p-0" data-turbo="false"><i
+                                                class="fa fa-plus"></i></a>
+                                        <div class="content">
+                                            <li><a class="fs-14 fw-6"
+                                                    href="/category/another-category-slug/sub-category-3">Subcategory
+                                                    Name 3</a></li>
+                                            <li><a class="fs-14 fw-6"
+                                                    href="/category/another-category-slug/sub-category-4">Subcategory
+                                                    Name 4</a></li>
+                                        </div>
+                                    </div>
+
+                                    <div class="set">
+                                        <a href="/category/third-category-slug" class="fs-14 fw-6">Category Name 3</a>
+                                        <a href="#" class="p-0" data-turbo="false"><i
+                                                class="fa fa-plus"></i></a>
+                                        <div class="content">
+                                            <li><a class="fs-14 fw-6"
+                                                    href="/category/third-category-slug/sub-category-5">Subcategory
+                                                    Name 5</a></li>
+                                            <li><a class="fs-14 fw-6"
+                                                    href="/category/third-category-slug/sub-category-6">Subcategory
+                                                    Name 6</a></li>
+                                        </div>
+                                    </div>
+
 
                                     <div class="set">
                                         <a href="{{ route('galleryPage') }}"
@@ -218,219 +204,68 @@
 <!--end top-bar-section -->
 
 <!-- start header section -->
-<header class="bg-light d-lg-block d-none header">
+<header class="bg-white d-lg-block d-none header border-top border-gray-50">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-11 col-12">
                 <nav>
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link fs-14 fw-6 {{ Request::is('/') ? 'active' : '' }}" aria-current="page"
-                                href="/">
-                                {{ __('messages.home') }}</a>
+                            <a class="nav-link fs-14 fw-6 d-flex flex-column justify-content-center align-items-center text-black"
+                                aria-current="page" href="/">
+                                <span class="" style="margin-left: 30px">Home</span>
+                                <span class="text-gray" style=" font-size: 12px ; margin-left: 30px">Beranda</span>
+                            </a>
                         </li>
-                        @php
-                            $nav = getNavigationDetails();
-                        @endphp
-                        @if ($nav['navigationsCount'] >= 0)
-                            @foreach ($nav['navigations'] as $key => $navigation)
-                                @if (
-                                    $navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||
-                                        $navigation->navigationable_type == \App\Models\Menu::class)
-                                    @php
-                                        $isSubNav = count($nav['navigationsTakeData'][$navigation->id]) > 0;
-                                        $subNavLangs = $nav['navigationsTakeData'][$navigation->id];
-                                        $menuName = $navigation->navigationable->name
-                                            ? $navigation->navigationable->name
-                                            : $navigation->navigationable->title;
-                                        $langId = false;
-                                        foreach ($subNavLangs as $subNavLang) {
-                                            if ($langId) {
-                                                continue;
-                                            }
-                                            if ($subNavLang['navigationable_type'] == \App\Models\SubCategory::class) {
-                                                $langId = $subNavLang
-                                                    ->navigationable()
-                                                    ->where('lang_id', getFrontSelectLanguage())
-                                                    ->exists();
-                                            }
-                                        }
-                                    @endphp
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link  fs-14 fw-6 {{ $menuName == ucfirst(last(request()->segments())) ? 'active' : '' }}"
-                                            aria-current="page"
-                                            @if ($navigation->navigationable->link !== null) href="{{ getNavUrl($navigation->navigationable->link) }}"
-                                           @else
-                                               href="{{ route('categoryPage', $navigation->navigationable->slug) }}" @endif>{!! $navigation->navigationable->name ? $navigation->navigationable->name : $navigation->navigationable->title !!}
-                                            @if (($langId || $navigation->navigationable_type == \App\Models\Menu::class) && $isSubNav)
-                                                <i class="fa-solid fa-angle-down icon ms-1 fs-12"></i>
-                                            @endif
-                                        </a>
-                                        @if ($langId || $navigation->navigationable_type == \App\Models\Menu::class)
-                                            @if ($isSubNav)
-                                                <ul class="dropdown-nav ps-0">
-                                                    @php
-                                                        $path = basename(Request::path());
-                                                    @endphp
-                                                    @foreach ($nav['navigationsTakeData'] as $key => $navSub)
-                                                        @if ($key == $navigation->id)
-                                                            @foreach ($navSub as $sub)
-                                                                @if ($sub->navigationable_type == \App\Models\SubCategory::class)
-                                                                    @if ($sub->navigationable()->where('lang_id', getFrontSelectLanguage())->exists())
-                                                                        <li>
-                                                                            <a class="fs-14 fw-6 {{ !empty($path) && $path == $sub->navigationable->slug ? 'active' : '' }}"
-                                                                                @if ($sub->navigationable->link !== null) href="{{ getNavUrl($sub->navigationable->link) }}"
-                                                                               @else
-                                                                                   href="{{ route('categoryPage', ['category' => $navigation->navigationable->slug, 'slug' => $sub->navigationable->slug]) }}" @endif>{!! $sub->navigationable->name ? $sub->navigationable->name : $sub->navigationable->title !!}
-                                                                            </a>
-                                                                        </li>
-                                                                    @endif
-                                                                @else
-                                                                    <li>
-                                                                        <a class="fs-14 fw-6 {{ !empty($path) && $path == $sub->navigationable->slug ? 'active' : '' }}"
-                                                                            @if ($sub->navigationable->link !== null) href="{{ getNavUrl($sub->navigationable->link) }}"
-                                                                           @else
-                                                                               href="{{ route('categoryPage', ['category' => $navigation->navigationable->slug, 'slug' => $sub->navigationable->slug]) }}" @endif>{!! $sub->navigationable->name ? $sub->navigationable->name : $sub->navigationable->title !!}
-                                                                        </a>
-                                                                    </li>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    @endforeach
-                                                </ul>
-                                            @endif
-                                        @endif
-                                    </li>
-                                @endif
-                            @endforeach
-                        @endif
+                        <li class="border-gray border-end"
+                            style="border-width: 1px; height: 30px; align-self: center"></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link fs-14 fw-6 d-flex flex-column justify-content-center align-items-center text-black"
+                                aria-current="page" href="/">
+                                <span class="" style="margin-left: 30px">Profile</span>
+                                <span class="text-gray" style=" font-size: 12px ; margin-left: 30px">Profile
+                                    Dinas</span>
+                            </a>
+                            <ul class="dropdown-nav ps-0">
+                                <li><a class="fs-14 fw-6" href="/page1">Sejarah</a></li>
+                                <li><a class="fs-14 fw-6" href="/visi-misi">Visi & Misi</a></li>
+                                <li><a class="fs-14 fw-6" href="/page2">Struktur Organisasi</a></li>
+                                <li><a class="fs-14 fw-6" href="/page2">Tugas Pokok dan Fungsi</a></li>
+                                <li><a class="fs-14 fw-6" href="/page2">Daftar Pegawai</a></li>
+                                <li><a class="fs-14 fw-6" href="/page2">Prestasi</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link fs-14 fw-6 d-flex flex-column justify-content-center align-items-center text-black"
+                                aria-current="page" href="/">
+                                <span class="" style="margin-left: 30px">Pelayanan</span>
+                                <span class="text-gray" style=" font-size: 12px ; margin-left: 30px">Pelayanan
+                                    Perizinan</span>
+                            </a>
+                            <ul class="dropdown-nav ps-0">
+                                <li><a class="fs-14 fw-6" href="/service-standard">Standar Pelayanan</a></li>
+                                <li><a class="fs-14 fw-6" href="/visi-misi">Tracking Izin</a></li>
+                                <li><a class="fs-14 fw-6" href="/page2">Validasi SK</a></li>
+                            </ul>
+                        </li>
+                        <li class="border-gray border-end"
+                            style="border-width: 1px; height: 30px; align-self: center"></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link fs-14 fw-6 d-flex flex-column justify-content-center align-items-center text-black"
+                                aria-current="page" href="/">
+                                <span class="" style="margin-left: 30px">Informasi</span>
+                                <span class="text-gray" style=" font-size: 12px ; margin-left: 30px">Informasi</span>
+                            </a>
+                            <ul class="dropdown-nav ps-0">
+                                <li><a class="fs-14 fw-6" href="/news">Berita</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-14 fw-6 {{ Request::is('g') || Request::is('g/*') ? 'active' : '' }}"
-                                href="{{ route('galleryPage') }}">{{ __('messages.details.gallery') }}</a>
+                            <a class="nav-link fs-14 fw-6 mt-2" href="https://sipetis.sumedangkab.go.id"
+                                id="sipetis" target="_blank"><img style="height: 20px;"
+                                    src="https://sipetis.sumedangkab.go.id/assets/media/logos/sipetis-dark.png"
+                                    alt="Canvas Logo"></a>
                         </li>
-                        @if ($nav['navigationsCount'] >= 6)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" aria-current="page" href="#">
-                                    <i class="fa-solid fa-ellipsis "></i>
-                                </a>
-                                <ul class="dropdown-nav ps-0">
-                                    @foreach ($nav['navigationsSkipData'] as $key => $navigation)
-                                        @if (
-                                            $navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||
-                                                $navigation->navigationable_type == \App\Models\Menu::class)
-                                            @php
-                                                $isSubNav = count($nav['navigationsSkipItem'][$navigation->id]) > 0;
-                                                $subNavLangs = $nav['navigationsSkipItem'][$navigation->id];
-                                                $menuName = $navigation->navigationable->name
-                                                    ? $navigation->navigationable->name
-                                                    : $navigation->navigationable->title;
-                                                $langId = false;
-                                                foreach ($subNavLangs as $subNavLang) {
-                                                    if ($langId) {
-                                                        continue;
-                                                    }
-                                                    if (
-                                                        $subNavLang['navigationable_type'] ==
-                                                        \App\Models\SubCategory::class
-                                                    ) {
-                                                        $langId = $subNavLang
-                                                            ->navigationable()
-                                                            ->where('lang_id', getFrontSelectLanguage())
-                                                            ->exists();
-                                                    }
-                                                }
-                                            @endphp
-                                            <li class="dropdown-sub-nav">
-                                                <a href="{{ $navigation->navigationable_type == \App\Models\Menu::class ? $navigation->navigationable->link : route('categoryPage', $navigation->navigationable->slug) }}"
-                                                    class="fs-14 fw-6 d-flex justify-content-between {{ $menuName == ucfirst(last(request()->segments())) ? 'active' : '' }}">
-                                                    {!! $navigation->navigationable->name ? $navigation->navigationable->name : $navigation->navigationable->title !!}
-                                                    @if (($langId || $navigation->navigationable_type == \App\Models\Menu::class) && $isSubNav)
-                                                        <i class="fa-solid fa-angle-right fs-12 "></i>
-                                                    @endif
-                                                </a>
-                                                @if ($langId || $navigation->navigationable_type == \App\Models\Menu::class)
-                                                    @if ($isSubNav)
-                                                        <ul class="dropdown-sub-list ps-0">
-                                                            @foreach ($nav['navigationsSkipItem'] as $key => $navSub)
-                                                                @if ($key == $navigation->id)
-                                                                    @foreach ($navSub as $sub)
-                                                                        @if ($sub->navigationable_type == \App\Models\SubCategory::class)
-                                                                            @if ($sub->navigationable()->where('lang_id', getFrontSelectLanguage())->exists())
-                                                                                <li>
-                                                                                    <a class="fs-14 fw-6"
-                                                                                        @if ($sub->navigationable->link !== null) href="{{ getNavUrl($sub->navigationable->link) }}"
-                                                                                       @else
-                                                                                           href="{{ route('categoryPage', ['category' => $navigation->navigationable->slug, 'slug' => $sub->navigationable->slug]) }}" @endif>{!! $sub->navigationable->name ? $sub->navigationable->name : $sub->navigationable->title !!}
-                                                                                    </a>
-                                                                                </li>
-                                                                            @endif
-                                                                        @else
-                                                                            <li>
-                                                                                <a class="fs-14 fw-6"
-                                                                                    @if ($sub->navigationable->link !== null) href="{{ getNavUrl($sub->navigationable->link) }}"
-                                                                                   @else
-                                                                                       href="{{ route('categoryPage', ['category' => $navigation->navigationable->slug, 'slug' => $sub->navigationable->slug]) }}" @endif>{!! $sub->navigationable->name ? $sub->navigationable->name : $sub->navigationable->title !!}
-                                                                                </a>
-                                                                            </li>
-                                                                        @endif
-                                                                    @endforeach
-                                                                @endif
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-                                                @endif
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                    <li class="">
-                                        <a class="fs-14 fw-6 d-flex justify-content-between {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
-                                            href="{{ route('contact.index') }}">{{ __('messages.details.contact_us') }}</a>
-                                    </li>
-                                    <li class="{{ $nav['pages']->count() > 0 ? 'dropdown-sub-nav' : '' }}">
-                                        @if ($nav['pages']->count() > 0)
-                                            <a href="#"
-                                                class="fs-14 fw-6 d-flex justify-content-between {{ 'Page' == ucfirst(last(request()->segments())) ? 'active' : '' }}">{{ __('messages.pages') }}
-                                                <i class="fa-solid fa-angle-right fs-12 "></i>
-                                            </a>
-                                            <ul class="dropdown-sub-list ps-0">
-                                                @foreach ($nav['pages'] as $page)
-                                                    <li>
-                                                        <a class="fs-14 fw-6"
-                                                            href="{{ route('pages.show-page-slug', $page->slug) }}">
-                                                            {!! $page->name !!}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                        @if ($nav['navigationsCount'] <= 5)
-                            <li class="nav-item">
-                                <a class="nav-link fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
-                                    href="{{ route('contact.index') }}">{{ __('messages.details.contact_us') }}</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                @if ($nav['pages']->count() > 0)
-                                    <a class="nav-link fs-14 fw-6 {{ 'Pages' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
-                                        href="javascript:void(0)">{{ __('messages.pages') }}
-                                        <i class="fa-solid fa-angle-down icon ms-1 fs-12"></i>
-                                    </a>
-                                @endif
-                                @if ($nav['pages']->count() > 0)
-                                    <ul class="dropdown-nav ps-0">
-                                        @foreach ($nav['pages'] as $page)
-                                            <li>
-                                                <a class="fs-14 fw-6"
-                                                    href="{{ route('pages.show-page-slug', $page->slug) }}">
-                                                    {!! $page->name !!}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </li>
-                        @endif
                     </ul>
                 </nav>
             </div>
@@ -496,23 +331,12 @@
                                         class="fa-brands fa-facebook-f text-gray fs-18 me-3"></i> </a>
                                 <a href="{{ $settings['twitter_url'] }}" target="_blank"> <i
                                         class="fa-brands fa-twitter text-gray fs-18 me-3"></i> </a>
-                                <a href="{{ $settings['linkedin_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-linkedin-in  text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['pinterest_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-pinterest text-gray fs-18 me-3"></i></a>
                                 <a href="{{ $settings['instagram_url'] }}" target="_blank"> <i
                                         class="fa-brands fa-instagram  text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['vk_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-vk text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['telegram_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-telegram text-gray fs-18 me-3"></i></a>
-                                <a href="{{ $settings['youtube_url'] }}" target="_blank"> <i
-                                        class="fa-brands fa-youtube text-gray fs-18 "></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
