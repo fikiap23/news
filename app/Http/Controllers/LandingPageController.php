@@ -437,6 +437,11 @@ class LandingPageController extends AppBaseController
         return view('front_new.service-standards');
     }
 
+    public function organizationalStructure()
+    {
+        return view('front_new.organizational-structure');
+    }
+
     public function audioDetails(Request $request)
     {
         $audioPost = [];
