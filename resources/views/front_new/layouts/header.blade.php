@@ -229,7 +229,8 @@
                             <ul class="dropdown-nav ps-0">
                                 <li><a class="fs-14 fw-6" href="/page1">Sejarah</a></li>
                                 <li><a class="fs-14 fw-6" href="/visi-misi">Visi & Misi</a></li>
-                                <li><a class="fs-14 fw-6" href="/page2">Struktur Organisasi</a></li>
+                                <li><a class="fs-14 fw-6" href="/organizational-structure">Struktur Organisasi</a>
+                                </li>
                                 <li><a class="fs-14 fw-6" href="/page2">Tugas Pokok dan Fungsi</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Daftar Pegawai</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Prestasi</a></li>

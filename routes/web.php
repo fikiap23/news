@@ -224,6 +224,7 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/privacy', [LandingPageController::class, 'displayTerms'])->name('page.privacy');
     Route::get('/visi-misi', [LandingPageController::class, 'visiMisi'])->name('visi-misi');
     Route::get('/service-standard', [LandingPageController::class, 'serviceStandard'])->name('standar-pelayanan');
+    Route::get('/organizational-structure', [LandingPageController::class, 'organizationalStructure'])->name('struktur-organisasi');
 
     Route::get('/contact-save', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
