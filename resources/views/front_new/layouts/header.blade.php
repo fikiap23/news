@@ -248,6 +248,7 @@
                                 <li><a class="fs-14 fw-6" href="/visi-misi">Tracking Izin</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Validasi SK</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Potensi dan Investasi</a></li>
+                                <li><a class="fs-14 fw-6" href="/page2">Lowongan Pekerjaan</a></li>
                             </ul>
                         </li>
                         <li class="border-gray border-end"
