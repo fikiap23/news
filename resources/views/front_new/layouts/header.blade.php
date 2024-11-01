@@ -245,9 +245,9 @@
                             </a>
                             <ul class="dropdown-nav ps-0">
                                 <li><a class="fs-14 fw-6" href="/service-standard">Standar Pelayanan</a></li>
-                                <li><a class="fs-14 fw-6" href="/service-standard">Persyaratan Izin</a></li>
-                                <li><a class="fs-14 fw-6" href="/service-standard">Grafik investasi</a></li>
-                                <li><a class="fs-14 fw-6" href="/service-standard">Statistik harian perizinan</a></li>
+                                <li><a class="fs-14 fw-6" href="/page1">Persyaratan Izin</a></li>
+                                <li><a class="fs-14 fw-6" href="/page1">Grafik investasi</a></li>
+                                <li><a class="fs-14 fw-6" href="/page1">Statistik harian perizinan</a></li>
                                 <li><a class="fs-14 fw-6" href="/visi-misi">Tracking Izin</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Validasi SK</a></li>
                                 <li><a class="fs-14 fw-6" href="/page2">Potensi dan Investasi</a></li>
