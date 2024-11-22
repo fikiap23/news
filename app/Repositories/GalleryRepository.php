@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Gallery;
+use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
@@ -40,11 +41,14 @@ class GalleryRepository extends BaseRepository
         try {
             DB::beginTransaction();
 
-            $gallery = Gallery::create($input);
-            if (isset($input['images']) && ! empty($input['images'])) {
-                foreach ($input['images'] as $image) {
-                    $gallery->addMedia($image)->toMediaCollection(Gallery::GALLERY_IMAGE, config('app.media_disc'));
-                }
+            // Membuat entri Slider baru
+            $slider = Slider::create($input);
+            // dd($input);
+
+            // Mengecek apakah ada gambar yang di-upload
+            if (isset($input['image']) && $input['image']->isValid()) {
+                $path = $input['image']->store('public/uploads');
+                // dd("File uploaded to: " . $path);
             }
             DB::commit();
 
@@ -54,6 +58,7 @@ class GalleryRepository extends BaseRepository
             throw new UnprocessableEntityHttpException($e->getMessage());
         }
     }
+
 
     /**
      * @param $input
@@ -69,8 +74,10 @@ class GalleryRepository extends BaseRepository
             if (isset($input['images']) && ! empty($input['images'])) {
                 $gallery->clearMediaCollection(Gallery::GALLERY_IMAGE);
                 foreach ($input['images'] as $image) {
-                    $gallery->addMedia($image)->toMediaCollection(Gallery::GALLERY_IMAGE,
-                        config('app.media_disc'));
+                    $gallery->addMedia($image)->toMediaCollection(
+                        Gallery::GALLERY_IMAGE,
+                        config('app.media_disc')
+                    );
                 }
             }
             DB::commit();

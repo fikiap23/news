@@ -11,8 +11,7 @@ class GalleryDataTable
 {
     public function get()
     {
-        /** @var Gallery $query */
-        $query = Gallery::with(['language:id,name', 'album:id,name', 'category:id,name']);
+        $query = false;
 
         return $query;
     }

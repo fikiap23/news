@@ -1,4 +1,4 @@
-<?php return array (
+<?php return array(
   'save' => 'Save',
   'delete' => 'Hapus',
   'search' => 'Cari',
@@ -63,12 +63,12 @@
   'post_reaction' => 'Reaksi Pos',
   'sync' => 'Sinkronisasi',
   'no_results_found' => 'Tidak ada hasil ditemukan',
-  'navigations' => 
-  array (
+  'navigations' =>
+  array(
     'menu' => 'Menu',
   ),
-  'menu' => 
-  array (
+  'menu' =>
+  array(
     'menu' => 'Menu',
     'add_menu' => 'Tambah Menu',
     'edit_menu' => 'Edit Menu',
@@ -80,8 +80,8 @@
     'select_parent_menu' => 'Pilih Menu Induk',
     'n_a' => 'N/A',
   ),
-  'seo-tool' => 
-  array (
+  'seo-tool' =>
+  array(
     'language' => 'Bahasa',
     'site_title' => 'Judul Situs',
     'home_title' => 'Judul Halaman Utama',
@@ -90,21 +90,21 @@
     'google_analytics' => 'Google Analytics',
     'maxkeyword' => 'Masukkan maksimal 10 Kata Kunci',
   ),
-  'album_category' => 
-  array (
+  'album_category' =>
+  array(
     'album_category' => 'Kategori Album',
     'add_album_category' => 'Tambah Kategori Album',
     'edit_album_category' => 'Edit Kategori Album',
     'select_album' => 'Pilih Album',
   ),
-  'album' => 
-  array (
+  'album' =>
+  array(
     'album' => 'Album',
     'add_album' => 'Tambah Album',
     'edit_album' => 'Edit Album',
   ),
-  'dashboard_show' => 
-  array (
+  'dashboard_show' =>
+  array(
     'name' => 'NAMA',
     'email' => 'Email',
     'profile' => 'Profil',
@@ -114,8 +114,8 @@
     'drafts' => 'Draft',
     'post_views' => 'Tampilan Post',
   ),
-  'common' => 
-  array (
+  'common' =>
+  array(
     'active' => 'Aktif',
     'closed' => 'Tutup',
     'count' => 'Jumlah',
@@ -227,8 +227,8 @@
     'image_error_excel' => 'Gambar harus berupa file dengan jenis: png, jpg, jpeg, pdf, excel',
     'pending' => 'Tertunda',
   ),
-  'user' => 
-  array (
+  'user' =>
+  array(
     'profile_details' => 'Detail Profil',
     'avatar' => 'Avatar',
     'full_name' => 'Nama Lengkap',
@@ -246,8 +246,8 @@
     'gender' => 'Jenis Kelamin',
     'profile' => 'Profil',
   ),
-  'setting' => 
-  array (
+  'setting' =>
+  array(
     'setting' => 'Pengaturan',
     'general' => 'Umum',
     'contact_information' => 'Informasi Kontak',
@@ -310,8 +310,8 @@
     'Paypal' => 'Paypal',
     'Manually' => 'Manual',
   ),
-  'post' => 
-  array (
+  'post' =>
+  array(
     'post' => 'Postingan',
     'posts' => 'Postingan',
     'edit_post' => 'Edit Postingan',
@@ -401,8 +401,8 @@
     'publish_post' => 'Publikasi Post',
     'select_post' => 'Pilih Post',
   ),
-  'comment' => 
-  array (
+  'comment' =>
+  array(
     'comments' => 'Komentar',
     'comment' => 'Komentar',
     'pending' => 'Tampilkan yang Menunggu Persetujuan',
@@ -417,8 +417,8 @@
     'enter_phone_number' => 'Masukkan Nomor Telepon',
     'type_your_comments' => 'Tulis Komentar Anda',
   ),
-  'details' => 
-  array (
+  'details' =>
+  array(
     'next_post' => 'Pos Berikutnya',
     'previous_post' => 'Pos Sebelumnya',
     'related_post' => 'Pos Terkait',
@@ -450,8 +450,8 @@
     'view_results' => 'Lihat Hasil',
     'view_options' => 'Lihat Opsi',
   ),
-  'poll' => 
-  array (
+  'poll' =>
+  array(
     'poll' => 'Jajak Pendapat',
     'add_poll' => 'Tambah Jajak Pendapat',
     'add_polls' => 'Tambah Jajak Pendapat',
@@ -476,8 +476,8 @@
     'total_vote' => 'Total Vote',
     'view_option' => 'Lihat Opsi',
   ),
-  'category' => 
-  array (
+  'category' =>
+  array(
     'title' => 'Judul',
     'language' => 'Bahasa',
     'color' => 'Warna',
@@ -489,8 +489,8 @@
     'show_home' => 'Tampilkan di Beranda',
     'category_language_warning' => 'Kategori ini digunakan oleh postingan. Jika Anda mengubah bahasa, Anda harus memperbarui kategori untuk postingan.',
   ),
-  'sub_category' => 
-  array (
+  'sub_category' =>
+  array(
     'title' => 'Judul',
     'add_lan' => 'Bahasa',
     'select_cat' => 'Pilih Kategori',
@@ -501,8 +501,8 @@
     'edit' => 'Edit Sub Kategori',
     'show_menu' => 'Tampilkan di Menu',
   ),
-  'page' => 
-  array (
+  'page' =>
+  array(
     'page' => 'Halaman',
     'add_page' => 'Tambah Halaman',
     'edit_page' => 'Edit Halaman',
@@ -531,8 +531,8 @@
     'show_name' => 'Nama',
     'language' => 'Bahasa',
   ),
-  'mails' => 
-  array (
+  'mails' =>
+  array(
     'mail' => 'Email',
     'mail_protocol' => 'Protokol Email',
     'select_mail_protocol' => 'Pilih Protokol Email',
@@ -564,8 +564,8 @@
     'manual_payment_request' => 'Permintaan Pembayaran Manual',
     'test_mail' => 'Uji Email',
   ),
-  'role' => 
-  array (
+  'role' =>
+  array(
     'role' => 'Peran',
     'add_role' => 'Tambah Peran',
     'edit_role' => 'Edit Peran',
@@ -573,8 +573,8 @@
     'role_permissions' => 'Izin Peran',
     'select_all_permissions' => 'Pilih Semua Izin',
   ),
-  'staff' => 
-  array (
+  'staff' =>
+  array(
     'staff' => 'Staf',
     'add_staff' => 'Tambah Staf',
     'edit_staff' => 'Edit Staf',
@@ -594,8 +594,8 @@
     'cover_image' => 'Gambar Sampul',
     'username' => 'Nama Pengguna',
   ),
-  'language' => 
-  array (
+  'language' =>
+  array(
     'new_language' => 'Bahasa Baru',
     'edit_language' => 'Edit Bahasa',
     'language' => 'Bahasa',
@@ -610,21 +610,22 @@
     'translation' => 'Terjemahan',
     'front_language' => 'Bahasa Depan',
   ),
-  'gallery' => 
-  array (
+  'gallery' =>
+  array(
     'id' => 'Id',
     'language' => 'Bahasa',
     'album' => 'Album',
     'category' => 'Kategori',
     'image' => 'Gambar',
+    'description' => 'Deskripsi',
     'title' => 'Judul',
     'date' => 'Tanggal',
     'add_images' => 'Tambah Gambar',
     'edit_images' => 'Edit Gambar',
     'select_album' => 'Pilih Album',
   ),
-  'emails' => 
-  array (
+  'emails' =>
+  array(
     'enquiry_details' => 'Berikut adalah Detail Pertanyaan',
     'name' => 'Nama',
     'email' => 'Email',
@@ -632,8 +633,8 @@
     'message' => 'Pesan',
     'required' => 'Kolom Email harus diisi',
   ),
-  'months' => 
-  array (
+  'months' =>
+  array(
     'jan' => 'Jan',
     'feb' => 'Feb',
     'mar' => 'Mar',
@@ -647,8 +648,8 @@
     'nov' => 'Nov',
     'dec' => 'Des',
   ),
-  'weekdays' => 
-  array (
+  'weekdays' =>
+  array(
     'sun' => 'MIN',
     'mon' => 'SEN',
     'tue' => 'SEL',
@@ -657,16 +658,16 @@
     'fri' => 'JUM',
     'sat' => 'SAB',
   ),
-  'days' => 
-  array (
+  'days' =>
+  array(
     'today' => 'Hari Ini',
     'this_week' => 'Minggu Ini',
     'last_week' => 'Minggu Lalu',
     'this_month' => 'Bulan Ini',
     'last_month' => 'Bulan Lalu',
   ),
-  'rss_feed' => 
-  array (
+  'rss_feed' =>
+  array(
     'add_rss_feed' => 'Tambah RSS Feed',
     'feed_name' => 'Nama Feed',
     'feed_url' => 'URL Feed',
@@ -686,8 +687,8 @@
     'post_import' => 'Postingan/Impor',
     'ad_code' => 'Kode Iklan',
   ),
-  'ad_space' => 
-  array (
+  'ad_space' =>
+  array(
     'ad_space' => 'Ruang Iklan',
     'select_ad_space' => 'Pilih Ruang Iklan',
     'header' => 'Header',
@@ -709,8 +710,8 @@
     'ad_code' => 'Kode Iklan',
     'disable_ad' => 'Nonaktifkan Iklan',
   ),
-  'placeholder' => 
-  array (
+  'placeholder' =>
+  array(
     'your_mail_already_verified' => 'Email Anda sudah diverifikasi, silakan login.',
     'successfully_verified' => 'Anda telah berhasil memverifikasi email Anda, silakan login.',
     'login_via_google' => 'Login Via Google',
@@ -877,8 +878,8 @@
     'best_resolution_for_this_favicon_will_be_32X32' => 'Resolusi terbaik untuk favicon ini adalah 32X32.',
     'this_email_is_already_subscribed' => 'Email ini sudah berlangganan',
   ),
-  'bulk_post' => 
-  array (
+  'bulk_post' =>
+  array(
     'bulk_post' => 'Bulk Post',
     'bulk_post_upload' => 'Unggah Bulk Post',
     'you_can_use_csv_file' => 'Anda dapat menggunakan dokumen ini untuk membuat file CSV Anda',
@@ -905,8 +906,8 @@
     'boolean' => 'Boolean',
     'Optional' => 'Opsional',
   ),
-  'plans' => 
-  array (
+  'plans' =>
+  array(
     'plan' => 'Paket',
     'plans' => 'Paket-Paket',
     'plan_name' => 'Nama Paket',
@@ -926,8 +927,8 @@
     'unlimited' => 'Tak Terbatas',
     'default_Plan' => 'Paket Default',
   ),
-  'subscription' => 
-  array (
+  'subscription' =>
+  array(
     'current_expire' => 'Paket yang Sedang Kadaluarsa',
     'manage_subscription' => 'Kelola Langganan',
     'cancel_subscription' => 'Batalkan Langganan',
@@ -973,8 +974,8 @@
     'what_in_startup_plan' => 'Apa Saja Dalam Paket Startup',
     'year' => 'Tahun',
   ),
-  'reaction' => 
-  array (
+  'reaction' =>
+  array(
     'like' => 'Suka',
     'dislike' => 'Tidak Suka',
     'funny' => 'Lucu',
@@ -985,8 +986,8 @@
     'pray' => 'Doa',
     'super' => 'Super',
   ),
-  'ai' => 
-  array (
+  'ai' =>
+  array(
     'ai_filter' => 'Filter AI',
     'model' => 'Model',
     'temperature' => 'Suhu',
@@ -998,9 +999,9 @@
     'call_ai' => 'Panggil AI',
     'generate_content' => 'Hasilkan Konten',
   ),
-  'emoji' => 
-  array (
+  'emoji' =>
+  array(
     'emojis' => 'Emojis',
     'emoji' => 'Emoji',
   ),
-)?>
+);

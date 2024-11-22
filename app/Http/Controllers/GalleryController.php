@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
-use App\Models\Album;
-use App\Models\AlbumCategory;
 use App\Models\Gallery;
 use App\Repositories\GalleryRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -43,10 +41,8 @@ class GalleryController extends AppBaseController
      */
     public function create()
     {
-        $albums = Album::pluck('name', 'id')->toArray();
-        $categories = AlbumCategory::pluck('name', 'id')->toArray();
 
-        return view('gallery.create', compact('albums', 'categories'));
+        return view('gallery.create');
     }
 
     /**
@@ -58,6 +54,8 @@ class GalleryController extends AppBaseController
     public function store(CreateGalleryRequest $request)
     {
         $input = $request->all();
+        $input['description'] = $input['article_content'];
+        unset($input['article_content']);
         $this->galleryRepository->store($input);
 
         Flash::success(__('messages.placeholder.gallery_image_created_successfully'));
@@ -103,30 +101,5 @@ class GalleryController extends AppBaseController
         $image = Gallery::whereId($id)->delete();
 
         return $this->sendSuccess(__('messages.placeholder.gallery_image_deleted_successfully'));
-    }
-
-    /**
-     * @param  Request  $request
-     * @return mixed
-     */
-    public function getAlbums(Request $request)
-    {
-        $langId = $request->get('langId');
-        $albums = getAlbums($langId);
-
-        return $this->sendResponse($albums, __('messages.placeholder.albums_retrieved_successfully'));
-    }
-
-    /**
-     * @param  Request  $request
-     * @return mixed
-     */
-    public function getCategory(Request $request)
-    {
-        $albumId = $request->get('albumId');
-        $langId = $request->get('langId');
-        $categories = getAlbumCategory($albumId, $langId);
-
-        return $this->sendResponse($categories,  __('messages.placeholder.albums_retrieved_successfully'));
     }
 }

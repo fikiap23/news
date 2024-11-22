@@ -28,31 +28,12 @@
         </li>
     @endcan
 
-    @can('manage_albums_category')
-        <li
-            class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/gallery-images*', 'admin/albums*', 'admin/album-categories*') ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('admin/album-categories*') ? 'active' : '' }}"
-                href="{{ route('album-categories.index') }}">
-                {{ __('messages.album_categories') }}
-            </a>
-        </li>
-    @endcan
-
     @can('manage_gallery_image')
         <li
-            class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/gallery-images*', 'admin/albums*', 'admin/album-categories*') ? 'd-none' : '' }}">
+            class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/gallery-images*') ? 'd-none' : '' }}">
             <a class="nav-link p-0 {{ Request::is('admin/gallery-images*') ? 'active' : '' }}"
                 href="{{ route('gallery-images.index') }}">
                 {{ __('messages.images') }}
-            </a>
-        </li>
-    @endcan
-
-    @can('manage_albums')
-        <li
-            class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/gallery-images*', 'admin/albums*', 'admin/album-categories*') ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('admin/albums*') ? 'active' : '' }}" href="{{ route('albums.index') }}">
-                {{ __('messages.albums') }}
             </a>
         </li>
     @endcan

@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCommentRequest;
-use App\Models\Album;
-use App\Models\AlbumCategory;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Emoji;
 use App\Models\Followers;
-use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\PostReactionEmoji;
 use App\Models\Setting;
+use App\Models\Slider;
 use App\Models\SubCategory;
 use App\Models\User;
 use App\Scopes\LanguageScope;
@@ -104,6 +102,11 @@ class LandingPageController extends AppBaseController
         start_measure('render', 'getOption');
         $data['getOption'] = getOption();
         stop_measure('render', 'getOption');
+        start_measure('render', 'getOption');
+        $data['slider'] = Slider::all();;
+        stop_measure('render', 'getOption');
+
+        dd($data['slider']);
 
         return view('front_new.home')->with($data);
     }
@@ -362,32 +365,6 @@ class LandingPageController extends AppBaseController
     public function popularTagPage($tagName)
     {
         return view('front_new.popular-tag', compact('tagName'));
-    }
-
-    /**
-     * @param  null  $id
-     * @return Application|View
-     */
-    public function galleryPage($id = null)
-    {
-        if (!empty($id)) {
-            $allSubCategory = AlbumCategory::with('album', 'gallery')->whereLangId(getFrontSelectLanguage())
-                ->where('album_id', $id)->get();
-            $galleryImages = Gallery::with('album', 'media', 'category')->whereLangId(getFrontSelectLanguage())
-                ->where('album_id', $id)->get();
-
-            return view('front_new.gallery-images', compact('galleryImages', 'allSubCategory'));
-        }
-
-        $album = Album::with('gallery')->whereLangId(getFrontSelectLanguage())->get();
-        $galleries = [];
-        foreach ($album as $gallery) {
-            if (!empty($gallery->gallery->first())) {
-                $galleries[] = $gallery->gallery->first();
-            }
-        }
-
-        return view('front_new.gallery-page', compact('galleries'));
     }
 
     /**

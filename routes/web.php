@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\AlbumCategoriesController;
-use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
@@ -127,10 +125,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::get('resend-email/{id}', [StaffController::class, 'resendEmail'])->name('resend-email');
     });
 
-    // album category route
-    Route::middleware('permission:manage_albums_category')->group(function () {
-        Route::resource('album-categories', AlbumCategoriesController::class);
-    });
     //Add-Post Route
     Route::middleware('permission:manage_all_post')->group(function () {
         Route::resource('posts', PostController::class);
@@ -144,10 +138,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::get('post-type', [PostController::class, 'postType'])->name('post_type');
         Route::post('open-ai', [PostController::class, 'openAi'])->name('open_ai');
         Route::post('get-video', [PostController::class, 'getVideoByUrl'])->name('get-video-by-url');
-    });
-
-    Route::middleware('permission:manage_albums')->group(function () {
-        Route::resource('albums', AlbumController::class);
     });
 
     Route::middleware('permission:manage_language')->group(function () {
@@ -183,8 +173,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     });
 
     Route::resource('gallery-images', GalleryController::class);
-    Route::get('album-list', [GalleryController::class, 'getAlbums'])->name('album-list');
-    Route::get('album-category-list', [GalleryController::class, 'getCategory'])->name('album-category-list');
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {

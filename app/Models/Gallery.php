@@ -49,13 +49,12 @@ class Gallery extends Model implements HasMedia
     protected $table = 'galleries';
 
     protected $fillable = [
-        'lang_id', 'album_id', 'category_id', 'title',
+        'lang_id',
+        'title',
     ];
 
     protected $casts = [
         'lang_id' => 'integer',
-        'album_id' => 'integer',
-        'category_id' => 'integer',
         'title' => 'string',
     ];
 
@@ -85,15 +84,5 @@ class Gallery extends Model implements HasMedia
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class, 'lang_id');
-    }
-
-    public function album(): BelongsTo
-    {
-        return $this->belongsTo(Album::class, 'album_id');
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(AlbumCategory::class, 'category_id');
     }
 }

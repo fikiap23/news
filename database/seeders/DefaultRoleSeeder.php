@@ -75,8 +75,6 @@ class DefaultRoleSeeder extends Seeder
             'manage_all_post',
             'manage_categories',
             'manage_sub_categories',
-            'manage_albums',
-            'manage_albums_category',
             'manage_gallery_image',
         ])->pluck('name', 'id');
 
@@ -84,7 +82,6 @@ class DefaultRoleSeeder extends Seeder
 
         $moderator = Permission::whereIn('name', [
             'manage_categories',
-            'manage_albums_category',
             'manage_gallery',
             'manage_pages',
             'manage_all_post',

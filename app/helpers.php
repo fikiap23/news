@@ -89,28 +89,6 @@ function getLanguageSet()
 }
 
 /**
- * @param $langId
- * @return mixed
- */
-function getAlbums($langId)
-{
-    return \App\Models\Album::where('lang_id', $langId)->toBase()->pluck('name', 'id')->toArray();
-}
-
-/**
- * @param $albumId
- * @param $langId
- * @return array
- */
-function getAlbumCategory($albumId, $langId): array
-{
-    return \App\Models\AlbumCategory::where('lang_id', $langId)->where('album_id', $albumId)->pluck(
-        'name',
-        'id'
-    )->toArray();
-}
-
-/**
  * @param $index
  * @return string
  */

@@ -28,14 +28,6 @@ class DefaultPermissionSeeder extends Seeder
                 'display_name' => 'Manage Sub Categories',
             ],
             [
-                'name' => 'manage_albums',
-                'display_name' => 'Manage Albums',
-            ],
-            [
-                'name' => 'manage_albums_category',
-                'display_name' => 'Manage Albums Category',
-            ],
-            [
                 'name' => 'manage_gallery',
                 'display_name' => 'Manage Gallery',
             ],
