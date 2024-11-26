@@ -68,7 +68,7 @@
     <li class="nav-item aside-item-collapse {{ Request::is(['admin/gallery-images*']) ? 'active' : '' }}">
         <a class="nav-link aside-collapse-btn d-flex align-items-center py-3" href="{{ route('gallery-images.index') }}">
             <span class="aside-menu-icon pe-3"><i class="fas fa-images fs-4"></i></span>
-            <span class="aside-menu-title">{!! __('messages.albums') !!}</span>
+            <span class="aside-menu-title">Slider</span>
         </a>
     </li>
 @endcanany
