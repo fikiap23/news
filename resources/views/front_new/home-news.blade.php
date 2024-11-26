@@ -62,7 +62,7 @@
                         <!-- Slide 3 -->
                         <div class="hero-image carousel-item position-relative">
                             <a href="#detailPage">
-                                <img src="/assets/image/post-image/post-16.jpg" class="w-100 h-100" alt="Image 3" />
+                                 <img src="/assets/image/slider/rapat.jpg" class="w-100 h-100" alt="Image 3" />
                             </a>
                             <!-- Overlay -->
                             <div class="overlay position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5);">

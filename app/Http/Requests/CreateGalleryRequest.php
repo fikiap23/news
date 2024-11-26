@@ -24,7 +24,6 @@ class CreateGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255', // Wajib diisi dan maksimal 255 karakter
             'description' => 'string',
             'image' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048' // Pastikan berupa file gambar
         ];
@@ -38,8 +37,6 @@ class CreateGalleryRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'Title is required.',
-            'title.string' => 'Title must be a string.',
             // 'description.required' => 'Description is required.',
             // 'description.string' => 'Description must be a string.',
             'image.required' => 'An image is required.',
