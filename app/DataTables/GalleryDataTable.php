@@ -2,8 +2,6 @@
 
 namespace App\DataTables;
 
-use App\Models\Gallery;
-
 /**
  * Class GalleryDataTable
  */

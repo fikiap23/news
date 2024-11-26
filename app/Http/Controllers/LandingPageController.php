@@ -105,9 +105,6 @@ class LandingPageController extends AppBaseController
         start_measure('render', 'getOption');
         $data['slider'] = Slider::all();;
         stop_measure('render', 'getOption');
-
-        dd($data['slider']);
-
         return view('front_new.home')->with($data);
     }
 

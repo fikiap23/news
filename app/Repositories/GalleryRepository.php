@@ -29,7 +29,7 @@ class GalleryRepository extends BaseRepository
      */
     public function model()
     {
-        return Gallery::class;
+        return Slider::class;
     }
 
     /**
@@ -41,15 +41,18 @@ class GalleryRepository extends BaseRepository
         try {
             DB::beginTransaction();
 
-            // Membuat entri Slider baru
+            // Membuat entri Slider baru tanpa gambar terlebih dahulu
             $slider = Slider::create($input);
-            // dd($input);
 
             // Mengecek apakah ada gambar yang di-upload
             if (isset($input['image']) && $input['image']->isValid()) {
-                $path = $input['image']->store('public/uploads');
-                // dd("File uploaded to: " . $path);
+                // Menyimpan file gambar ke direktori tertentu
+                $path = $input['image']->store('slider');
+
+                // Menyimpan path gambar ke kolom 'image' di tabel slider
+                $slider->update(['image' => 'uploads/' . $path]);
             }
+
             DB::commit();
 
             return true;
@@ -58,6 +61,7 @@ class GalleryRepository extends BaseRepository
             throw new UnprocessableEntityHttpException($e->getMessage());
         }
     }
+
 
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Gallery;
+use App\Models\Slider;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
@@ -14,8 +14,8 @@ class GalleryTable extends LivewireTableComponent
 
     protected $listeners = ['refresh' => '$refresh', 'resetPage'];
 
-    public string $tableName = 'Gallery';
-    public string $pageName = 'Gallery';
+    public string $tableName = 'Slider';
+    public string $pageName = 'Slider';
 
     /**
      * @var \null[][]
@@ -25,8 +25,10 @@ class GalleryTable extends LivewireTableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('messages.post.image'), 'gallery_image')->addAttributes(['style' => 'width:600px !important;']),
+            Column::make(__('messages.post.image'), 'image')->addAttributes(['style' => 'width:600px !important;']),
             Column::make(__('messages.common.title'), 'title')
+                ->sortable()->searchable(),
+            Column::make(__('deskripsi'), 'description')
                 ->sortable()->searchable(),
             Column::make(__('messages.common.action'), 'id'),
         ];
@@ -34,7 +36,7 @@ class GalleryTable extends LivewireTableComponent
 
     public function query(): Builder
     {
-        return Gallery::with(['media']);
+        return Slider::query();
     }
 
     public function rowView(): string
