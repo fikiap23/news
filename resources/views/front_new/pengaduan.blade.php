@@ -88,6 +88,33 @@
                     </form>
                 </div>
             </div>
+            <div class="comments-section">
+                <h4 class="text-center text-black">Data Pengaduan Website</h4>
+
+                @foreach ($comments as $comment)
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex mb-3" style="padding: 20px">
+                                <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3">
+                                <div>
+                                    <a href="/detail/{{ $comment->id }}" class="text-decoration-none">
+                                        <h5 class="card-title">
+                                            Pengaduan dari {{ $comment->user_name }} - Tanggal:
+                                            {{ $comment->created_at->format('d F Y') }}
+                                        </h5>
+                                        <p class="card-text">{{ $comment->short_description }}</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="padding-left: 20px">
+                                <h6 class="text-primary">Jawaban: {{ $comment->response }}</h6>
+                                <p>{{ $comment->response_details }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
         </section>
     </div>
 @endsection

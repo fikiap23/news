@@ -408,7 +408,35 @@ class LandingPageController extends AppBaseController
      */
     public function pengaduan()
     {
-        return view('front_new.pengaduan');
+        // Dummy comments array
+        $comments = [
+            (object)[
+                'id' => 1,
+                'user_name' => 'Winni Alawiyah',
+                'created_at' => now(),
+                'short_description' => 'Pagi, untuk format surat pernyataan kebenaran dokumen yg ada di laman dpmtsp.bandung.go.id/ ini dim ...',
+                'response' => 'anggaInformasi',
+                'response_details' => 'Yth. Winni Alawiyah Selamat pagi untuk form pernyataan kebenaran dokumen silahkan didownload diweb ...'
+            ],
+            (object)[
+                'id' => 2,
+                'user_name' => 'Sri widi febrianti',
+                'created_at' => now()->subDays(1),
+                'short_description' => 'Tidak bisa masuk akun karena lupa password dan no telp yg terdaftar di database sudah tidak aktif...',
+                'response' => 'auI2022',
+                'response_details' => 'Yth. Ibu Sri widi febrianti Selamat sore, terkait permasalahan tersebut dapat kami bantu untuk dil ...'
+            ],
+            (object)[
+                'id' => 3,
+                'user_name' => 'Teguh Maulana',
+                'created_at' => now()->subDays(2),
+                'short_description' => 'Kepada DPMPSTP, ijin bertanya terkait sistem OSS, ketika saya menambah KBLi dan terdapat status "PKK" ...',
+                'response' => 'auI2022',
+                'response_details' => 'Yth. Bapak Teguh Maulana Selamat pagi, untuk status PKKPR apabilah terlulus Menunggu Verifikasi Pers ...'
+            ]
+        ];
+
+        return view('front_new.pengaduan', compact('comments'));
     }
 
     public function pengaduanStore(Request $request)
