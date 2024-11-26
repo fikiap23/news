@@ -24,6 +24,7 @@
             data-bs-original-title="{{ __('messages.common.edit') }}" data-id="{{ $row->id }}">
             <i class="fa-solid fa-pen-to-square"></i>
         </a>
+
         <!-- Tombol Delete -->
         <a href="javascript:void(0)" data-id="{{ $row->id }}" title="{{ __('messages.delete') }}"
             data-bs-toggle="tooltip" data-bs-original-title="{{ __('messages.common.delete') }}"
@@ -32,3 +33,32 @@
         </a>
     </div>
 </x-livewire-tables::bs5.table.cell>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Edit Button: Opens the edit page
+        const editBtns = document.querySelectorAll('.slider-edit-btn');
+        editBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default action (if necessary)
+                const id = this.dataset.id;
+                window.location.href = "{{ url('gallery-images/edit') }}/" + id;
+            });
+        });
+
+        // Delete Button: Triggers the delete action
+        const deleteBtns = document.querySelectorAll('.delete-slider-btn');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const id = this.dataset.id;
+
+                // You can use a confirmation modal here
+                if (confirm("Are you sure you want to delete this image?")) {
+                    // Perform the delete operation (this will trigger the Livewire action)
+                    Livewire.emit('deleteSlider', id);
+                }
+            });
+        });
+    });
+</script>

@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\Slider;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Illuminate\Support\Facades\File;
+
 
 class GalleryTable extends LivewireTableComponent
 {
@@ -12,7 +14,7 @@ class GalleryTable extends LivewireTableComponent
 
     public $orderBy = 'desc';  // default
 
-    protected $listeners = ['refresh' => '$refresh', 'resetPage'];
+    protected $listeners = ['refresh' => '$refresh', 'resetPage', 'deleteSlider'];
 
     public string $tableName = 'Slider';
     public string $pageName = 'Slider';
@@ -42,6 +44,24 @@ class GalleryTable extends LivewireTableComponent
     public function rowView(): string
     {
         return 'livewire-tables.rows.gallery_table';
+    }
+
+    public function deleteSlider($id)
+    {
+        $slider = Slider::findOrFail($id);
+        $slider->delete();
+
+        // Check if the image exists in the public path
+        $imagePath = public_path('uploads/slider/' . basename($slider->image));
+
+        // Delete the image from the server if it exists
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
+        // Optionally, you can notify the user or refresh the table
+        session()->flash('message', 'Slider deleted successfully.');
+        $this->emit('sliderDeleted');
     }
 
     public function render()
