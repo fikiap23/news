@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
 use App\Models\Gallery;
+use App\Models\Slider;
 use App\Repositories\GalleryRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -69,7 +70,7 @@ class GalleryController extends AppBaseController
      */
     public function edit($id)
     {
-        $gallery = Gallery::whereId($id)->firstorFail();
+        $gallery = Slider::whereId($id)->firstorFail();
 
         return view('gallery.edit', compact('gallery'));
     }
@@ -84,7 +85,8 @@ class GalleryController extends AppBaseController
     public function update(UpdateGalleryRequest $request, $id)
     {
         $input = $request->all();
-
+        $input['description'] = $input['article_content'];
+        unset($input['article_content']);
         $this->galleryRepository->updateGallery($input, $id);
 
         Flash::success(__('messages.placeholder.gallery_image_updated_successfully'));

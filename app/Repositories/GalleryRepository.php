@@ -73,17 +73,30 @@ class GalleryRepository extends BaseRepository
     {
         try {
             DB::beginTransaction();
-            $gallery = Gallery::whereId($id)->firstorFail();
-            $gallery->update($input);
-            if (isset($input['images']) && ! empty($input['images'])) {
-                $gallery->clearMediaCollection(Gallery::GALLERY_IMAGE);
-                foreach ($input['images'] as $image) {
-                    $gallery->addMedia($image)->toMediaCollection(
-                        Gallery::GALLERY_IMAGE,
-                        config('app.media_disc')
-                    );
+
+            // Mencari entri Slider berdasarkan ID
+            $slider = Slider::findOrFail($id);
+
+            // Mengecek apakah ada gambar baru yang di-upload
+            if (isset($input['image']) && $input['image']->isValid()) {
+                // Menghapus gambar lama jika ada
+                if ($slider->image && file_exists(public_path($slider->image))) {
+                    unlink(public_path($slider->image));
                 }
+
+                // Menyimpan file gambar baru ke direktori tertentu
+                $path = $input['image']->store('slider');
+
+                // Menyimpan path gambar baru ke kolom 'image' di tabel slider
+                $input['image'] = 'uploads/' . $path;
+            } else {
+                // Jika tidak ada gambar baru, hapus dari input untuk menghindari overwrite
+                unset($input['image']);
             }
+
+            // Memperbarui data Slider
+            $slider->update($input);
+
             DB::commit();
 
             return true;

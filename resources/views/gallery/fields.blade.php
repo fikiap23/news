@@ -7,7 +7,7 @@
         <label for="" class="mb-3">{{ __('messages.gallery.description') }} : </label>
         <textarea name="article_content" class="tox-target article-text-description form-control" id="articleContent"
             rows="30">
-            
+            {{ isset($gallery) ? $gallery->description : null }}
         </textarea>
     </div>
     <div class="mb-5 col-lg-12">
@@ -17,10 +17,8 @@
     </div>
     <div class="mb-5 col-lg-12">
         <div id="preview" class="additional-images">
-            @if (isset($gallery->gallery_image))
-                @foreach ($gallery->gallery_image as $image)
-                    <img src="{{ $image }}" width="100px" height="60px" class="border-color">
-                @endforeach
+            @if (isset($gallery->image))
+                <img src="{{ asset($gallery->image) }}" width="100px" height="60px" class="border-color">
             @endif
         </div>
     </div>

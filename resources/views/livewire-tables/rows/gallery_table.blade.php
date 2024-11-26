@@ -19,7 +19,7 @@
 <x-livewire-tables::bs5.table.cell :customAttributes="['class' => 'custom-min-with']">
     <div class="d-flex align-items-start">
         <!-- Tombol Edit -->
-        <a href="{{ route('gallery-images.edit', $row->id) }}" class="btn px-1 text-primary fs-3 slider-edit-btn"
+        <a href="{{ route('gallery-images.edit', $row['id']) }}" class="btn px-1 text-primary fs-3 slider-edit-btn"
             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
             data-bs-original-title="{{ __('messages.common.edit') }}" data-id="{{ $row->id }}">
             <i class="fa-solid fa-pen-to-square"></i>
@@ -42,7 +42,7 @@
             btn.addEventListener('click', function(e) {
                 e.preventDefault(); // Prevent default action (if necessary)
                 const id = this.dataset.id;
-                window.location.href = "{{ url('gallery-images/edit') }}/" + id;
+                window.location.href = "{{ url('admin/gallery-images/edit') }}/" + id;
             });
         });
 

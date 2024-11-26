@@ -173,6 +173,7 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     });
 
     Route::resource('gallery-images', GalleryController::class);
+    Route::get('gallery-images/edit/{id}', [GalleryController::class, 'edit'])->name('gallery-images.edit');
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {
