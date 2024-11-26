@@ -212,6 +212,8 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/support', [LandingPageController::class, 'displayTerms'])->name('page.support');
     Route::get('/privacy', [LandingPageController::class, 'displayTerms'])->name('page.privacy');
     Route::get('/visi-misi', [LandingPageController::class, 'visiMisi'])->name('visi-misi');
+    Route::get('/pengaduan', [LandingPageController::class, 'pengaduan'])->name('pengaduan');
+    Route::post('/pengaduan', [LandingPageController::class, 'pengaduanStore'])->name('pengaduan.store');
     Route::get('/service-standard', [LandingPageController::class, 'serviceStandard'])->name('standar-pelayanan');
     Route::get('/organizational-structure', [LandingPageController::class, 'organizationalStructure'])->name('struktur-organisasi');
 

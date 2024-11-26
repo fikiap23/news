@@ -406,6 +406,33 @@ class LandingPageController extends AppBaseController
     /** 
      * @return Application|Factory|View
      */
+    public function pengaduan()
+    {
+        return view('front_new.pengaduan');
+    }
+
+    public function pengaduanStore(Request $request)
+    {
+        // Validasi data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:15',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+            'attachment' => 'nullable|file|mimes:jpg,png,pdf,doc,docx|max:2048',
+        ]);
+
+        // Simpan data ke database (contoh)
+        // Pengaduan::create($validated);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('pengaduan.create')->with('success', 'Pengaduan berhasil dikirim!');
+    }
+
+    /** 
+     * @return Application|Factory|View
+     */
     public function serviceStandard()
     {
         return view('front_new.service-standards');

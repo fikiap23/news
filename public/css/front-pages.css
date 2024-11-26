@@ -1097,7 +1097,7 @@ img {
 
 form .form-control {
   padding: 15px 20px;
-  border: none;
+  /* border: none; */
   margin-bottom: 20px;
   box-shadow: none !important;
 }
