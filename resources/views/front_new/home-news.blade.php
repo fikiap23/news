@@ -1,4 +1,4 @@
-@extends('front_new.layouts.app-news')
+@extends('front_new.layouts.app')
 @section('title')
     {!! !empty(getSEOTools()->home_title) ? getSEOTools()->home_title : __('messages.details.home') !!}
 @endsection
@@ -9,79 +9,63 @@
 @section('content')
     <div class="home-page">
         <!-- start hero section -->
-        <section class="hero-section">
+        <section class="hero-section pt-40">
             <div class="w-full">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <!-- Slide 1 -->
-                        <div class="hero-image carousel-item active position-relative">
-                            <a href="#detailPage">
-                                <img src="/assets/image/slider/ptsp.jpg" class="w-100 h-100" alt="Image 1" />
-                            </a>
-                            <!-- Overlay -->
-                            <div class="overlay position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5);">
-                            </div>
+                        @foreach ($sliderPosts as $sliderPost)
                             <div
-                                class="hero-content position-absolute d-flex align-items-center justify-content-center w-100 h-100">
-                                <div class="text-center text-white" style="max-width: 80%; padding: 20px;">
-                                    <h1 class="text-white pb-2 fs-1" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
-                                        DPMPTSP KABUPATEN SUMEDANG</h1>
-                                    <p class="fs-10 text-white" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
-                                        Selamat datang di website DPMPTSP Kab. Website ini digunakan sebagai salah satu
-                                        bentuk
-                                        memaksimalkan pelayanan publik kepada masyarakat dalam bidang penanaman modal,
-                                        perizinan,
-                                        dan non-perizinan di Kab. Sumedang.
-                                    </p>
+                                class="hero-image carousel-item @if ($loop->iteration <= 1) active @endif position-relative ">
+                                <a href="{{ route('detailPage', $sliderPost->slug) }}">
+                                    {{--                                            <img data-src="{{ $sliderPost->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" alt=""/> --}}
+                                    @if ($sliderPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                        <button class="common-music-icon slider-music-icon" type="button">
+                                            <i class="icon fa-solid fa-music text-white"></i>
+                                        </button>
+                                        <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
+                                    @elseif($sliderPost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                        @php
+                                            $thumbUrl =
+                                                !empty($sliderPost->postVideo) &&
+                                                !empty($sliderPost->postVideo->thumbnail_image_url)
+                                                    ? $sliderPost->postVideo->thumbnail_image_url
+                                                    : null;
+                                            $thumbImage =
+                                                !empty($sliderPost->postVideo) &&
+                                                !empty($sliderPost->postVideo->uploaded_thumb)
+                                                    ? $sliderPost->postVideo->uploaded_thumb
+                                                    : asset('front_web/images/default.jpg');
+                                        @endphp
+                                        <button class="common-music-icon slider-music-icon" type="button">
+                                            <i class="icon fa-solid fa-play text-white"></i>
+                                        </button>
+                                        <img src="{{ !empty($thumbUrl) ? $thumbUrl : $thumbImage }}" class="w-100 h-100"
+                                            alt="" />
+                                    @else
+                                        <img src="{{ $sliderPost->post_image }}" class="w-100 h-100" alt="" />
+                                    @endif
+                                </a>
+                                <a href="{{ route('categoryPage', $sliderPost->category->slug) }}"
+                                    class="tags position-absolute fw-7 {{ getColorClass($sliderPost->category->id) }}">{!! $sliderPost->category->name !!}</a>
+                                <div class="hero-content position-absolute px-40 mb-sm-4 mb-3 w-100">
+                                    <h1 class="text-white pb-2"><a href="{{ route('detailPage', $sliderPost->slug) }}"
+                                            class="text-decoration-none text-white">{!! \Illuminate\Support\Str::limit($sliderPost->title, 85, '...') !!}</a></h1>
+                                    <div class="desc d-sm-flex align-items-center justify-content-between">
+                                        <p class="fs-14 text-white mb-sm-0 mb-1"><a
+                                                href="{{ route('userDetails', $sliderPost->user->username ?? $sliderPost->user->id) }}"
+                                                class="text-white">{{ __('messages.common.by') }}
+                                                {{ $sliderPost->user->full_name }}</a></p>
+                                        <div class="desc d-flex">
+                                            <p class="fs-14 text-white mb-0">
+                                                {{ ucfirst(__('messages.common.' . strtolower($sliderPost->created_at->format('F')))) }}
+                                                {{ $sliderPost->created_at->format('d, Y') }}</p>
+                                            <span class=" text-primary px-sm-4 px-2"> | </span>
+                                            <p class="fs-14 text-white mb-0">{{ $sliderPost->comment_count }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="hero-image carousel-item position-relative">
-                            <a href="#detailPage">
-                                <img src="/assets/image/slider/fotbar.jpg" class="w-100 h-100" alt="Image 2" />
-                            </a>
-                            <!-- Overlay -->
-                            <div class="overlay position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5);">
-                            </div>
-                            <div
-                                class="hero-content position-absolute d-flex align-items-center justify-content-center w-100 h-100">
-                                <div class="text-center text-white" style="max-width: 80%; padding: 20px;">
-                                    <h1 class="text-white pb-2 fs-1" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
-                                        DPMPTSP KABUPATEN SUMEDANG</h1>
-                                    <p class="fs-10 text-white" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
-                                        Selamat datang di website DPMPTSP Kab. Website ini digunakan sebagai salah satu
-                                        bentuk
-                                        memaksimalkan pelayanan publik kepada masyarakat dalam bidang penanaman modal,
-                                        perizinan,
-                                        dan non-perizinan di Kab. Sumedang.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="hero-image carousel-item position-relative">
-                            <a href="#detailPage">
-                                <img src="/assets/image/post-image/post-16.jpg" class="w-100 h-100" alt="Image 3" />
-                            </a>
-                            <!-- Overlay -->
-                            <div class="overlay position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5);">
-                            </div>
-                            <div
-                                class="hero-content position-absolute d-flex align-items-center justify-content-center w-100 h-100">
-                                <div class="text-center text-white" style="max-width: 80%; padding: 20px;">
-                                    <h1 class="text-white pb-2 fs-1" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
-                                        DPMPTSP KABUPATEN SUMEDANG</h1>
-                                    <p class="fs-10 text-white" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
-                                        Selamat datang di website DPMPTSP Kab. Website ini digunakan sebagai salah satu
-                                        bentuk
-                                        memaksimalkan pelayanan publik kepada masyarakat dalam bidang penanaman modal,
-                                        perizinan,
-                                        dan non-perizinan di Kab. Sumedang.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                         data-bs-slide="prev">
@@ -92,10 +76,10 @@
                         <i class="icon fa-solid fa-arrow-right text-white"></i>
                     </button>
                 </div>
+
             </div>
         </section>
         <!-- end hero section -->
-
         <!-- start sub-section -->
         <section class="sub-section">
             <div class="container">
