@@ -126,7 +126,7 @@
                                     style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
 
 
-                                <a href="/detail/{{ $pr->id }}" class="text-decoration-none">
+                                <a href="/pengaduan/detail/{{ $pr->id }}" class="text-decoration-none">
                                     <p class="card-title">
                                         <span style="font-weight: bold;">
                                             @if ($pr->type == 'complaint')
@@ -142,15 +142,15 @@
                             </div>
                         </div>
                         <div style="padding-left: 20px; cursor: pointer;"
-                            onclick="window.location.href='/detail/{{ $pr->id }}'">
+                            onclick="window.location.href='/pengaduan/detail/{{ $pr->id }}'">
                             <h6 class="text-primary">Jawaban: {{ $pr->name_admin }}</h6>
                             <p>
                                 {{ \Illuminate\Support\Str::limit($pr->response_details, 400, '...') }}
                             </p>
                         </div>
                     </div>
+                @endforeach
             </div>
-            @endforeach
     </div>
 
 

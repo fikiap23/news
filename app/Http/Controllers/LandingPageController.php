@@ -448,6 +448,12 @@ class LandingPageController extends AppBaseController
         return redirect()->route('pengaduan')->with('success', 'Pengaduan berhasil dikirim.');
     }
 
+    public function pengaduanShow($id)
+    {
+        $pengaduan = Complaint::findOrFail($id);
+        return view('front_new.pengaduan_detail', compact('pengaduan'));
+    }
+
     /** 
      * @return Application|Factory|View
      */
