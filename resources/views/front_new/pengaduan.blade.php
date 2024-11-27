@@ -122,34 +122,38 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex mb-3" style="padding: 20px">
-                                <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                                <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3"
+                                    style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
 
 
-                                    <a href="/detail/{{ $pr->id }}" class="text-decoration-none">
-                                        <p class="card-title">
-                                            <span style="font-weight: bold;">
-                                                @if ($pr->type == 'complaint')
-                                                    Pengaduan
-                                                @elseif ($pr->type == 'appreciation')
-                                                    Apresiasi
-                                                @endif
-                                            </span>
-                                            dari {{ $pr->name }} - Tanggal: {{ $pr->created_at->format('d F Y') }}
-                                        </p>
-                                        <p class="card-text">{{ $pr->message }}</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div style="padding-left: 20px">
-                                <h6 class="text-primary">Jawaban: {{ $pr->name_admin }}</h6>
-                                <p>{{ $pr->response_details }}</p>
+                                <a href="/detail/{{ $pr->id }}" class="text-decoration-none">
+                                    <p class="card-title">
+                                        <span style="font-weight: bold;">
+                                            @if ($pr->type == 'complaint')
+                                                Pengaduan
+                                            @elseif ($pr->type == 'appreciation')
+                                                Apresiasi
+                                            @endif
+                                        </span>
+                                        dari {{ $pr->name }} - Tanggal: {{ $pr->created_at->format('d F Y') }}
+                                    </p>
+                                    <p class="card-text">{{ $pr->message }}</p>
+                                </a>
                             </div>
                         </div>
+                        <div style="padding-left: 20px; cursor: pointer;"
+                            onclick="window.location.href='/detail/{{ $pr->id }}'">
+                            <h6 class="text-primary">Jawaban: {{ $pr->name_admin }}</h6>
+                            <p>
+                                {{ \Illuminate\Support\Str::limit($pr->response_details, 400, '...') }}
+                            </p>
+                        </div>
                     </div>
-                @endforeach
             </div>
+            @endforeach
+    </div>
 
 
-        </section>
+    </section>
     </div>
 @endsection
