@@ -53,7 +53,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">Tanggal Pengaduan</th>
-                                <td>{{ $pengaduan->created_at->format('d F Y, H:i') }}</td>
+                                <td>{{ $pengaduan->created_at->format('d F Y') }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Isi Laporan</th>
@@ -65,10 +65,11 @@
                     @if ($pengaduan->image)
                         <div class="mb-4">
                             <h5>Lampiran Gambar:</h5>
-                            <img src="{{ asset('storage/' . $pengaduan->image) }}" alt="Lampiran"
-                                class="img-fluid rounded shadow">
+                            <img src="{{ asset('uploads/' . $pengaduan->image) }}" alt="Lampiran"
+                                class="img-fluid rounded shadow" style="max-width: 100%; height: auto; max-height: 400px;">
                         </div>
                     @endif
+
 
                     @if ($pengaduan->response_details)
                         <div class="mt-5">
