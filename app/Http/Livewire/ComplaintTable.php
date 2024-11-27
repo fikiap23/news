@@ -101,7 +101,6 @@ class ComplaintTable extends LivewireTableComponent
                 'rows' => $this->rows,
                 'modalsView' => $this->modalsView(),
                 'bulkActions' => $this->bulkActions,
-                'componentName' => 'complaint.add-button', // Updated component name for complaint
             ]);
     }
 }

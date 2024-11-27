@@ -7,7 +7,7 @@
     <div class="container-fluid ">
         <div class="d-flex flex-column overflow-auto">
             @include('flash::message')
-            <livewire:complaint-table />
+            <livewire:agenda-table />
         </div>
     </div>
 @endsection

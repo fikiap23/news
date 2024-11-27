@@ -61,7 +61,7 @@ class AgendaController extends AppBaseController
 
         $this->agendaRepository->store($input); // Call the store method from AgendaRepository
 
-        Flash::success(__('messages.placeholder.agenda_created_successfully'));
+        Flash::success(__('Berhasil membuat agenda'));
 
         return redirect(route('agenda.index')); // Redirect to the agenda index page
     }
