@@ -5,7 +5,7 @@
 @section('content')
     <div class="py-5">
         <section class="container">
-            <h1 class="text-center text-primary mb-5">Form Pengaduan Masyarakat</h1>
+            <h1 class="text-center text-primary mb-5">Form Laporan Masyarakat</h1>
 
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,7 +27,7 @@
 
             <div class="card shadow">
                 <div class="card-body p-4">
-                    <h4 class="card-title text-center mb-4">Silakan Isi Data Pengaduan</h4>
+                    <h4 class="card-title text-center mb-4">Silakan Isi Data Laporan</h4>
 
                     <form action="{{ route('pengaduan.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -72,6 +72,19 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="complaint_type" class="form-label" style="padding-left: 20px">Jenis
+                                Laporan</label>
+                            <select name="complaint_type" id="complaint_type" class="form-control" required>
+                                <option value="">-- Pilih Jenis --</option>
+                                <option value="Pengaduan" {{ old('complaint_type') == 'Pengaduan' ? 'selected' : '' }}>
+                                    Pengaduan</option>
+                                <option value="Apresiasi" {{ old('complaint_type') == 'Apresiasi' ? 'selected' : '' }}>
+                                    Apresiasi</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3">
                             <label for="message" class="form-label" style="padding-left: 20px">Isi Pengaduan</label>
                             <textarea name="message" id="message" rows="5" class="form-control" required
                                 placeholder="Jelaskan pengaduan Anda">{{ old('message') }}</textarea>
@@ -91,24 +104,24 @@
             <div class="comments-section">
                 <h4 class="text-center text-black">Data Pengaduan Website</h4>
 
-                @foreach ($comments as $comment)
+                @foreach ($pengaduanRespon as $pr)
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex mb-3" style="padding: 20px">
                                 <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3">
                                 <div>
-                                    <a href="/detail/{{ $comment->id }}" class="text-decoration-none">
+                                    <a href="/detail/{{ $pr->id }}" class="text-decoration-none">
                                         <h5 class="card-title">
-                                            Pengaduan dari {{ $comment->user_name }} - Tanggal:
-                                            {{ $comment->created_at->format('d F Y') }}
+                                            Pengaduan dari {{ $pr->name }} - Tanggal:
+                                            {{ $pr->created_at->format('d F Y') }}
                                         </h5>
-                                        <p class="card-text">{{ $comment->short_description }}</p>
+                                        <p class="card-text">{{ $pr->question }}</p>
                                     </a>
                                 </div>
                             </div>
                             <div style="padding-left: 20px">
-                                <h6 class="text-primary">Jawaban: {{ $comment->response }}</h6>
-                                <p>{{ $comment->response_details }}</p>
+                                <h6 class="text-primary">Jawaban: {{ $pr->name_admin }}</h6>
+                                <p>{{ $pr->response }}</p>
                             </div>
                         </div>
                     </div>
