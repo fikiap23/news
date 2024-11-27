@@ -233,6 +233,9 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     Route::post('/pengaduan', [LandingPageController::class, 'pengaduanStore'])->name('pengaduan.store');
     Route::get('/pengaduan/detail/{id}', [LandingPageController::class, 'pengaduanShow'])->name('pengaduan.detail');
 
+    Route::get('/agenda', [LandingPageController::class, 'agenda'])->name('agenda');
+    Route::get('/agenda/detail/{id}', [LandingPageController::class, 'agendaShow'])->name('agenda.detail');
+
 
     //pages
     Route::get('page/{slug}', [PageController::class, 'showPageSlug'])->name('pages.show-page-slug');

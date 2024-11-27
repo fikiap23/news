@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCommentRequest;
+use App\Models\Agenda;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Complaint;
@@ -521,5 +522,17 @@ class LandingPageController extends AppBaseController
         $followers = Followers::with('follow')->whereFollowers($user->id)->get();
 
         return view('front_new.detail_pages.front-user-dashboard', compact('posts', 'user', 'following', 'followers'));
+    }
+
+    public function agenda()
+    {
+        $agendas = Agenda::all();
+        return view('front_new.agenda', compact('agendas'));
+    }
+
+    public function agendaShow($id)
+    {
+        $agenda = Agenda::findOrFail($id); // Assuming you're using Eloquent to fetch the agenda by ID
+        return view('front_new.agenda_detail', compact('agenda'));
     }
 }
