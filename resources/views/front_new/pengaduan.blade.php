@@ -122,9 +122,9 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex mb-3" style="padding: 20px">
-                                <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3"
-                                    width="55px">
-                                <div>
+                                <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+
+
                                     <a href="/detail/{{ $pr->id }}" class="text-decoration-none">
                                         <p class="card-title">
                                             <span style="font-weight: bold;">
