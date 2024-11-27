@@ -72,13 +72,13 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="complaint_type" class="form-label" style="padding-left: 20px">Jenis
+                            <label for="type" class="form-label" style="padding-left: 20px">Jenis
                                 Laporan</label>
-                            <select name="complaint_type" id="complaint_type" class="form-control" required>
+                            <select name="type" id="type" class="form-control" required>
                                 <option value="">-- Pilih Jenis --</option>
-                                <option value="Pengaduan" {{ old('complaint_type') == 'Pengaduan' ? 'selected' : '' }}>
+                                <option value="complaint" {{ old('type') == 'Pengaduan' ? 'selected' : '' }}>
                                     Pengaduan</option>
-                                <option value="Apresiasi" {{ old('complaint_type') == 'Apresiasi' ? 'selected' : '' }}>
+                                <option value="appreciation" {{ old('type') == 'Apresiasi' ? 'selected' : '' }}>
                                     Apresiasi</option>
                             </select>
                         </div>
@@ -104,6 +104,20 @@
             <div class="comments-section">
                 <h4 class="text-center text-black">Data Pengaduan Website</h4>
 
+                <form method="GET" action="{{ route('pengaduan') }}" class="mb-4">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <select name="type" class="form-select" onchange="this.form.submit()">
+                                <option value="">-- Semua Jenis --</option>
+                                <option value="complaint" {{ request('type') == 'complaint' ? 'selected' : '' }}>Pengaduan
+                                </option>
+                                <option value="appreciation" {{ request('type') == 'appreciation' ? 'selected' : '' }}>
+                                    Apresiasi</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
                 @foreach ($pengaduanRespon as $pr)
                     <div class="card mb-3">
                         <div class="card-body">
@@ -111,22 +125,29 @@
                                 <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3">
                                 <div>
                                     <a href="/detail/{{ $pr->id }}" class="text-decoration-none">
-                                        <h5 class="card-title">
-                                            Pengaduan dari {{ $pr->name }} - Tanggal:
-                                            {{ $pr->created_at->format('d F Y') }}
-                                        </h5>
-                                        <p class="card-text">{{ $pr->question }}</p>
+                                        <p class="card-title">
+                                            <span style="font-weight: bold;">
+                                                @if ($pr->type == 'complaint')
+                                                    Pengaduan
+                                                @elseif ($pr->type == 'appreciation')
+                                                    Apresiasi
+                                                @endif
+                                            </span>
+                                            dari {{ $pr->name }} - Tanggal: {{ $pr->created_at->format('d F Y') }}
+                                        </p>
+                                        <p class="card-text">{{ $pr->message }}</p>
                                     </a>
                                 </div>
                             </div>
                             <div style="padding-left: 20px">
                                 <h6 class="text-primary">Jawaban: {{ $pr->name_admin }}</h6>
-                                <p>{{ $pr->response }}</p>
+                                <p>{{ $pr->response_details }}</p>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
+
 
         </section>
     </div>

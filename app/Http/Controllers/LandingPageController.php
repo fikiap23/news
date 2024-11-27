@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateCommentRequest;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Complaint;
 use App\Models\Emoji;
 use App\Models\Followers;
 use App\Models\Post;
@@ -406,56 +407,45 @@ class LandingPageController extends AppBaseController
     /** 
      * @return Application|Factory|View
      */
-    public function pengaduan()
+    public function pengaduan(Request $request)
     {
-        // Dummy comments array
-        $pengaduanRespon = [
-            (object)[
-                'id' => 1,
-                'name' => 'Winni Alawiyah',
-                'created_at' => now(),
-                'question' => 'Pagi, untuk format surat pernyataan kebenaran dokumen yg ada di laman dpmtsp.bandung.go.id/ ini dim ...',
-                'name_admin' => 'anggaInformasi',
-                'response' => 'Yth. Winni Alawiyah Selamat pagi untuk form pernyataan kebenaran dokumen silahkan didownload diweb ...'
-            ],
-            (object)[
-                'id' => 2,
-                'name' => 'Sri widi febrianti',
-                'created_at' => now()->subDays(1),
-                'question' => 'Tidak bisa masuk akun karena lupa password dan no telp yg terdaftar di database sudah tidak aktif...',
-                'name_admin' => 'auI2022',
-                'response' => 'Yth. Ibu Sri widi febrianti Selamat sore, terkait permasalahan tersebut dapat kami bantu untuk dil ...'
-            ],
-            (object)[
-                'id' => 3,
-                'name' => 'Teguh Maulana',
-                'created_at' => now()->subDays(2),
-                'question' => 'Kepada DPMPSTP, ijin bertanya terkait sistem OSS, ketika saya menambah KBLi dan terdapat status "PKK" ...',
-                'name_admin' => 'auI2022',
-                'response' => 'Yth. Bapak Teguh Maulana Selamat pagi, untuk status PKKPR apabilah terlulus Menunggu Verifikasi Pers ...'
-            ]
-        ];
+        // Ambil nilai filter dari request
+        $filterType = $request->input('type');
 
-        return view('front_new.pengaduan', compact('pengaduanRespon'));
+        // Query dengan kondisi filter jika ada
+        $pengaduanRespon = Complaint::query()
+            ->when($filterType, function ($query, $filterType) {
+                return $query->where('type', $filterType);  // Apply filter by type if provided
+            })
+            ->orderBy('created_at', 'desc')  // Apply order before fetching data
+            ->get();  // Fetch the results
+
+        return view('front_new.pengaduan', compact('pengaduanRespon', 'filterType'));
     }
 
     public function pengaduanStore(Request $request)
     {
-        // Validasi data
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'phone' => 'required|string|max:15',
-            'subject' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'village' => 'required|string|max:255',
             'message' => 'required|string',
-            'attachment' => 'nullable|file|mimes:jpg,png,pdf,doc,docx|max:2048',
+            'type' => 'required|in:complaint,appreciation',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        // Simpan data ke database (contoh)
-        // Pengaduan::create($validated);
+        $data = $request->except('image');
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('pengaduan.create')->with('success', 'Pengaduan berhasil dikirim!');
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('complaints', 'public');
+        }
+
+        Complaint::create($data);
+
+        return redirect()->route('pengaduan')->with('success', 'Pengaduan berhasil dikirim.');
     }
 
     /** 
