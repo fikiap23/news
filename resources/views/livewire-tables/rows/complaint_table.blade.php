@@ -45,9 +45,10 @@
 
 <x-livewire-tables::bs5.table.cell>
     @if (!empty($row->image))
-        <a href="{{ asset($row->image) }}" data-lightbox="complaint-image-{{ $row->id }}"
+        <a href="{{ asset('uploads/' . $row->image) }}" data-lightbox="complaint-image-{{ $row->id }}"
             class="text-decoration-none">
-            <img src="{{ asset($row->image) }}" width="50px" height="50px" class="p-2 custom-object-fit">
+            <img src="{{ asset('uploads/' . $row->image) }}" width="50px" height="50px"
+                class="p-2 custom-object-fit">
         </a>
     @else
         <span class="text-muted">No image available</span>

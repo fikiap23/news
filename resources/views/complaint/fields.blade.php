@@ -44,7 +44,8 @@
     <div class="mb-5 col-lg-12">
         <div id="preview" class="additional-images">
             @if (isset($complaint->image))
-                <img src="{{ asset($complaint->image) }}" width="100px" height="60px" class="border-color" />
+                <img src="{{ asset('uploads/' . $complaint->image) }}" width="100px" height="60px"
+                    class="border-color" />
             @endif
         </div>
     </div>

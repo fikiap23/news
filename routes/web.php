@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ComplaintController;
@@ -179,6 +180,9 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
 
     Route::resource('complaint', ComplaintController::class);
     Route::get('complaint/edit/{id}', [ComplaintController::class, 'edit'])->name('complaint.edit');
+
+    Route::resource('agenda', AgendaController::class);
+    // Route::get('complaint/edit/{id}', [ComplaintController::class, 'edit'])->name('complaint.edit');
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {

@@ -81,6 +81,15 @@
     </li>
 @endcanany
 
+@canany(['manage_agenda'])
+    <li class="nav-item aside-item-collapse {{ Request::is(['admin/agenda*']) ? 'active' : '' }}">
+        <a class="nav-link aside-collapse-btn d-flex align-items-center py-3" href={{ route('agenda.index') }}>
+            <span class="aside-menu-icon pe-3"><i class="fas fa-calendar fs-4"></i></span>
+            <span class="aside-menu-title">Agenda</span>
+        </a>
+    </li>
+@endcanany
+
 @can('manage_pages')
     <li class="nav-item {{ Request::is('admin/pages*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('pages.index') }}">
