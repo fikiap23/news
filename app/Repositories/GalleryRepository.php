@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Gallery;
 use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
@@ -61,8 +60,6 @@ class GalleryRepository extends BaseRepository
             throw new UnprocessableEntityHttpException($e->getMessage());
         }
     }
-
-
 
     /**
      * @param $input

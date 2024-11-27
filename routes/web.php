@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmojiController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\SocialAuthController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
+use App\Models\Complaint;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -174,6 +176,9 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
 
     Route::resource('gallery-images', GalleryController::class);
     Route::get('gallery-images/edit/{id}', [GalleryController::class, 'edit'])->name('gallery-images.edit');
+
+    Route::resource('complaint', ComplaintController::class);
+    Route::get('complaint/edit/{id}', [ComplaintController::class, 'edit'])->name('complaint.edit');
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {

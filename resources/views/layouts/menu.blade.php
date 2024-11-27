@@ -64,6 +64,14 @@
         </a>
     </li>
 @endcan
+@canany(['manage_complaint'])
+    <li class="nav-item aside-item-collapse {{ Request::is(['admin/complaint*']) ? 'active' : '' }}">
+        <a class="nav-link aside-collapse-btn d-flex align-items-center py-3" href="{{ route('complaint.index') }}">
+            <span class="aside-menu-icon pe-3"><i class="fas fa-book-journal-whills fs-4"></i></span>
+            <span class="aside-menu-title">Laporan</span>
+        </a>
+    </li>
+@endcanany
 @canany(['manage_gallery_image'])
     <li class="nav-item aside-item-collapse {{ Request::is(['admin/gallery-images*']) ? 'active' : '' }}">
         <a class="nav-link aside-collapse-btn d-flex align-items-center py-3" href="{{ route('gallery-images.index') }}">

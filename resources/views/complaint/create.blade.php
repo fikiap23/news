@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 {{ Form::open(['route' => 'gallery-images.store', 'enctype' => 'multipart/form-data']) }}
-                @include('gallery.fields')
+                @include('complaint.fields')
                 {{ Form::close() }}
             </div>
         </div>
