@@ -101,7 +101,7 @@
                     </form>
                 </div>
             </div>
-            <div class="comments-section">
+            <div class="comments-section mt-5">
                 <h4 class="text-center text-black">Data Laporan Website</h4>
 
                 <form method="GET" action="{{ route('pengaduan') }}" class="mb-4">
@@ -122,7 +122,8 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex mb-3" style="padding: 20px">
-                                <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3">
+                                <img src="{{ asset('assets/image/user.png') }}" alt="User Avatar" class="avatar me-3"
+                                    width="55px">
                                 <div>
                                     <a href="/detail/{{ $pr->id }}" class="text-decoration-none">
                                         <p class="card-title">
