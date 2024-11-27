@@ -85,9 +85,9 @@
 
 
                         <div class="mb-3">
-                            <label for="message" class="form-label" style="padding-left: 20px">Isi Pengaduan</label>
+                            <label for="message" class="form-label" style="padding-left: 20px">Isi Laporan</label>
                             <textarea name="message" id="message" rows="5" class="form-control" required
-                                placeholder="Jelaskan pengaduan Anda">{{ old('message') }}</textarea>
+                                placeholder="Jelaskan lapoaran Anda">{{ old('message') }}</textarea>
                         </div>
 
                         <div class="mb-3">
@@ -97,12 +97,12 @@
                             <small class="text-muted">Format yang diizinkan: JPG, PNG (max: 2MB)</small>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Kirim Pengaduan</button>
+                        <button type="submit" class="btn btn-primary w-100">Kirim Laporan</button>
                     </form>
                 </div>
             </div>
             <div class="comments-section">
-                <h4 class="text-center text-black">Data Pengaduan Website</h4>
+                <h4 class="text-center text-black">Data Laporan Website</h4>
 
                 <form method="GET" action="{{ route('pengaduan') }}" class="mb-4">
                     <div class="row ">
