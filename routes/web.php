@@ -240,6 +240,7 @@ Route::middleware('xss', 'setLanguage')->group(function () {
     Route::get('/agenda', [LandingPageController::class, 'agenda'])->name('agenda');
     Route::get('/agenda/detail/{id}', [LandingPageController::class, 'agendaShow'])->name('agenda.detail');
 
+    Route::get('/information-document', [LandingPageController::class, 'informationDocument'])->name('information_document');
 
     //pages
     Route::get('page/{slug}', [PageController::class, 'showPageSlug'])->name('pages.show-page-slug');

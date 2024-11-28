@@ -266,7 +266,7 @@
                                 <li><a class="fs-14 fw-6" href="/news">Berita</a></li>
                                 <li><a class="fs-14 fw-6" href="/pengaduan">Pengaduan Masyarakat</a></li>
                                 <li><a class="fs-14 fw-6" href="/agenda">Agenda</a></li>
-
+                                <li><a class="fs-14 fw-6" href="/information-document">Dokumen Informasi</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

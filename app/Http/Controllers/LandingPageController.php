@@ -535,4 +535,10 @@ class LandingPageController extends AppBaseController
         $agenda = Agenda::findOrFail($id); // Assuming you're using Eloquent to fetch the agenda by ID
         return view('front_new.agenda_detail', compact('agenda'));
     }
+
+    public function informationDocument()
+    {
+        $agendas = Agenda::all();
+        return view('front_new.information_document', compact('agendas'));
+    }
 }
