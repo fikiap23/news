@@ -97,7 +97,7 @@ class InformationDocumentController extends AppBaseController
 
         Flash::success(__('Berhasil diperbarui'));
 
-        return redirect(route('information_document.index')); // Redirect to the information document index page
+        return redirect(route('information-document.index')); // Redirect to the information document index page
     }
 
     /**

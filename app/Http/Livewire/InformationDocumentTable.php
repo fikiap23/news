@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\InformationDocument; // Model InformationDocument
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use Illuminate\Support\Facades\File;
 
 class InformationDocumentTable extends LivewireTableComponent
 {
@@ -52,6 +53,14 @@ class InformationDocumentTable extends LivewireTableComponent
     {
         $document = InformationDocument::findOrFail($id);
         $document->delete();
+
+        // Check if the document exists in the public path
+        $documentPath = public_path('uploads/documents/' . basename($document->document)); // Change to 'complaints'
+
+        // Delete the document from the server if it exists
+        if (File::exists($documentPath)) {
+            File::delete($documentPath);
+        }
 
         // Optionally, you can notify the user or refresh the table
         session()->flash('message', 'Dokumen berhasil dihapus.'); // Translated success message

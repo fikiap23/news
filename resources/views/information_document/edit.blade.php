@@ -7,7 +7,8 @@
         <div class="d-flex justify-content-between align-items-end mb-5">
             <h1>@yield('title')</h1>
             <div class="d-flex align-items-center py-1">
-                <a href="{{ route('agenda.index') }}" class="btn  btn-outline-primary">{{ __('messages.common.back') }}</a>
+                <a href="{{ route('information-document.index') }}"
+                    class="btn  btn-outline-primary">{{ __('messages.common.back') }}</a>
             </div>
         </div>
     </div>
@@ -18,8 +19,8 @@
         @include('layouts.errors')
         <div class="card">
             <div class="card-body">
-                {{ Form::open(['route' => ['agenda.update', $agenda->id], 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
-                @include('agenda.fields')
+                {{ Form::open(['route' => ['information-document.update', $document->id], 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
+                @include('information_document.fields')
                 {{ Form::close() }}
             </div>
         </div>
