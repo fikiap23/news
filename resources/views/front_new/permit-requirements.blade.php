@@ -24,7 +24,7 @@
                             <th>Nama Jenis Izin</th>
                             <th>Durasi (Hari)</th>
                             <th>Bidang Izin</th>
-                            <th>Opsional</th>
+                            <th>Opsi</th>
                         </tr>
                     </thead>
                     <tbody>
