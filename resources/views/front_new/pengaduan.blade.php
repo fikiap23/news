@@ -5,7 +5,14 @@
 @section('content')
     <div class="py-5">
         <section class="container">
-            <h1 class="text-center text-primary mb-5">Form Laporan Masyarakat</h1>
+            <!-- Start header section -->
+            <section class="text-center py-5 mb-3"
+                style="background: linear-gradient(135deg, #ff7300, #f3d49b); color: #fff;">
+                <div class="container">
+                    <h1 class="display-5 fw-bold">Form Laporan Masyarakat</h1>
+                </div>
+            </section>
+            <!-- End header section -->
 
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">

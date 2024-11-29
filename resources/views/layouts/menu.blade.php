@@ -90,6 +90,16 @@
     </li>
 @endcanany
 
+@canany(['manage_information_document'])
+    <li class="nav-item aside-item-collapse {{ Request::is(['admin/information-document*']) ? 'active' : '' }}">
+        <a class="nav-link aside-collapse-btn d-flex align-items-center py-3"
+            href={{ route('information-document.index') }}>
+            <span class="aside-menu-icon pe-3"><i class="fas fa-file-archive fs-4"></i></span>
+            <span class="aside-menu-title">Dokumen Informasi</span>
+        </a>
+    </li>
+@endcanany
+
 @can('manage_pages')
     <li class="nav-item {{ Request::is('admin/pages*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('pages.index') }}">
@@ -134,7 +144,8 @@
 @endcan
 @can('manage_sub_categories')
     <li class="nav-item {{ Request::is('admin/sub-categories*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('sub-categories.index') }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page"
+            href="{{ route('sub-categories.index') }}">
             <span class="aside-menu-icon pe-3">
                 <i class="fa-brands fa-elementor"></i>
             </span>

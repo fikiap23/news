@@ -10,6 +10,7 @@ use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\DBDownloadController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\InformationDocumentController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MailSettingController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
 use App\Models\Complaint;
+use App\Models\InformationDocument;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -183,6 +185,8 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
 
     Route::resource('agenda', AgendaController::class);
     // Route::get('complaint/edit/{id}', [ComplaintController::class, 'edit'])->name('complaint.edit');
+
+    Route::resource('information-document', InformationDocumentController::class);
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {

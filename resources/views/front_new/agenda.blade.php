@@ -5,9 +5,9 @@
 @section('content')
     <div class="container mt-4">
         <!-- Start header section -->
-        <section class="bg-primary text-white text-center py-4">
+        <section class="text-center py-5" style="background: linear-gradient(135deg, #ff7300, #f3d49b); color: #fff;">
             <div class="container">
-                <h1 class="display-6 font-weight-bold">Agenda</h1>
+                <h1 class="display-5 fw-bold">Agenda</h1>
                 <p class="lead">Lihatlah Acara dan Agenda Mendatang</p>
             </div>
         </section>
