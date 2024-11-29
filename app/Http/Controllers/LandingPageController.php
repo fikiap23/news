@@ -542,4 +542,36 @@ class LandingPageController extends AppBaseController
         $documents = InformationDocument::all();
         return view('front_new.information_document', compact('documents'));
     }
+
+    public function permitRequirements()
+    {
+        $jenisIzins = [
+            (object)[
+                'nama_jenis_izin' => 'Izin jam operasional toko modern (IJOTM)',
+                'durasi_hari' => 5,
+                'bidang_izin' => 'Bidang Usaha Perdagangan',
+            ],
+            (object)[
+                'nama_jenis_izin' => 'Izin Lingkungan',
+                'durasi_hari' => 7,
+                'bidang_izin' => 'Bidang Lingkungan Hidup',
+            ],
+            (object)[
+                'nama_jenis_izin' => 'Izin Reklame',
+                'durasi_hari' => 10,
+                'bidang_izin' => 'Bidang Komunikasi dan Informatika',
+            ],
+            (object)[
+                'nama_jenis_izin' => 'Izin Kegiatan Usaha Mikro',
+                'durasi_hari' => 3,
+                'bidang_izin' => 'Bidang Usaha Mikro',
+            ],
+            (object)[
+                'nama_jenis_izin' => 'Izin Kerja Tenaga Asing (IMTA)',
+                'durasi_hari' => 30,
+                'bidang_izin' => 'Bidang Tenaga Kerja',
+            ],
+        ];
+        return view('front_new.permit-requirements', compact('jenisIzins'));
+    }
 }

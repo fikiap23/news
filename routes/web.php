@@ -246,6 +246,8 @@ Route::middleware('xss', 'setLanguage')->group(function () {
 
     Route::get('/information-document', [LandingPageController::class, 'informationDocument'])->name('information_document');
 
+    Route::get('/permit-requirements', [LandingPageController::class, 'permitRequirements'])->name('permit_requirements');
+
     //pages
     Route::get('page/{slug}', [PageController::class, 'showPageSlug'])->name('pages.show-page-slug');
 
