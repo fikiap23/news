@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Complaint;
 use App\Models\Emoji;
 use App\Models\Followers;
+use App\Models\InformationDocument;
 use App\Models\Post;
 use App\Models\PostReactionEmoji;
 use App\Models\Setting;
@@ -538,7 +539,7 @@ class LandingPageController extends AppBaseController
 
     public function informationDocument()
     {
-        $agendas = Agenda::all();
-        return view('front_new.information_document', compact('agendas'));
+        $documents = InformationDocument::all();
+        return view('front_new.information_document', compact('documents'));
     }
 }

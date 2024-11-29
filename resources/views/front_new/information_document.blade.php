@@ -1,6 +1,6 @@
 @extends('front_new.layouts.app')
 
-@section('title', 'Agenda')
+@section('title', 'Dokumen Informasi')
 
 @section('content')
     <div class="container my-5">
@@ -26,45 +26,45 @@
                     </div>
                 </div>
 
-                <!-- Card 1 -->
-                <div class="card mb-4 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary fw-bold">
-                            <i class="bi bi-journal-text me-2"></i> Regulasi
-                        </h5>
-                        <p class="text-muted mb-2">
-                            <small>
-                                <i class="bi bi-person-circle"></i> Atykus &nbsp; | &nbsp;
-                                <i class="bi bi-briefcase"></i> Semua Bidang &nbsp; | &nbsp;
-                                <i class="bi bi-calendar2"></i> 12 Jan 2015
-                            </small>
-                        </p>
-                        <p>Regulasi Dinas Penanaman Modal dan Perizinan Terpadu Satu Pintu</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            Detail <i class="bi bi-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
+                @foreach ($documents as $document)
+                    <div class="card mb-4 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary fw-bold">
+                                <i class="bi bi-journal-text me-2"></i> {{ ucfirst($document->title) }}
+                            </h5>
+                            <p class="text-muted mb-2">
+                                <small>
+                                    <i class="bi bi-person-circle"></i> {{ $document->author }} &nbsp; | &nbsp;
+                                    <i class="bi bi-briefcase"></i>
+                                    @switch($document->type)
+                                        @case('regulation')
+                                            Regulasi
+                                        @break
 
-                <!-- Card 2 -->
-                <div class="card mb-4 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary fw-bold">
-                            <i class="bi bi-journal-text me-2"></i> Publikasi Data
-                        </h5>
-                        <p class="text-muted mb-2">
-                            <small>
-                                <i class="bi bi-person-circle"></i> Harry Ridwan Ramadan &nbsp; | &nbsp;
-                                <i class="bi bi-briefcase"></i> Semua Bidang &nbsp; | &nbsp;
-                                <i class="bi bi-calendar2"></i> 12 Jan 2015
-                            </small>
-                        </p>
-                        <p>Publikasi Data Penanaman Modal dan Perizinan Terpadu Satu Pintu</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            Detail <i class="bi bi-chevron-right"></i>
-                        </a>
+                                        @case('data_publication')
+                                            Publikasi Data
+                                        @break
+
+                                        @case('others')
+                                            Lainnya
+                                        @break
+
+                                        @default
+                                            {{ ucfirst($document->type) }}
+                                    @endswitch
+                                    &nbsp; | &nbsp;
+                                    <i class="bi bi-calendar2"></i>
+                                    {{ $document->published_at ? $document->published_at->format('d M Y') : 'Tanggal tidak tersedia' }}
+                                </small>
+                            </p>
+                            <!-- Button to View Document -->
+                            <a href="{{ asset($document->document) }}" target="_blank"
+                                class="btn btn-outline-primary btn-sm">
+                                Lihat <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
 
             <!-- Sidebar -->
