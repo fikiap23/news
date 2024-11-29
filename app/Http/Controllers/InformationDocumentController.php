@@ -36,7 +36,8 @@ class InformationDocumentController extends AppBaseController
      */
     public function index(Request $request)
     {
-        return view('information_document.index');
+        $documents = $this->informationDocumentRepository->all();
+        return view('information_document.index', compact('documents'));
     }
 
     /**
@@ -75,9 +76,9 @@ class InformationDocumentController extends AppBaseController
      */
     public function edit($id)
     {
-        $informationDocument = InformationDocument::whereId($id)->firstOrFail(); // Fetch the information document by ID
+        $document = InformationDocument::whereId($id)->firstOrFail(); // Fetch the information document by ID
 
-        return view('information_document.edit', compact('informationDocument'));
+        return view('information_document.edit', compact('document'));
     }
 
     /**

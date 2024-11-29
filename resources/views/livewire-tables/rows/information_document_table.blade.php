@@ -26,7 +26,7 @@
 
 <x-livewire-tables::bs5.table.cell>
     @if ($row->document)
-        <a href="{{ asset('storage/' . $document) }}" target="_blank" class="text-blue-500 underline">
+        <a href="{{ asset($row->document) }}" target="_blank" class="text-blue-500 underline">
             Lihat File
         </a>
     @else
@@ -38,7 +38,7 @@
 <x-livewire-tables::bs5.table.cell :customAttributes="['class' => 'custom-min-with']">
     <div class="d-flex align-items-start">
         <!-- Tombol Edit -->
-        <a href="{{ route('information_document.edit', $row['id']) }}" class="btn px-1 text-primary fs-3 slider-edit-btn"
+        <a href="{{ route('information-document.edit', $row['id']) }}" class="btn px-1 text-primary fs-3 slider-edit-btn"
             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
             data-bs-original-title="{{ __('messages.common.edit') }}" data-id="{{ $row->id }}">
             <i class="fa-solid fa-pen-to-square"></i>
