@@ -89,6 +89,93 @@
                     </div>
 
                 </div>
+                <!-- start latest-news-section -->
+                @if (isset($latestPosts) && !$latestPosts->isEmpty())
+                    <div class="container">
+                        <section class="latest-news-section pt-60">
+                            <div class="section-heading border-bottom-0">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-6 section-heading-left">
+                                        <h2 class="text-black mb-0">{{ __('messages.details.latest_news') }}</h2>
+                                    </div>
+                                    <div class=" col-sm-6 text-end">
+                                        <a href="{{ route('allPosts') }}"
+                                            class="fs-14 btn fw-6">{{ __('messages.details.view_more') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="latest-news-post pt-40">
+                                <div class="row">
+                                    @foreach ($latestPosts as $latestPost)
+                                        <div class="col-lg-3 col-md-4 col-sm-6 pb-lg-0 pb-sm-3">
+                                            <div class="card position-relative">
+                                                <div class="news-post-image rounded-10">
+                                                    <a href="{{ route('detailPage', $latestPost->slug) }}">
+                                                        {{--                                                            <img data-src="{{$latestPost->post_image}}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy"> --}}
+                                                        @if ($latestPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                            <button class="common-music-icon all-posts-music-icon"
+                                                                type="button">
+                                                                <i class="icon fa-solid fa-music text-white "></i>
+                                                            </button>
+                                                            <img src="{{ $latestPost->post_image }}" class="w-100 h-100"
+                                                                alt="" />
+                                                        @elseif($latestPost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                                            @php
+                                                                $thumbUrl =
+                                                                    !empty($latestPost->postVideo) &&
+                                                                    !empty($latestPost->postVideo->thumbnail_image_url)
+                                                                        ? $latestPost->postVideo->thumbnail_image_url
+                                                                        : null;
+                                                                $thumbImage =
+                                                                    !empty($latestPost->postVideo) &&
+                                                                    !empty($latestPost->postVideo->uploaded_thumb)
+                                                                        ? $latestPost->postVideo->uploaded_thumb
+                                                                        : asset('front_web/images/default.jpg');
+                                                            @endphp
+                                                            <button class="common-music-icon all-posts-music-icon"
+                                                                type="button">
+                                                                <i class="icon fa-solid fa-play text-white "></i>
+                                                            </button>
+                                                            <img src="{{ !empty($thumbUrl) ? $thumbUrl : $thumbImage }}"
+                                                                class="w-100 h-100" alt="" />
+                                                        @else
+                                                            <img src="{{ $latestPost->post_image }}" class="w-100 h-100"
+                                                                alt="" />
+                                                        @endif
+                                                    </a>
+                                                </div>
+                                                <a href="{{ route('categoryPage', $latestPost->category->slug) }}"
+                                                    class="tags position-absolute fw-7">{{ $latestPost->category->name }}</a>
+                                                <div class="news-post-content">
+                                                    <h3 class="text-black py-2 fw-7 mb-0 ">
+                                                        <a href="{{ route('detailPage', $latestPost->slug) }}"
+                                                            class="text-black py-2 fw-7">{!! $latestPost->title !!}</a>
+                                                    </h3>
+                                                    <p class="fs-14 text-gray mb-0 pb-2">
+                                                        {!! Str::limit($latestPost->description, 220) !!}
+                                                    </p>
+                                                    <div class="desc d-flex">
+
+                                                        <p class="fs-14 text-black mb-0"><a
+                                                                href="{{ route('userDetails', $latestPost->user->username ?? $latestPost->user->id) }}"
+                                                                class="text-black">{{ __('messages.common.by') }}
+                                                                {{ $latestPost->user->full_name }}</a>
+                                                        </p>
+                                                        <span class=" text-primary  px-2"> | </span>
+                                                        <p class="fs-14 text-black mb-0">
+                                                            {{ ucfirst(__('messages.common.' . strtolower($latestPost->created_at->format('M')))) }}
+                                                            {{ $latestPost->created_at->format('d , Y') }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                @endif
+                <!-- end latest-news-section -->
             </div>
         </section>
     </div>
