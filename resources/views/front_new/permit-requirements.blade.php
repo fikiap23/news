@@ -28,18 +28,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($jenisIzins as $index => $jenisIzin)
+                        @foreach ($permitRequirements as $index => $pr)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $jenisIzin->nama_jenis_izin }}</td>
-                                <td>{{ $jenisIzin->durasi_hari }}</td>
-                                <td>{{ $jenisIzin->bidang_izin }}</td>
-                                <td><button class="btn btn-outline-primary btn-sm">Lihat Persyaratan</button></td>
+                                <td>{{ $pr->permit_type_name }}</td>
+                                <td>{{ $pr->duration_days }}</td>
+                                <td>{{ $pr->permit_field }}</td>
+                                <td><a class="btn btn-outline-primary btn-sm" href="{{ $pr->requirement_link }}"
+                                        target="_blank">Lihat Persyaratan</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>

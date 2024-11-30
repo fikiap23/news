@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Tambah Agenda
+    Tambah Daftar Izin
 @endsection
 @section('header_toolbar')
     <div class="container-fluid">
