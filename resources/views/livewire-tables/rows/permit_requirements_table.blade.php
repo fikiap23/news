@@ -26,7 +26,7 @@
 <x-livewire-tables::bs5.table.cell :customAttributes="['class' => 'custom-min-with']">
     <div class="d-flex align-items-start">
         <!-- Tombol Edit -->
-        <a href="{{ route('permit_requirements.edit', $row['id']) }}" class="btn px-1 text-primary fs-3 slider-edit-btn"
+        <a href="{{ route('permit-requirements.edit', $row['id']) }}" class="btn px-1 text-primary fs-3 slider-edit-btn"
             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
             data-bs-original-title="{{ __('messages.common.edit') }}" data-id="{{ $row->id }}">
             <i class="fa-solid fa-pen-to-square"></i>

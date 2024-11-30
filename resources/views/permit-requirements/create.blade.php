@@ -15,7 +15,7 @@
         @include('layouts.errors')
         <div class="card">
             <div class="card-body">
-                {{ Form::open(['route' => 'agenda.store', 'enctype' => 'multipart/form-data']) }}
+                {{ Form::open(['route' => 'permit-requirements.store', 'enctype' => 'multipart/form-data']) }}
                 @include('permit-requirements.fields')
                 {{ Form::close() }}
             </div>
