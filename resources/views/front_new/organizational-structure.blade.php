@@ -128,8 +128,7 @@
                 <h2 align="center"> Struktur Organisasi </h2>
 
                 <div class="row center">
-                    <img src="https://ptsp.sumedangkab.go.id/ptsp/asset/logo/struktur_baru.jpg" class="center"
-                        style="max-width: 960px; width: 100%;">
+                    <img src={{ asset('images/struktur_baru.jpg') }} class="center" style="max-width: 960px; width: 100%;">
                 </div>
             </div>
     </div>
