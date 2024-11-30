@@ -100,6 +100,16 @@
     </li>
 @endcanany
 
+@canany(['manage_permit_requirements'])
+    <li class="nav-item aside-item-collapse {{ Request::is(['admin/permit-requirements*']) ? 'active' : '' }}">
+        <a class="nav-link aside-collapse-btn d-flex align-items-center py-3"
+            href={{ route('permit-requirements.index') }}>
+            <span class="aside-menu-icon pe-3"><i class="fas fa-book-bookmark fs-4"></i></span>
+            <span class="aside-menu-title">Daftar Izin</span>
+        </a>
+    </li>
+@endcanany
+
 @can('manage_pages')
     <li class="nav-item {{ Request::is('admin/pages*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('pages.index') }}">

@@ -17,6 +17,7 @@ use App\Http\Controllers\MailSettingController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PermitRequirementsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\seoToolsController;
@@ -25,8 +26,6 @@ use App\Http\Controllers\SocialAuthController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
-use App\Models\Complaint;
-use App\Models\InformationDocument;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -187,6 +186,8 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     // Route::get('complaint/edit/{id}', [ComplaintController::class, 'edit'])->name('complaint.edit');
 
     Route::resource('information-document', InformationDocumentController::class);
+
+    Route::resource('permit-requirements', PermitRequirementsController::class);
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {

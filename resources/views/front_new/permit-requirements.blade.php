@@ -13,9 +13,9 @@
         </section>
         <!-- End header section -->
 
-        <!-- Agenda Table Section -->
+        <!-- Daftar Jenis Perizinan Table Section -->
         <div class="mt-5">
-            <h2 class="mb-4">Daftar Agenda</h2>
+            <h2 class="mb-4">Daftar Jenis Perizinan</h2>
             <div class="table-responsive">
                 <table id="jenisIzinTable" class="table table-bordered">
                     <thead>
