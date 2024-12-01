@@ -546,7 +546,23 @@ class LandingPageController extends AppBaseController
 
     public function permitRequirements()
     {
-        $permitRequirements = PermitRequirements::all();
+        // Get all permit requirements from the database
+        $permitRequirements = PermitRequirements::all()->map(function ($pr) {
+            // Decode the 'requirements' field from string to PHP object
+            $requirements = json_decode($pr->requirements, true); // Decode the JSON string into an object
+            // dd($requirements);
+
+            // If json_decode fails (e.g., invalid JSON string), set 'requirements' to null
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $requirements = null; // Handle the error case as needed
+            }
+
+            // Update the 'requirements' field to be a PHP object (not a string)
+            $pr->requirements = $requirements;
+
+            return $pr;
+        });
+        // dd($permitRequirements[0]->requirements);
         return view('front_new.permit-requirements', compact('permitRequirements'));
     }
 }

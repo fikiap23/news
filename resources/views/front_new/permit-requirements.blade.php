@@ -34,8 +34,14 @@
                                 <td>{{ $pr->permit_type_name }}</td>
                                 <td>{{ $pr->duration_days }}</td>
                                 <td>{{ $pr->permit_field }}</td>
-                                <td><a class="btn btn-outline-primary btn-sm" href="{{ $pr->requirement_link }}"
-                                        target="_blank">Lihat Persyaratan</a></td>
+                                <td>
+                                    <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#requirementModal"
+                                        data-requirements="{{ json_encode($pr->requirements) }}"
+                                        onclick="showRequirements(this)">
+                                        Lihat Persyaratan
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -44,9 +50,64 @@
         </div>
     </div>
 
+    <!-- Modal for Viewing Requirements -->
+    <div class="modal fade" id="requirementModal" tabindex="-1" aria-labelledby="requirementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #ff7300; color: white;">
+                    <h5 class="modal-title" id="requirementModalLabel">Persyaratan Izin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="requirementModalBody">
+                    <!-- Requirements will be dynamically injected here -->
+                </div>
+                <!-- Download button moved inside modal -->
+                <div class="modal-footer">
+                    <button class="btn btn-outline-success btn-sm" onclick="downloadPDF()">Download Persyaratan PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom CSS -->
     <style>
-        /* Add these styles for a better design */
+        /* Styling for the modal */
+        .modal-header {
+            background-color: #ff7300;
+            color: white;
+            border-bottom: 2px solid #f3d49b;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .list-group-item {
+            border-radius: 0.375rem;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            padding: 12px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .list-group-item:hover {
+            background-color: #f1f1f1;
+            border-color: #ff7300;
+        }
+
+        .list-group-item strong {
+            color: #ff7300;
+        }
+
         .table th,
         .table td {
             vertical-align: middle;
@@ -66,14 +127,98 @@
             border-bottom: 1px solid #dee2e6;
         }
 
-        /* Hover effect on table rows */
         .table-hover tbody tr:hover {
             background-color: #f1f1f1;
         }
 
-        /* Optional: Shadow effect on the table container */
         .table-responsive {
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
+
+    <!-- Include jsPDF CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Custom JS to show the modal content and generate PDF -->
+    <script>
+        // Function to show the requirements in the modal
+        function showRequirements(button) {
+            // Get the requirements from the data-requirements attribute
+            const requirements = JSON.parse(button.getAttribute('data-requirements'));
+
+            let modalBody = `<ul class="list-group">`;
+
+            // Loop through the requirements and add them to the modal body
+            requirements.forEach(requirement => {
+                modalBody += `<li class="list-group-item"><strong>${requirement.category}</strong><ul>`;
+                requirement.requirements.forEach(item => {
+                    modalBody += `<li>✔ ${item}</li>`;
+                });
+                modalBody += `</ul></li>`;
+            });
+
+            modalBody += `</ul>`;
+            document.getElementById('requirementModalBody').innerHTML = modalBody;
+        }
+
+        // Function to download the PDF
+        function downloadPDF() {
+            // Get the requirements data from the modal's body content
+            const modalBody = document.getElementById('requirementModalBody');
+            const requirements = Array.from(modalBody.querySelectorAll('.list-group-item')).map(item => {
+                const category = item.querySelector('strong').innerText;
+                const reqItems = Array.from(item.querySelectorAll('ul li')).map(li => li.innerText.replace('✔ ',
+                    ''));
+                return {
+                    category,
+                    requirements: reqItems
+                };
+            });
+
+            const {
+                jsPDF
+            } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Set font for the document
+            doc.setFont("helvetica");
+            doc.setFontSize(14);
+
+            // Title of the document
+            doc.setFontSize(18);
+            doc.text("Persyaratan Izin", 105, 20, {
+                align: "center"
+            });
+
+            let yPosition = 30; // Start at 30 to leave space for the title
+            const marginLeft = 15; // Left margin for text
+
+            // Loop through the requirements
+            requirements.forEach((requirement) => {
+                // Add category title (e.g., "Baru", "Balik_Nama/Perubahan")
+                doc.setFontSize(16);
+                doc.text(requirement.category, marginLeft, yPosition);
+                yPosition += 10;
+
+                // Add each requirement as a bullet point
+                doc.setFontSize(14);
+                requirement.requirements.forEach((item) => {
+                    const lines = doc.splitTextToSize(`• ${item}`, 180 -
+                    marginLeft); // Split text to fit within the page
+                    doc.text(lines, marginLeft, yPosition);
+                    yPosition += lines.length * 7; // Adjust yPosition based on the number of lines
+                });
+
+                // Add space between categories
+                yPosition += 12;
+            });
+
+            // Add footer with page number
+            doc.setFontSize(10);
+            doc.text("Halaman " + doc.internal.getNumberOfPages(), 180, doc.internal.pageSize.height - 10);
+
+            // Save the document as a PDF
+            doc.save("persyaratan_izin.pdf");
+        }
+    </script>
 @endsection
