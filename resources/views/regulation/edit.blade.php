@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Jawab Laporan
+    Update Persyarat Izin
 @endsection
 @section('header_toolbar')
     <div class="container-fluid ">
@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-body">
                 {{ Form::open(['route' => ['regulation.update', $regulation->id], 'method' => 'put', 'enctype' => 'multipart/form-data']) }}
-                @include('regulation.fields')
+                @include('regulation.update-fields')
                 {{ Form::close() }}
             </div>
         </div>
