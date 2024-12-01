@@ -46,6 +46,24 @@
         </li>
     @endcan
 
+    @can('manage_permit_requirements')
+        <li
+            class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/permit-requirements*', 'admin/regulation*') ? 'd-none' : '' }}">
+            <a class="nav-link p-0 {{ Request::is('admin/permit-requirements*') ? 'active' : '' }}"
+                href="{{ route('permit-requirements.index') }}">
+                Jenis Izin
+            </a>
+        </li>
+
+        <li
+            class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/permit-requirements*', 'admin/regulation*') ? 'd-none' : '' }}">
+            <a class="nav-link p-0 {{ Request::is('admin/regulation*') ? 'active' : '' }}"
+                href="{{ route('regulation.index') }}">
+                Persyaratan Izin
+            </a>
+        </li>
+    @endcan
+
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ !Request::is('admin/pages*') ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/pages*') ? 'active' : '' }}" href="{{ route('pages.index') }}">
             {{ __('messages.pages') }}

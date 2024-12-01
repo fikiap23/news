@@ -19,6 +19,7 @@ use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermitRequirementsController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegulationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\seoToolsController;
 use App\Http\Controllers\SettingController;
@@ -188,6 +189,8 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     Route::resource('information-document', InformationDocumentController::class);
 
     Route::resource('permit-requirements', PermitRequirementsController::class);
+
+    Route::resource('regulation', RegulationController::class);
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {
