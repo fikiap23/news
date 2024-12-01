@@ -27,7 +27,6 @@ class CreatePermitRequirementsRequest extends FormRequest
             'permit_type_name' => 'required|string|max:255', // Required permit type name, must be a string
             'duration_days' => 'required|integer|min:1', // Required duration, must be an integer and at least 1
             'permit_field' => 'required|string|max:255', // Required field name, must be a string
-            'requirement_link' => 'nullable|url|max:255', // Optional link, must be a valid URL if provided
         ];
     }
 
@@ -50,9 +49,6 @@ class CreatePermitRequirementsRequest extends FormRequest
             'permit_field.required' => 'The permit field is required.',
             'permit_field.string' => 'The permit field must be a valid string.',
             'permit_field.max' => 'The permit field cannot exceed 255 characters.',
-
-            'requirement_link.url' => 'The requirement link must be a valid URL.',
-            'requirement_link.max' => 'The requirement link cannot exceed 255 characters.',
         ];
     }
 }

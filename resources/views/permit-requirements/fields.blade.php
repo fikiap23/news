@@ -15,8 +15,20 @@
     </div>
 
     <div class="mb-5 col-lg-12">
-        {{ Form::label('requirement_link', 'Tautan Persyaratan (Opsional):', ['class' => 'form-label mb-3']) }}
-        {{ Form::url('requirement_link', isset($permitRequirement) ? $permitRequirement->requirement_link : null, ['class' => 'form-control', 'id' => 'requirementLinkId', 'placeholder' => 'Masukkan URL Tautan Persyaratan']) }}
+        {{ Form::label('requirements', 'Pilih Persyaratan (Opsional):', ['class' => 'form-label mb-3']) }}
+
+        @foreach (['Baru', 'Balik Nama/Perubahan', 'Perpanjangan', 'Pemutihan'] as $category)
+            <div class="mb-4">
+                <h5>{{ $category }}</h5>
+
+                @foreach ($categories[$category] as $requirement)
+                    <div class="form-check">
+                        {{ Form::checkbox($category . '[]', $requirement, isset($permitRequirement) && in_array($requirement, json_decode($permitRequirement->requirements)->$category) ? true : false, ['class' => 'form-check-input', 'id' => 'requirement_' . Str::slug($requirement)]) }}
+                        {{ Form::label('requirement_' . Str::slug($requirement), $requirement, ['class' => 'form-check-label']) }}
+                    </div>
+                @endforeach
+            </div>
+        @endforeach
     </div>
 
     <div class="col-lg-12 d-flex">

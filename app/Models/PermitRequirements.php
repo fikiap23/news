@@ -17,7 +17,7 @@ class PermitRequirements extends Model
         'permit_type_name',
         'duration_days',
         'permit_field',
-        'requirement_link',
+        'requirements',
     ];
 
     // If you need to define any casts for attributes
