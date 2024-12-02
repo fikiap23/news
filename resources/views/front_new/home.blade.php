@@ -5,7 +5,232 @@
 @section('pageCss')
     <link href="{{ asset('front_web/build/scss/home.css') }}" rel="stylesheet" type="text/css">
 @endsection
+<style>
+    /* Inovasi Section */
+    .inovasi-section {
+        background-color: #f9f9f9;
+        padding: 60px 0;
+    }
 
+    .inovasi-section h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #ff7300;
+        /* Primary Color */
+        margin-bottom: 40px;
+    }
+
+    /* Cards */
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+        opacity: 0;
+        /* Start hidden */
+        animation: fadeIn 1s ease-out forwards;
+        /* Apply fade-in animation */
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #ff7300;
+        /* Primary Color */
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .fitur-website {
+        background-color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+        opacity: 0;
+        /* Start hidden */
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    .fitur-website h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #ff7300;
+        /* Primary Color */
+        margin-bottom: 20px;
+    }
+
+    .fitur-website p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    /* Fitur Cards */
+    .fitur-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        opacity: 0;
+        /* Start hidden */
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    .fitur-cards .card {
+        background-color: #f9f9f9;
+        width: 250px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+        opacity: 0;
+        /* Start hidden */
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    .fitur-cards .card:hover {
+        transform: translateY(-10px);
+    }
+
+    .fitur-cards .card-icon {
+        font-size: 3rem;
+        color: #ff7300;
+        /* Primary Color */
+        margin-bottom: 20px;
+    }
+
+    .fitur-cards .card h4 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .fitur-cards .card p {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    /* Proses Perizinan Section */
+    .proses-perizinan-section {
+        background-color: #f7f7f7;
+        padding: 60px 0;
+    }
+
+    .step {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        /* Start hidden */
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    /* Lokasi Section */
+    .lokasi-section {
+        background-color: #f0f0f0;
+        padding: 60px 20px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 1s;
+        width: 100%;
+    }
+
+    .lokasi-section h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #ff7300;
+        /* Primary Color */
+        margin-bottom: 30px;
+    }
+
+    .lokasi-description {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    .map-container {
+        position: relative;
+        width: 100%;
+        /* Full width of the container */
+        height: 500px;
+        /* Adjust this value for better fit */
+        margin: 0 auto;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 1.2s;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 8px;
+    }
+
+    /* Responsiveness for mobile */
+    @media (max-width: 767px) {
+        .lokasi-section {
+            padding: 40px 20px;
+        }
+
+        .lokasi-section h2 {
+            font-size: 2rem;
+        }
+
+        .lokasi-description {
+            font-size: 1rem;
+        }
+
+        .map-container {
+            height: 300px;
+        }
+    }
+
+
+
+    /* Responsive Design */
+    @media (max-width: 767px) {
+        .fitur-cards {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
 
 @section('content')
     <div class="home-page">
@@ -51,42 +276,173 @@
         <section id="content">
             <div class="content-wrap">
                 <div class="container">
-
-                    <p><span class="dropcap">F</span>oster best practices effectiveness inspire breakthroughs solve immunize
-                        turmoil. Policy dialogue peaceful The Elders rural global support. Process inclusive innovate
-                        readiness, public sector complexity. Lifting people up cornerstone partner, technology working
-                        families civic engagement activist recognize potential global network. Countries tackling solution
-                        respond change-makers tackle. Assistance, giving; fight against malnutrition experience in the field
-                        lasting change scalable. Empowerment long-term, fairness policy community progress social
-                        responsibility; Cesar Chavez recognition. Expanding community ownership visionary indicator pursue
-                        these aspirations accessibility. Achieve; worldwide, life-saving initiative facilitate. New
-                        approaches, John Lennon humanitarian relief fundraise vaccine Jane Jacobs community health workers
-                        Oxfam. Our ambitions informal economies.</p>
-
-                    <blockquote class="mt-5 mb-5">
-                        <p>Human rights healthcare immunize; advancement grantees. Medical supplies; meaningful, truth
-                            technology catalytic effect. Promising development capacity building international enable
-                            poverty.</p>
-                    </blockquote>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p>Provide, Aga Khan, interconnectivity governance fairness replicable, new approaches visionary
-                                implementation. End hunger evolution, future promising development youth. Public sector,
-                                small-scale farmers; harness facilitate gender. Contribution dedicated global change
-                                movements, prosperity accelerate progress citizens of change. Elevate; accelerate reduce
-                                child mortality; billionaire philanthropy fluctuation, plumpy'nut care opportunity catalyze.
-                                Partner deep.</p>
+                    <section id="profile" class="profile-section py-60">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <!-- Konten Profil -->
+                                <div class="col-md-8">
+                                    <div class="profile-content">
+                                        <h2 class="text-black mb-3">DPMPTSP KABUPATEN SUMEDANG</h2>
+                                        <p class="fs-16 text-gray">
+                                            Selamat datang di website DPMPTSP Kab. Website ini di gunakan sebagai salah satu
+                                            bentuk memaksimalkan pelayanan publik kepada masyarakat dalam bidang penanaman
+                                            modal, perizinan dan non-perizinan di Kab. Sumedang.
+                                        </p>
+                                        <a href="/visi-misi" class="btn btn-primary mt-3">Detail Profile</a>
+                                    </div>
+                                </div>
+                                <!-- Gambar Profil -->
+                                <div class="col-md-4">
+                                    <div class="profile-image">
+                                        <img src="{{ asset('assets/image/logo_dpmtsp.png') }}" alt="Profile Image"
+                                            class="img-fluid" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </section>
 
-                        <div class="col-md-6">
-                            <p>Frontline harness criteria governance freedom contribution. Campaign Angelina Jolie natural
-                                resources, Rockefeller peaceful philanthropy human potential. Justice; outcomes reduce
-                                carbon emissions nonviolent resistance human being. Solve innovate aid communities; benefit
-                                truth rural development UNICEF meaningful work. Generosity Action Against Hunger relief;
-                                many voices impact crisis situation poverty pride. Vaccine carbon.</p>
+                </div>
+                <div class="container">
+                    <section id="inovasi" class="inovasi-section py-60">
+                        <div class="container">
+                            <h2 class="text-center mb-5">Inovasi Pelayanan</h2>
+                            <div class="row">
+                                <!-- Item 1 -->
+                                <div class="col-md-4 mb-4" data-aos="fade-up">
+                                    <div class="card">
+                                        <img src="https://picsum.photos/200/300" alt="MPP" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">MPP</h5>
+                                            <p class="card-text">Mal Pelayanan Publik</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Item 2 -->
+                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="card">
+                                        <img src="https://picsum.photos/200/300" alt="Laperon" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Laperon</h5>
+                                            <p class="card-text">Layanan Perizinan Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Item 3 -->
+                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="card">
+                                        <img src="https://picsum.photos/200/300" alt="Pakta Integritas"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Pakta Integritas</h5>
+                                            <p class="card-text">Pakta Integritas Elektronik</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add more items as needed -->
+                            </div>
                         </div>
-                    </div>
+                    </section>
+
+                    <section class="fitur-website">
+                        <h2>FITUR WEBSITE</h2>
+                        <p>Untuk memudahkan pelayanan, kami sertakan fitur sebagai berikut:</p>
+                        <div class="fitur-cards">
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h4>Daftar Izin Online</h4>
+                                    <p>Pendaftaran pengajuan perizinan dilakukan secara online, dengan cara membuat akun.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h4>Helpdesk</h4>
+                                    <p>Digunakan untuk pusat bantuan, kritik, saran atau pengaduan.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h4>Tracking Izin</h4>
+                                    <p>Digunakan untuk penelusuran status proses pengajuan permohonan izin.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h4>Grafik Investasi</h4>
+                                    <p>Mempresentasikan potensi dan investasi di Kab. Sumedang dalam bentuk data dan grafik.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h4>Persyaratan Izin</h4>
+                                    <p>Persyaratan yang harus dilengkapi ketika mengajukan permohonan perizinan dan
+                                        non-perizinan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="proses-perizinan" class="proses-perizinan-section py-60">
+                        <div class="container">
+                            <h2 class="text-center mb-5">Tahapan Proses Perizinan</h2>
+                            <p class="text-center mb-5">Berikut adalah proses sederhana dari pengajuan permohonan perizinan
+                                di Kabupaten Sumedang</p>
+                            <div class="row text-center">
+                                <div class="col-md-2">
+                                    <div class="step">
+                                        <i class="fas fa-pen-alt fa-3x mb-3" style="color: #ff7300;"></i>
+                                        <h5>DAFTAR</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="step">
+                                        <i class="fas fa-check-circle fa-3x mb-3" style="color: #ff7300;"></i>
+                                        <h5>VERIFIKASI</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="step">
+                                        <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #ff7300;"></i>
+                                        <h5>SURVEY</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="step">
+                                        <i class="fas fa-signature fa-3x mb-3" style="color: #ff7300;"></i>
+                                        <h5>PENANDATANGAN</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="step">
+                                        <i class="fas fa-file-invoice-dollar fa-3x mb-3" style="color: #ff7300;"></i>
+                                        <h5>RETRIBUSI</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="step">
+                                        <i class="fas fa-check fa-3x mb-3" style="color: #ff7300;"></i>
+                                        <h5>SELESAI</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
                 </div>
                 <!-- start latest-news-section -->
@@ -108,7 +464,7 @@
                                 <div class="row">
                                     @foreach ($latestPosts as $latestPost)
                                         <div class="col-lg-3 col-md-4 col-sm-6 pb-lg-0 pb-sm-3">
-                                            <div class="card position-relative">
+                                            <div class="card position-relative p-2">
                                                 <div class="news-post-image rounded-10">
                                                     <a href="{{ route('detailPage', $latestPost->slug) }}">
                                                         {{--                                                            <img data-src="{{$latestPost->post_image}}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy"> --}}
@@ -176,6 +532,22 @@
                     </div>
                 @endif
                 <!-- end latest-news-section -->
+
+                <div class="container-fluid">
+                    <section class="lokasi-section">
+                        <h2>Lokasi Kami</h2>
+                        <p class="lokasi-description">
+                            Temukan kami di alamat berikut untuk mendapatkan pelayanan terbaik dan informasi lebih lanjut
+                            mengenai layanan kami.
+                        </p>
+
+                        <div class="map-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.251526879751!2d107.91824897420888!3d-6.860429167118236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68d110d776cc7b%3A0x59e7d0b55b7ce695!2sMPP%20Mal%20Pelayanan%20Publik%20-%20(DPMPTSP)%20Kabupaten%20Sumedang!5e0!3m2!1sid!2sid!4v1733183546598!5m2!1sid!2sid"
+                                allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </section>
+                </div>
             </div>
         </section>
     </div>
