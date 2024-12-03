@@ -20,6 +20,58 @@
         margin-bottom: 40px;
     }
 
+    .inovasi-section .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .inovasi-section .card-img-top {
+        object-fit: cover;
+        height: 200px;
+        /* Adjust image height */
+    }
+
+    .inovasi-section .card-body {
+        flex-grow: 1;
+    }
+
+    .inovasi-section .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Ensure equal height layout for cards */
+    .inovasi-section .col-lg-4,
+    .inovasi-section .col-md-6,
+    .inovasi-section .col-12 {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 30%;
+        /* 3 per row on large screens */
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+        .inovasi-section .card {
+            height: auto;
+            /* Cards should not have a fixed height on smaller screens */
+        }
+
+        /* For medium-sized screens (tablets) */
+        .inovasi-section .col-md-6 {
+            flex: 1 0 48%;
+            /* 2 items per row */
+        }
+
+        /* For smaller screens (phones) */
+        .inovasi-section .col-12 {
+            flex: 1 0 100%;
+            /* 1 item per row */
+        }
+    }
+
     /* Cards */
     .card {
         border: 1px solid #ddd;
@@ -135,6 +187,28 @@
         padding: 60px 0;
     }
 
+    .proses-perizinan-section h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #ff7300;
+        /* Primary Color */
+        margin-bottom: 20px;
+    }
+
+    .proses-perizinan-section p {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 40px;
+    }
+
+    .proses-perizinan-section .row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* Add space between items */
+    }
+
     .step {
         padding: 20px;
         background-color: #fff;
@@ -143,7 +217,50 @@
         opacity: 0;
         /* Start hidden */
         animation: fadeIn 1s ease-out forwards;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: opacity 1s ease-out;
     }
+
+    .step h5 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-top: 10px;
+        white-space: normal;
+        /* Ensures text breaks correctly on smaller screens */
+    }
+
+    /* FadeIn Animation */
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .proses-perizinan-section .col-sm-4 {
+            flex: 1 0 45%;
+            /* 2 items per row on medium screens */
+        }
+
+        .proses-perizinan-section .col-md-2 {
+            flex: 1 0 45%;
+            /* Adjust to 2 items per row on smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .proses-perizinan-section .col-sm-4 {
+            flex: 1 0 100%;
+            /* 1 item per row on very small screens */
+        }
+    }
+
 
     /* Lokasi Section */
     .lokasi-section {
@@ -320,8 +437,8 @@
                             <h2 class="text-center mb-5">Inovasi Pelayanan</h2>
                             <div class="row">
                                 <!-- Item 1 -->
-                                <div class="col-md-4 mb-4" data-aos="fade-up">
-                                    <div class="card">
+                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up">
+                                    <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/mpp.jpg') }}" alt="MPP"
                                             class="card-img-top" />
                                         <div class="card-body">
@@ -331,8 +448,8 @@
                                     </div>
                                 </div>
                                 <!-- Item 2 -->
-                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="card">
+                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/layanan_online.jpg') }}" alt="Laperon"
                                             class="card-img-top" />
                                         <div class="card-body">
@@ -342,8 +459,8 @@
                                     </div>
                                 </div>
                                 <!-- Item 3 -->
-                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="card">
+                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/pakta_integritas.jpg') }}"
                                             alt="Pakta Integritas" class="card-img-top" />
                                         <div class="card-body">
@@ -352,11 +469,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Add more items as needed -->
-                                <!-- New Items Added Below -->
                                 <!-- One Stop Service -->
-                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                                    <div class="card">
+                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
                                             alt="One Stop Service" class="card-img-top" />
                                         <div class="card-body">
@@ -367,8 +482,8 @@
                                     </div>
                                 </div>
                                 <!-- Online Single Submission -->
-                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
-                                    <div class="card">
+                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}" alt="OSS"
                                             class="card-img-top" />
                                         <div class="card-body">
@@ -379,21 +494,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Perizinan Online -->
-                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
-                                    <div class="card">
-                                        <img src="{{ asset('images/inovasi/perizinan_online.jpg') }}"
-                                            alt="Perizinan Online" class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">Perizinan Online</h5>
-                                            <p class="card-text">Untuk menjangkau pelayanan yang lebih luas dan efisiensi
-                                                waktu dan biaya, pendaftaran dapat dilakukan secara online.</p>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Cetak Mandiri -->
-                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card">
+                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}" alt="Cetak Mandiri"
                                             class="card-img-top" />
                                         <div class="card-body">
@@ -474,51 +577,48 @@
                     </section>
 
                     <section id="proses-perizinan" class="proses-perizinan-section py-60">
-                        <div class="container">
-                            <h2 class="text-center mb-5">Tahapan Proses Perizinan</h2>
-                            <p class="text-center mb-5">Berikut adalah proses sederhana dari pengajuan permohonan perizinan
-                                di Kabupaten Sumedang</p>
-                            <div class="row text-center">
-                                <div class="col-md-2">
-                                    <div class="step">
-                                        <i class="fas fa-pen-alt fa-3x mb-3" style="color: #ff7300;"></i>
-                                        <h5>DAFTAR</h5>
-                                    </div>
+                        <h2 class="text-center mb-5">Tahapan Proses Perizinan</h2>
+                        <p class="text-center mb-5">Berikut adalah proses sederhana dari pengajuan permohonan perizinan di
+                            Kabupaten Sumedang</p>
+                        <div class="row text-center">
+                            <div class="col-md-2 col-sm-4 mb-4">
+                                <div class="step">
+                                    <i class="fas fa-pen-alt fa-3x mb-3" style="color: #ff7300;"></i>
+                                    <h5>DAFTAR</h5>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="step">
-                                        <i class="fas fa-check-circle fa-3x mb-3" style="color: #ff7300;"></i>
-                                        <h5>VERIFIKASI</h5>
-                                    </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 mb-4">
+                                <div class="step">
+                                    <i class="fas fa-check-circle fa-3x mb-3" style="color: #ff7300;"></i>
+                                    <h5>VERIFIKASI</h5>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="step">
-                                        <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #ff7300;"></i>
-                                        <h5>SURVEY</h5>
-                                    </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 mb-4">
+                                <div class="step">
+                                    <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #ff7300;"></i>
+                                    <h5>SURVEY</h5>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="step">
-                                        <i class="fas fa-signature fa-3x mb-3" style="color: #ff7300;"></i>
-                                        <h5>PENANDATANGAN</h5>
-                                    </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 mb-4">
+                                <div class="step">
+                                    <i class="fas fa-signature fa-3x mb-3" style="color: #ff7300;"></i>
+                                    <h5>PENANDATANGAN</h5>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="step">
-                                        <i class="fas fa-file-invoice-dollar fa-3x mb-3" style="color: #ff7300;"></i>
-                                        <h5>RETRIBUSI</h5>
-                                    </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 mb-4">
+                                <div class="step">
+                                    <i class="fas fa-file-invoice-dollar fa-3x mb-3" style="color: #ff7300;"></i>
+                                    <h5>RETRIBUSI</h5>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="step">
-                                        <i class="fas fa-check fa-3x mb-3" style="color: #ff7300;"></i>
-                                        <h5>SELESAI</h5>
-                                    </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 mb-4">
+                                <div class="step">
+                                    <i class="fas fa-check fa-3x mb-3" style="color: #ff7300;"></i>
+                                    <h5>SELESAI</h5>
                                 </div>
                             </div>
                         </div>
                     </section>
-
                 </div>
                 <!-- start latest-news-section -->
                 @if (isset($latestPosts) && !$latestPosts->isEmpty())
