@@ -26,29 +26,39 @@
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease-in-out;
+        height: 350px;
+        /* Set a fixed height for the cards */
+        display: flex;
+        flex-direction: column;
     }
 
     .inovasi-section .card-img-top {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* Ensures the image covers the card without stretching */
+        height: 200px;
+        /* Set the image height to fit within the card */
+        object-fit: contain;
+        /* Ensure the image fits inside without being cropped */
         object-position: center;
-        /* Keeps the center of the image visible */
+        /* Center the image */
     }
 
     .inovasi-section .card-body {
-        padding: 20px;
+        padding: 15px;
+        /* Reduce padding for a more compact card */
+        flex-grow: 1;
+        /* Ensure the card body expands to fill available space */
     }
 
     .inovasi-section .card-title {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
+        /* Smaller font size */
         font-weight: bold;
         color: #ff7300;
     }
 
     .inovasi-section .card-text {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        /* Slightly smaller text for a more compact layout */
         color: #666;
     }
 
@@ -406,6 +416,7 @@
             </div>
         </section>
         <!-- end hero section -->
+
 
         <section id="content">
             <div class="content-wrap">
