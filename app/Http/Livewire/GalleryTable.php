@@ -49,20 +49,22 @@ class GalleryTable extends LivewireTableComponent
     public function deleteSlider($id)
     {
         $slider = Slider::findOrFail($id);
-        $slider->delete();
 
-        // Check if the image exists in the public path
+        // Delete image file if it exists
         $imagePath = public_path('uploads/slider/' . basename($slider->image));
-
-        // Delete the image from the server if it exists
         if (File::exists($imagePath)) {
             File::delete($imagePath);
         }
 
-        // Optionally, you can notify the user or refresh the table
-        session()->flash('message', 'Slider deleted successfully.');
+        // Delete the slider
+        $slider->delete();
+
+        // Emit event back to frontend
         $this->emit('sliderDeleted');
+
+        session()->flash('message', 'Slider deleted successfully.');
     }
+
 
     public function render()
     {

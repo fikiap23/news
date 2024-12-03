@@ -49,28 +49,32 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Edit Button: Opens the edit page
-        const editBtns = document.querySelectorAll('.slider-edit-btn');
-        editBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default action (if necessary)
-                const id = this.dataset.id;
-                window.location.href = "{{ url('admin/gallery-images/edit') }}/" + id;
-            });
-        });
-
-        // Delete Button: Triggers the delete action
         const deleteBtns = document.querySelectorAll('.delete-slider-btn');
+
         deleteBtns.forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const id = this.dataset.id;
+                const sliderId = this.dataset.id;
 
-                // You can use a confirmation modal here
-                if (confirm("Are you sure you want to delete this media?")) {
-                    // Perform the delete operation (this will trigger the Livewire action)
-                    Livewire.emit('deleteSlider', id);
-                }
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emit('deleteSlider',
+                        sliderId); // Emit event ke Livewire
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                });
             });
         });
     });
