@@ -20,8 +20,8 @@
                 <div style="margin-top:60px; margin-bottom: 30px; text-align: center;">
                     <h2 style="margin-bottom:30px;" align="center"> Standar Pelayanan </h2>
                     <div style="position: relative; padding-top: 0; height: 0; padding-bottom: 56.25%; overflow: hidden;">
-                        <embed src="https://ptsp.sumedangkab.go.id/ptsp/data/download/SK_standar_pelayanan_FINAL.pdf"
-                            type="application/pdf" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                        <embed src="{{ asset('assets/file/SK_standar_pelayanan_FINAL.pdf') }}" type="application/pdf"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     </div>
                 </div>
             </div>

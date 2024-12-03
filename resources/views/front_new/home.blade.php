@@ -322,7 +322,8 @@
                                 <!-- Item 1 -->
                                 <div class="col-md-4 mb-4" data-aos="fade-up">
                                     <div class="card">
-                                        <img src="https://picsum.photos/200/300" alt="MPP" class="card-img-top" />
+                                        <img src="{{ asset('images/inovasi/mpp.jpg') }}" alt="MPP"
+                                            class="card-img-top" />
                                         <div class="card-body">
                                             <h5 class="card-title">MPP</h5>
                                             <p class="card-text">Mal Pelayanan Publik</p>
@@ -332,7 +333,8 @@
                                 <!-- Item 2 -->
                                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                                     <div class="card">
-                                        <img src="https://picsum.photos/200/300" alt="Laperon" class="card-img-top" />
+                                        <img src="{{ asset('images/inovasi/layanan_online.jpg') }}" alt="Laperon"
+                                            class="card-img-top" />
                                         <div class="card-body">
                                             <h5 class="card-title">Laperon</h5>
                                             <p class="card-text">Layanan Perizinan Online</p>
@@ -342,8 +344,8 @@
                                 <!-- Item 3 -->
                                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="card">
-                                        <img src="https://picsum.photos/200/300" alt="Pakta Integritas"
-                                            class="card-img-top" />
+                                        <img src="{{ asset('images/inovasi/pakta_integritas.jpg') }}"
+                                            alt="Pakta Integritas" class="card-img-top" />
                                         <div class="card-body">
                                             <h5 class="card-title">Pakta Integritas</h5>
                                             <p class="card-text">Pakta Integritas Elektronik</p>
@@ -351,6 +353,56 @@
                                     </div>
                                 </div>
                                 <!-- Add more items as needed -->
+                                <!-- New Items Added Below -->
+                                <!-- One Stop Service -->
+                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="card">
+                                        <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
+                                            alt="One Stop Service" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">One Stop Service</h5>
+                                            <p class="card-text">Tidak berhenti di satu layanan, kami berusaha memenuhi
+                                                kebutuhan masyarakat dalam berinvestasi di Kab. Sumedang.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Online Single Submission -->
+                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="card">
+                                        <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}" alt="OSS"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Online Single Submission</h5>
+                                            <p class="card-text">Masyarakat hanya melakukan permohonan perizinan di PTSP
+                                                tanpa harus ke Dinas Terkait untuk mendapatkan surat rekomendasi, karena
+                                                sistem sudah terintegrasi dengan Dinas terkait.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Perizinan Online -->
+                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                                    <div class="card">
+                                        <img src="{{ asset('images/inovasi/perizinan_online.jpg') }}"
+                                            alt="Perizinan Online" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Perizinan Online</h5>
+                                            <p class="card-text">Untuk menjangkau pelayanan yang lebih luas dan efisiensi
+                                                waktu dan biaya, pendaftaran dapat dilakukan secara online.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Cetak Mandiri -->
+                                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="card">
+                                        <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}" alt="Cetak Mandiri"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Cetak Mandiri</h5>
+                                            <p class="card-text">Pelayanan perizinan dan non-perizinan yang memungkinkan
+                                                pemohon dapat mengunduh SK perizinan dan mencetaknya secara mandiri.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
