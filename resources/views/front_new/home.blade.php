@@ -407,8 +407,20 @@
                                         non-perizinan.</p>
                                 </div>
                             </div>
+                            <!-- New Validasi SK Card -->
+                            <div class="card">
+                                <div class="card-icon">
+                                    <i class="fas fa-check-circle"></i> <!-- Icon for validation -->
+                                </div>
+                                <div class="card-body">
+                                    <h4>Validasi SK</h4>
+                                    <p>Fitur untuk memverifikasi dan mengecek keabsahan Surat Keputusan (SK) yang diajukan.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </section>
+
                     <section id="proses-perizinan" class="proses-perizinan-section py-60">
                         <div class="container">
                             <h2 class="text-center mb-5">Tahapan Proses Perizinan</h2>
