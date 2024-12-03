@@ -8,8 +8,8 @@
 <style>
     /* Inovasi Section */
     .inovasi-section {
-        background-color: #f9f9f9;
         padding: 60px 0;
+        background-color: #f7f7f7;
     }
 
     .inovasi-section h2 {
@@ -21,54 +21,60 @@
     }
 
     .inovasi-section .card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
     }
 
     .inovasi-section .card-img-top {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        height: 200px;
-        /* Adjust image height */
+        /* Ensures the image covers the card without stretching */
+        object-position: center;
+        /* Keeps the center of the image visible */
     }
 
     .inovasi-section .card-body {
-        flex-grow: 1;
+        padding: 20px;
     }
 
-    .inovasi-section .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
+    .inovasi-section .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #ff7300;
     }
 
-    /* Ensure equal height layout for cards */
-    .inovasi-section .col-lg-4,
-    .inovasi-section .col-md-6,
-    .inovasi-section .col-12 {
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 30%;
-        /* 3 per row on large screens */
+    .inovasi-section .card-text {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    /* Hover Effect for Cards */
+    .inovasi-section .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     /* Responsive Layout */
     @media (max-width: 768px) {
-        .inovasi-section .card {
-            height: auto;
-            /* Cards should not have a fixed height on smaller screens */
-        }
-
-        /* For medium-sized screens (tablets) */
         .inovasi-section .col-md-6 {
             flex: 1 0 48%;
-            /* 2 items per row */
+            /* 2 items per row on medium screens */
         }
 
-        /* For smaller screens (phones) */
         .inovasi-section .col-12 {
             flex: 1 0 100%;
-            /* 1 item per row */
+            /* 1 item per row on small screens */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .inovasi-section .col-md-6 {
+            flex: 1 0 100%;
+            /* 1 item per row on extra small screens */
         }
     }
 
@@ -469,7 +475,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- One Stop Service -->
+                                <!-- Item 4 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
                                     <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
@@ -481,7 +487,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Online Single Submission -->
+                                <!-- Item 5 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="400">
                                     <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}" alt="OSS"
@@ -494,7 +500,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Cetak Mandiri -->
+                                <!-- Item 6 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="600">
                                     <div class="card h-100">
                                         <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}" alt="Cetak Mandiri"
@@ -509,6 +515,7 @@
                             </div>
                         </div>
                     </section>
+
 
                     <section class="fitur-website">
                         <h2>FITUR WEBSITE</h2>
