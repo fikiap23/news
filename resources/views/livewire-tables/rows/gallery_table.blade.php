@@ -1,10 +1,23 @@
 <x-livewire-tables::bs5.table.cell>
     @if (!empty($row->image))
-        <a href="{{ asset($row->image) }}" data-lightbox="slider-image-{{ $row->id }}" class="text-decoration-none">
-            <img src="{{ asset($row->image) }}" width="50px" height="50px" class="p-2 custom-object-fit">
-        </a>
+        @if (preg_match('/\.(mp4|avi|mov|wmv)$/i', $row->image))
+            <!-- Video Preview -->
+            <a href="{{ asset($row->image) }}" data-lightbox="slider-video-{{ $row->id }}"
+                class="text-decoration-none">
+                <video width="50px" height="50px" class="p-2 custom-object-fit" controls>
+                    <source src="{{ asset($row->image) }}" type="video/{{ pathinfo($row->image, PATHINFO_EXTENSION) }}">
+                    Your browser does not support the video tag.
+                </video>
+            </a>
+        @else
+            <!-- Image Preview -->
+            <a href="{{ asset($row->image) }}" data-lightbox="slider-image-{{ $row->id }}"
+                class="text-decoration-none">
+                <img src="{{ asset($row->image) }}" width="50px" height="50px" class="p-2 custom-object-fit">
+            </a>
+        @endif
     @else
-        <span class="text-muted">No image available</span>
+        <span class="text-muted">No media available</span>
     @endif
 </x-livewire-tables::bs5.table.cell>
 
@@ -54,7 +67,7 @@
                 const id = this.dataset.id;
 
                 // You can use a confirmation modal here
-                if (confirm("Are you sure you want to delete this image?")) {
+                if (confirm("Are you sure you want to delete this media?")) {
                     // Perform the delete operation (this will trigger the Livewire action)
                     Livewire.emit('deleteSlider', id);
                 }

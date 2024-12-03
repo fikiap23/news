@@ -242,7 +242,18 @@
                         @foreach ($sliders as $index => $slider)
                             <div class="hero-image carousel-item {{ $index === 0 ? 'active' : '' }} position-relative">
                                 <a href="{{ $slider->link ?? '#detailPage' }}">
-                                    <img src="{{ asset($slider->image) }}" class="w-100 h-100" alt="{{ $slider->title }}" />
+                                    @if (Str::endsWith($slider->image, ['.mp4', '.avi', '.mov']))
+                                        <!-- Video -->
+                                        <video style="object-fit: cover; width: 100%; height: 100%;" autoplay loop muted>
+                                            <source src="{{ asset($slider->image) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @else
+                                        <!-- Image -->
+                                        <img src="{{ asset($slider->image) }}"
+                                            style="object-fit: cover; width: 100%; height: 100%;"
+                                            alt="{{ $slider->title }}" />
+                                    @endif
                                 </a>
                                 <!-- Overlay -->
                                 <div class="overlay position-absolute w-100 h-100" style="background: rgba(0, 0, 0, 0.5);">

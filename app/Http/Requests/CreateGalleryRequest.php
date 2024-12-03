@@ -25,7 +25,7 @@ class CreateGalleryRequest extends FormRequest
     {
         return [
             'description' => 'string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048' // Pastikan berupa file gambar
+            'image' => 'required|file|mimes:jpeg,png,jpg,webp,svg,mp4,avi,mov,wmv|max:10240', // Mendukung gambar dan video
         ];
     }
 
@@ -37,12 +37,10 @@ class CreateGalleryRequest extends FormRequest
     public function messages()
     {
         return [
-            // 'description.required' => 'Description is required.',
-            // 'description.string' => 'Description must be a string.',
-            'image.required' => 'An image is required.',
-            'image.image' => 'The file must be an image.',
-            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, webp, svg.',
-            'image.max' => 'The image size must not exceed 2 MB.',
+            'image.required' => 'An image or video is required.',
+            'image.file' => 'The file must be an image or video.',
+            'image.mimes' => 'The file must be of type: jpeg, png, jpg, webp, svg, mp4, avi, mov, wmv.',
+            'image.max' => 'The file size must not exceed 10 MB.',
         ];
     }
 }

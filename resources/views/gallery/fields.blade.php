@@ -13,12 +13,20 @@
     <div class="mb-5 col-lg-12">
         {{ Form::label('image', __('messages.gallery.image') . ' :', ['class' => 'form-label required mb-3']) }}
         <input type="file" class="form-control" id="galleryNewImage" name="image"
-            accept=".png, .jpg, .jpeg, .webp, .svg" {{ isset($gallery) ? null : 'required' }}>
+            accept=".png, .jpg, .jpeg, .webp, .svg, .mp4, .avi, .mov, .wmv" {{ isset($gallery) ? null : 'required' }}>
     </div>
     <div class="mb-5 col-lg-12">
         <div id="preview" class="additional-images">
             @if (isset($gallery->image))
-                <img src="{{ asset($gallery->image) }}" width="100px" height="60px" class="border-color">
+                @if (preg_match('/\.(mp4|avi|mov|wmv)$/i', $gallery->image))
+                    <video width="100px" height="60px" class="border-color" controls>
+                        <source src="{{ asset($gallery->image) }}"
+                            type="video/{{ pathinfo($gallery->image, PATHINFO_EXTENSION) }}">
+                        Your browser does not support the video tag.
+                    </video>
+                @else
+                    <img src="{{ asset($gallery->image) }}" width="100px" height="60px" class="border-color">
+                @endif
             @endif
         </div>
     </div>
