@@ -67,31 +67,40 @@
                 @endforeach
             </div>
 
-            <!-- Sidebar -->
             <div class="col-lg-4">
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
                         <h5 class="text-primary fw-bold">Dokumen Informasi</h5>
                         <ul class="list-group list-group-flush mt-3">
-                            <li class="list-group-item">
-                                <a href="#" class="text-decoration-none text-dark">
+                            <li class="list-group-item {{ request('type') == 'regulation' ? 'active' : '' }}">
+                                <a href="{{ route('information_document', ['type' => 'regulation']) }}"
+                                    class="text-decoration-none text-dark">
                                     <i class="bi bi-folder-fill text-primary me-2"></i> Regulasi
                                 </a>
                             </li>
-                            <li class="list-group-item">
-                                <a href="#" class="text-decoration-none text-dark">
+                            <li class="list-group-item {{ request('type') == 'publication' ? 'active' : '' }}">
+                                <a href="{{ route('information_document', ['type' => 'publication']) }}"
+                                    class="text-decoration-none text-dark">
                                     <i class="bi bi-folder-fill text-primary me-2"></i> Publikasi Data
                                 </a>
                             </li>
-                            <li class="list-group-item">
-                                <a href="#" class="text-decoration-none text-dark">
+                            <li class="list-group-item {{ request('type') == 'other' ? 'active' : '' }}">
+                                <a href="{{ route('information_document', ['type' => 'other']) }}"
+                                    class="text-decoration-none text-dark">
                                     <i class="bi bi-folder-fill text-primary me-2"></i> Lainnya
+                                </a>
+                            </li>
+                            <li class="list-group-item {{ !request('type') ? 'active' : '' }}">
+                                <a href="{{ route('information_document') }}" class="text-decoration-none text-dark">
+                                    <i class="bi bi-folder-fill text-primary me-2"></i> Semua Dokumen
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 

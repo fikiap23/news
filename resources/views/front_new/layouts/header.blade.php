@@ -205,7 +205,7 @@
 
 <!-- start header section -->
 <header class="bg-white d-lg-block d-none header border-top border-gray-50">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-11 col-12">
                 <nav>
@@ -270,10 +270,13 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-14 fw-6 mt-2" href="https://sipetis.sumedangkab.go.id"
-                                id="sipetis" target="_blank"><img style="height: 20px;"
-                                    src="https://sipetis.sumedangkab.go.id/assets/media/logos/sipetis-dark.png"
-                                    alt="Canvas Logo"></a>
+                            <div class="nav-link fs-14 fw-6 d-flex flex-column justify-content-center align-items-center text-black"
+                                style="height: 100%;">
+                                <a class=" fs-14 fw-6 mt-2 text-center" href="https://sipetis.sumedangkab.go.id"
+                                    id="sipetis" target="_blank"><img style="height: 20px; margin-left: 30px;"
+                                        src="https://sipetis.sumedangkab.go.id/assets/media/logos/sipetis-dark.png"
+                                        alt="Canvas Logo"></a>
+                            </div>
                         </li>
                     </ul>
                 </nav>

@@ -538,9 +538,13 @@ class LandingPageController extends AppBaseController
         return view('front_new.agenda_detail', compact('agenda'));
     }
 
-    public function informationDocument()
+    public function informationDocument(Request $request)
     {
-        $documents = InformationDocument::all();
+        $type = $request->get('type');
+
+        $documents = InformationDocument::when($type, function ($query, $type) {
+            return $query->where('type', $type);
+        })->get();
         return view('front_new.information_document', compact('documents'));
     }
 

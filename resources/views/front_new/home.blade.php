@@ -393,10 +393,14 @@
                                 </div>
                                 <div
                                     class="hero-content position-absolute d-flex align-items-center justify-content-center w-100 h-100">
-                                    <div class="text-center text-white" style="max-width: 80%; padding: 20px;">
-                                        <h1 class="text-white pb-2 fs-1" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
+                                    <div class="text-center text-white"
+                                        style="max-width: 90%; padding: 20px; margin-left: 50px;">
+                                        <h1 class="text-white pb-2 fs-1"
+                                            style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7); line-height: 1.5;">
                                             {{ $slider->title }}</h1>
-                                        <p class="fs-10 text-white" style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
+
+                                        <p class="fs-10 text-white text-center"
+                                            style="text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
                                             {!! $slider->description !!}
                                         </p>
                                     </div>
@@ -455,76 +459,91 @@
                             <div class="row">
                                 <!-- Item 1 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('images/inovasi/mpp.jpg') }}" alt="MPP"
-                                            class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">MPP</h5>
-                                            <p class="card-text">Mal Pelayanan Publik</p>
+                                    <a href="https://mpp.sumedangkab.go.id" target="_blank"
+                                        class="text-decoration-none text-dark">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('images/inovasi/mpp.jpg') }}" alt="MPP"
+                                                class="card-img-top" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">MPP</h5>
+                                                <p class="card-text">Mal Pelayanan Publik</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <!-- Item 2 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('images/inovasi/layanan_online.jpg') }}" alt="Laperon"
-                                            class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">Laperon</h5>
-                                            <p class="card-text">Layanan Perizinan Online</p>
+                                    <a href="#" class="text-decoration-none text-dark">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('images/inovasi/layanan_online.jpg') }}" alt="Laperon"
+                                                class="card-img-top" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Laperon</h5>
+                                                <p class="card-text">Layanan Perizinan Online</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <!-- Item 3 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('images/inovasi/pakta_integritas.jpg') }}"
-                                            alt="Pakta Integritas" class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">Pakta Integritas</h5>
-                                            <p class="card-text">Pakta Integritas Elektronik</p>
+                                    <a href="#" class="text-decoration-none text-dark">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('images/inovasi/pakta_integritas.jpg') }}"
+                                                alt="Pakta Integritas" class="card-img-top" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Pakta Integritas</h5>
+                                                <p class="card-text">Pakta Integritas Elektronik</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <!-- Item 4 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
-                                            alt="One Stop Service" class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">One Stop Service</h5>
-                                            <p class="card-text">Tidak berhenti di satu layanan, kami berusaha memenuhi
-                                                kebutuhan masyarakat dalam berinvestasi di Kab. Sumedang.</p>
+                                    <a href="#" class="text-decoration-none text-dark">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
+                                                alt="One Stop Service" class="card-img-top" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">One Stop Service</h5>
+                                                <p class="card-text">Tidak berhenti di satu layanan, kami berusaha memenuhi
+                                                    kebutuhan masyarakat dalam berinvestasi di Kab. Sumedang.</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <!-- Item 5 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="400">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}" alt="OSS"
-                                            class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">Online Single Submission</h5>
-                                            <p class="card-text">Masyarakat hanya melakukan permohonan perizinan di PTSP
-                                                tanpa harus ke Dinas Terkait untuk mendapatkan surat rekomendasi, karena
-                                                sistem sudah terintegrasi dengan Dinas terkait.</p>
+                                    <a href="#" class="text-decoration-none text-dark">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}"
+                                                alt="OSS" class="card-img-top" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Online Single Submission</h5>
+                                                <p class="card-text">Masyarakat hanya melakukan permohonan perizinan di
+                                                    PTSP tanpa harus ke Dinas Terkait untuk mendapatkan surat rekomendasi,
+                                                    karena sistem sudah terintegrasi dengan Dinas terkait.</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <!-- Item 6 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="600">
-                                    <div class="card h-100">
-                                        <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}" alt="Cetak Mandiri"
-                                            class="card-img-top" />
-                                        <div class="card-body">
-                                            <h5 class="card-title">Cetak Mandiri</h5>
-                                            <p class="card-text">Pelayanan perizinan dan non-perizinan yang memungkinkan
-                                                pemohon dapat mengunduh SK perizinan dan mencetaknya secara mandiri.</p>
+                                    <a href="#" class="text-decoration-none text-dark">
+                                        <div class="card h-100">
+                                            <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}"
+                                                alt="Cetak Mandiri" class="card-img-top" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">Cetak Mandiri</h5>
+                                                <p class="card-text">Pelayanan perizinan dan non-perizinan yang
+                                                    memungkinkan pemohon dapat mengunduh SK perizinan dan mencetaknya secara
+                                                    mandiri.</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
                     </section>
 
 
