@@ -82,7 +82,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-
         // Delete Button: Triggers the delete action
         const deleteBtns = document.querySelectorAll('.delete-complaint-btn');
         deleteBtns.forEach(btn => {
@@ -90,11 +89,28 @@
                 e.preventDefault();
                 const id = this.dataset.id;
 
-                // You can use a confirmation modal here
-                if (confirm("Are you sure you want to delete this image?")) {
-                    // Perform the delete operation (this will trigger the Livewire action)
-                    Livewire.emit('deleteComplaint', id);
-                }
+                // Show SweetAlert confirmation dialog
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This action cannot be undone!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Perform the delete operation (this will trigger the Livewire action)
+                        Livewire.emit('deleteComplaint', id);
+
+                        Swal.fire(
+                            'Deleted!',
+                            'Your data has been deleted.',
+                            'success'
+                        );
+                    }
+                });
             });
         });
     });

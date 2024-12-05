@@ -67,7 +67,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         Livewire.emit('deleteSlider',
-                        sliderId); // Emit event ke Livewire
+                            sliderId); // Emit event ke Livewire
                         Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',
