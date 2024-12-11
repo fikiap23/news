@@ -43,7 +43,8 @@ class StaffController extends AppBaseController
             $protocol = 'sendgrid';
         }
 
-        config([
+        config(
+            [
                 "mail.default" => $protocol,
                 "mail.mailers.$protocol.transport" => $protocol,
                 "mail.mailers.$protocol.host" => $host,
@@ -72,7 +73,7 @@ class StaffController extends AppBaseController
     public function create()
     {
         $roles = Role::whereNotIn('name', ['customer'])->pluck('display_name', 'id');
-        
+
         return view('staffs.create', compact('roles'));
     }
     /**
@@ -83,9 +84,9 @@ class StaffController extends AppBaseController
      */
     public function store(CreateStaffRequest $request)
     {
-       
+
         $input = $request->all();
-        
+
         $this->staffRepository->store($input);
 
         Flash::success(__('messages.placeholder.staff_created_successfully'));
@@ -112,7 +113,7 @@ class StaffController extends AppBaseController
     {
         $staff->load('roles');
         $roles = Role::whereNotIn('name', ['customer'])->pluck('display_name', 'id');
-//        $roles = $this->staffRepository->getRole();
+        //        $roles = $this->staffRepository->getRole();
 
         return view('staffs.edit', compact('staff', 'roles'));
     }
@@ -125,7 +126,7 @@ class StaffController extends AppBaseController
      */
     public function update(UpdateStaffRequest $request, User $staff)
     {
-      
+
         $request['status'] = isset($request['status']);
         $this->staffRepository->update($request->all(), $staff->id);
 

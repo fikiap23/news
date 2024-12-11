@@ -2,12 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Models\Plan;
 use App\Models\Role;
 use App\Models\Staff;
-use App\Models\Subscription;
 use App\Models\User;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -75,22 +72,10 @@ class StaffRepository extends BaseRepository
             $input['type'] = User::STAFF;
             $staff = User::create($input);
 
+            // dd($staff);
+
             if (isset($input['role']) && ! empty($input['role'])) {
                 $staff->assignRole($input['role']);
-            }
-            if($staff->hasRole('customer')){
-                $plan = Plan::whereIsDefault(true)->first();
-                Subscription::create([
-                    'plan_id'        => $plan->id,
-                    'plan_amount'    => $plan->price,
-                    'plan_frequency' => Plan::MONTHLY,
-                    'starts_at'      => Carbon::now(),
-                    'ends_at'        => Carbon::now()->addDays($plan->trial_days),
-                    'trial_ends_at'  => Carbon::now()->addDays($plan->trial_days),
-                    'status'         => Subscription::ACTIVE,
-                    'user_id'        => $staff->id,
-                    'no_of_post'     => $plan->post_count,
-                ]);
             }
             if (isset($input['profile']) && ! empty($input['profile'])) {
                 $staff->addMedia($input['profile'])->toMediaCollection(Staff::PROFILE);
@@ -98,7 +83,7 @@ class StaffRepository extends BaseRepository
             if (isset($input['cover_image']) && ! empty($input['cover_image'])) {
                 $staff->addMedia($input['cover_image'])->toMediaCollection(Staff::COVER_IMG);
             }
-            $staff->sendEmailVerificationNotification();
+            // $staff->sendEmailVerificationNotification();
 
             DB::commit();
 

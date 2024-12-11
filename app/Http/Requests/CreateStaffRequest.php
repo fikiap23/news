@@ -29,7 +29,7 @@ class CreateStaffRequest extends FormRequest
             'last_name' => 'required|max:190',
             'email' => 'required|max:160|email:filter|unique:users,email',
             'username' => 'required|max:50|unique:users,username',
-            'contact' => 'required|numeric|digits:10',
+            'contact' => 'required|numeric',
             'password' => 'required|same:password_confirmation|min:6|max:190',
             'gender' => 'required',
             'role' => 'required',

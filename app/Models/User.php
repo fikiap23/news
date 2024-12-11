@@ -7,7 +7,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
@@ -131,7 +130,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     ];
 
     const PROFILE = 'profile';
-    
+
     const COVER_IMG = 'cover_img';
 
     const NEWS_IMAGE = 'news-image';
@@ -147,7 +146,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
 
     protected $with = ['media'];
 
-    protected $appends = ['full_name', 'profile_image', 'role_name','cover_image'];
+    protected $appends = ['full_name', 'profile_image', 'role_name', 'cover_image'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -218,7 +217,7 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
      */
     public function getFullNameAttribute()
     {
-        return $this->first_name.' '.$this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     /**
@@ -227,11 +226,5 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function staff()
     {
         return $this->hasOne(Staff::class);
-    }
-
-    public function subscription(): BelongsTo
-    {
-        return $this->belongsTo(Subscription::class, 'id', 'user_id')
-            ->where('status', Subscription::ACTIVE);
     }
 }
