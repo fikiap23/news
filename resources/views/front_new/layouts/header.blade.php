@@ -204,7 +204,7 @@
 <!--end top-bar-section -->
 
 <!-- start header section -->
-<header class="bg-white d-lg-block d-none header border-top border-gray-50">
+<header class=" d-lg-block d-none header border-top border-gray-50">
     <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-11 col-12">

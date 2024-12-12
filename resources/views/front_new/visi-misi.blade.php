@@ -21,7 +21,7 @@
                     <!-- Visi Pelayanan -->
                     <div class="col-xl-9 text-center mb-5">
                         <div class="card shadow-sm border-0 h-100">
-                            <div class="card-body py-5 bg-white">
+                            <div class="card-body py-5 ">
                                 <blockquote class="blockquote mb-0">
                                     <h2 class="text-primary mb-4">Visi Pelayanan</h2>
                                     <p class="lead font-italic">
@@ -36,7 +36,7 @@
                     <!-- Misi Pelayanan -->
                     <div class="col-xl-9 text-center mb-5">
                         <div class="card shadow-sm border-0 h-100">
-                            <div class="card-body py-5 bg-white">
+                            <div class="card-body py-5 ">
                                 <blockquote class="blockquote mb-0">
                                     <h2 class="text-primary mb-4">Misi Pelayanan</h2>
                                     <ul class="list-unstyled text-start lead">
@@ -67,7 +67,7 @@
                     <!-- Moto Pelayanan -->
                     <div class="col-xl-9 text-center mb-5">
                         <div class="card shadow-sm border-0 h-100">
-                            <div class="card-body py-5 bg-white">
+                            <div class="card-body py-5 ">
                                 <blockquote class="blockquote">
                                     <h2 class="text-primary mb-4">Moto Pelayanan</h2>
                                     <p class="font-weight-bold lead display-6">“MELAYANI DENGAN SEPENUH HATI”</p>
@@ -78,7 +78,7 @@
                     <!-- Maklumat Pelayanan -->
                     <div class="col-xl-9 text-center mb-5">
                         <div class="card shadow-sm border-0 h-100">
-                            <div class="card-body py-5 bg-white">
+                            <div class="card-body py-5 ">
                                 <h2 class="text-primary mb-4">Maklumat Pelayanan</h2>
                                 <div class="text-center">
                                     <img src="{{ asset('assets/image/maklumat.jpg') }}" alt="Maklumat Pelayanan"

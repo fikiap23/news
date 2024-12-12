@@ -1737,6 +1737,7 @@ header.fixed {
   width: 100%;
   z-index: 9;
   top: 0;
+  background-color: #fff;
 }
 @media (max-width: 991px) {
   header .nav {
@@ -1944,6 +1945,13 @@ footer .footer-info .card .card-img-top {
 .dark-mode header .header-icon .dropdown-menu {
   background-color: #141a1f !important;
 }
+.dark-mode header.fixed {
+  position: sticky;
+  width: 100%;
+  z-index: 9;
+  top: 0;
+  background-color: #141a1f;
+}
 .dark-mode .breaking-news-section {
   background-color: #141a1f !important;
 }
@@ -1986,7 +1994,8 @@ footer .footer-info .card .card-img-top {
 .dark-mode .popular-news-post .card,
 .dark-mode .offcanvas .offcanvas-content .contact-desc,
 .dark-mode .top-bar-section .offcanvas-toggle .set,
-.dark-mode .top-bar-section .offcanvas-toggle .content li, .dark-mode .comment-section .media {
+.dark-mode .top-bar-section .offcanvas-toggle .content li,
+.dark-mode .comment-section .media {
   border-bottom: 1px solid #232d36;
 }
 .dark-mode .carousel-control-prev .icon,
