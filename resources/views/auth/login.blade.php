@@ -48,14 +48,6 @@
             <div class="d-grid mb-10">
                 <button type="submit" class="btn btn-primary">{{ __('messages.common.login') }}</button>
             </div>
-            @if(getSettingValue()['registration_system'])
-            <div class="d-flex align-items-center mb-10 mt-4">
-                <span class="text-gray-700 me-2">{{__('messages.common.new_here').'?'}}</span>
-                <a href="{{ route('register') }}" class="link-info fs-6 text-decoration-none">
-                    {{__('messages.common.create_an_account')}}
-                </a>
-            </div>
-            @endif
             <div class="d-grid">
                 @if(config('app.google_client_id') && config('app.google_client_secret') && config('app.google_redirect'))
                     <a href="{{route('social.login','google')}}"
