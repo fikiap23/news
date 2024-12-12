@@ -27,8 +27,8 @@ class UpdateStaffRequest extends FormRequest
         return [
             'first_name' => 'required|max:190',
             'last_name' => 'required|max:190',
-            'email' => 'required|email:filter|max:160|unique:users,email,'.$this->route('staff')->id,
-            'contact' => 'required|numeric|digits:10',
+            'email' => 'required|email:filter|max:160|unique:users,email,' . $this->route('staff')->id,
+            'contact' => 'required|numeric',
             'password' => 'nullable|same:password_confirmation|min:6',
             'gender' => 'required',
         ];
