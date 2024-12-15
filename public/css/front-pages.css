@@ -1888,7 +1888,7 @@ footer .footer-info .card .card-img-top {
 -----------------------------------------------------------------*/
 #content {
   position: relative;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .content-wrap {

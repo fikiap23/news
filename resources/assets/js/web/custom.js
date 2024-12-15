@@ -168,6 +168,7 @@ function loadWebCustom() {
 window.myFunction = function () {
     const currentMode = localStorage.getItem("front-mode");
     const icon = document.getElementById("dark-mode-landing");
+    const tables = document.querySelectorAll("table"); // Ambil semua elemen tabel
 
     console.log(currentMode);
     if (currentMode === "light") {
@@ -178,6 +179,11 @@ window.myFunction = function () {
         // Change icon to sun and update color
         icon.classList.remove("fa-moon", "text-primary");
         icon.classList.add("fa-sun", "text-warning");
+
+        // Tambahkan class table-dark ke semua tabel
+        tables.forEach((table) => {
+            table.classList.add("table-dark");
+        });
     } else {
         // Switch to light mode
         localStorage.setItem("front-mode", "light");
@@ -186,6 +192,11 @@ window.myFunction = function () {
         // Change icon to moon and update color
         icon.classList.remove("fa-sun", "text-warning");
         icon.classList.add("fa-moon", "text-primary");
+
+        // Hapus class table-dark dari semua tabel
+        tables.forEach((table) => {
+            table.classList.remove("table-dark");
+        });
     }
 };
 

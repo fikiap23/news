@@ -9,7 +9,6 @@
     /* Inovasi Section */
     .inovasi-section {
         padding: 60px 0;
-        background-color: #f7f7f7;
     }
 
     .inovasi-section h2 {
@@ -59,7 +58,6 @@
     .inovasi-section .card-text {
         font-size: 0.9rem;
         /* Slightly smaller text for a more compact layout */
-        color: #666;
     }
 
     /* Hover Effect for Cards */
@@ -124,11 +122,9 @@
 
     .card-text {
         font-size: 1rem;
-        color: #555;
     }
 
     .fitur-website {
-        background-color: #fff;
         padding: 40px 20px;
         text-align: center;
         opacity: 0;
@@ -146,7 +142,6 @@
 
     .fitur-website p {
         font-size: 1.2rem;
-        color: #555;
         margin-bottom: 40px;
     }
 
@@ -162,7 +157,6 @@
     }
 
     .fitur-cards .card {
-        background-color: #f9f9f9;
         width: 250px;
         padding: 20px;
         border-radius: 8px;
@@ -188,18 +182,15 @@
     .fitur-cards .card h4 {
         font-size: 1.5rem;
         font-weight: bold;
-        color: #333;
         margin-bottom: 10px;
     }
 
     .fitur-cards .card p {
         font-size: 1rem;
-        color: #555;
     }
 
     /* Proses Perizinan Section */
     .proses-perizinan-section {
-        background-color: #f7f7f7;
         padding: 60px 0;
     }
 
@@ -213,7 +204,6 @@
 
     .proses-perizinan-section p {
         font-size: 1.1rem;
-        color: #333;
         margin-bottom: 40px;
     }
 
@@ -227,7 +217,6 @@
 
     .step {
         padding: 20px;
-        background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         opacity: 0;
@@ -244,7 +233,6 @@
     .step h5 {
         font-size: 1.2rem;
         font-weight: bold;
-        color: #333;
         margin-top: 10px;
         white-space: normal;
         /* Ensures text breaks correctly on smaller screens */
@@ -280,7 +268,6 @@
 
     /* Lokasi Section */
     .lokasi-section {
-        background-color: #f0f0f0;
         padding: 60px 20px;
         text-align: center;
         opacity: 0;
@@ -299,7 +286,6 @@
 
     .lokasi-description {
         font-size: 1.2rem;
-        color: #555;
         margin-bottom: 40px;
     }
 
@@ -422,7 +408,7 @@
         <!-- end hero section -->
 
 
-        <section id="content">
+        <section>
             <div class="content-wrap">
                 <div class="container">
                     <section id="profile" class="profile-section py-60">
@@ -459,53 +445,53 @@
                             <div class="row">
                                 <!-- Item 1 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up">
-                                    <a href="https://mpp.sumedangkab.go.id" target="_blank"
-                                        class="text-decoration-none text-dark">
+                                    <a href="https://mpp.sumedangkab.go.id" target="_blank" class="text-decoration-none ">
                                         <div class="card h-100">
                                             <img src="{{ asset('images/inovasi/mpp.jpg') }}" alt="MPP"
                                                 class="card-img-top" />
                                             <div class="card-body">
                                                 <h5 class="card-title">MPP</h5>
-                                                <p class="card-text">Mal Pelayanan Publik</p>
+                                                <p class="card-text text-black">Mal Pelayanan Publik</p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                                 <!-- Item 2 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
-                                    <a href="#" class="text-decoration-none text-dark">
+                                    <a href="#" class="text-decoration-none ">
                                         <div class="card h-100">
                                             <img src="{{ asset('images/inovasi/layanan_online.jpg') }}" alt="Laperon"
                                                 class="card-img-top" />
                                             <div class="card-body">
                                                 <h5 class="card-title">Laperon</h5>
-                                                <p class="card-text">Layanan Perizinan Online</p>
+                                                <p class="card-text text-black">Layanan Perizinan Online</p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                                 <!-- Item 3 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="200">
-                                    <a href="#" class="text-decoration-none text-dark">
+                                    <a href="#" class="text-decoration-none ">
                                         <div class="card h-100">
                                             <img src="{{ asset('images/inovasi/pakta_integritas.jpg') }}"
                                                 alt="Pakta Integritas" class="card-img-top" />
                                             <div class="card-body">
                                                 <h5 class="card-title">Pakta Integritas</h5>
-                                                <p class="card-text">Pakta Integritas Elektronik</p>
+                                                <p class="card-text text-black">Pakta Integritas Elektronik</p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                                 <!-- Item 4 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
-                                    <a href="#" class="text-decoration-none text-dark">
+                                    <a href="#" class="text-decoration-none ">
                                         <div class="card h-100">
                                             <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
                                                 alt="One Stop Service" class="card-img-top" />
                                             <div class="card-body">
                                                 <h5 class="card-title">One Stop Service</h5>
-                                                <p class="card-text">Tidak berhenti di satu layanan, kami berusaha memenuhi
+                                                <p class="card-text text-black">Tidak berhenti di satu layanan, kami
+                                                    berusaha memenuhi
                                                     kebutuhan masyarakat dalam berinvestasi di Kab. Sumedang.</p>
                                             </div>
                                         </div>
@@ -513,13 +499,14 @@
                                 </div>
                                 <!-- Item 5 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="400">
-                                    <a href="#" class="text-decoration-none text-dark">
+                                    <a href="#" class="text-decoration-none ">
                                         <div class="card h-100">
                                             <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}"
                                                 alt="OSS" class="card-img-top" />
                                             <div class="card-body">
                                                 <h5 class="card-title">Online Single Submission</h5>
-                                                <p class="card-text">Masyarakat hanya melakukan permohonan perizinan di
+                                                <p class="card-text text-black">Masyarakat hanya melakukan permohonan
+                                                    perizinan di
                                                     PTSP tanpa harus ke Dinas Terkait untuk mendapatkan surat rekomendasi,
                                                     karena sistem sudah terintegrasi dengan Dinas terkait.</p>
                                             </div>
@@ -528,13 +515,13 @@
                                 </div>
                                 <!-- Item 6 -->
                                 <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="600">
-                                    <a href="#" class="text-decoration-none text-dark">
+                                    <a href="#" class="text-decoration-none ">
                                         <div class="card h-100">
                                             <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}"
                                                 alt="Cetak Mandiri" class="card-img-top" />
                                             <div class="card-body">
                                                 <h5 class="card-title">Cetak Mandiri</h5>
-                                                <p class="card-text">Pelayanan perizinan dan non-perizinan yang
+                                                <p class="card-text text-black">Pelayanan perizinan dan non-perizinan yang
                                                     memungkinkan pemohon dapat mengunduh SK perizinan dan mencetaknya secara
                                                     mandiri.</p>
                                             </div>

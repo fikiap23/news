@@ -1981,6 +1981,8 @@ function loadWebCustom() {
 window.myFunction = function () {
   var currentMode = localStorage.getItem("front-mode");
   var icon = document.getElementById("dark-mode-landing");
+  var tables = document.querySelectorAll("table"); // Ambil semua elemen tabel
+
   console.log(currentMode);
   if (currentMode === "light") {
     // Switch to dark mode
@@ -1990,6 +1992,11 @@ window.myFunction = function () {
     // Change icon to sun and update color
     icon.classList.remove("fa-moon", "text-primary");
     icon.classList.add("fa-sun", "text-warning");
+
+    // Tambahkan class table-dark ke semua tabel
+    tables.forEach(function (table) {
+      table.classList.add("table-dark");
+    });
   } else {
     // Switch to light mode
     localStorage.setItem("front-mode", "light");
@@ -1998,6 +2005,11 @@ window.myFunction = function () {
     // Change icon to moon and update color
     icon.classList.remove("fa-sun", "text-warning");
     icon.classList.add("fa-moon", "text-primary");
+
+    // Hapus class table-dark dari semua tabel
+    tables.forEach(function (table) {
+      table.classList.remove("table-dark");
+    });
   }
 };
 var jsrender = __webpack_require__(/*! jsrender */ "./node_modules/jsrender/jsrender.js");

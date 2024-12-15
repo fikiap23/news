@@ -18,7 +18,7 @@
             <div class="container">
                 <h2 align="center"> Program Kerja </h2>
                 <p></p>
-                <table class="table table-stripped table-bordered">
+                <table class="table table-bordered">
                     <tbody>
                         <tr>
                             <td>No</td>
