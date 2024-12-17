@@ -34,7 +34,7 @@
                             <td>{{ $pr->duration_days }}</td>
                             <td>{{ $pr->permit_field }}</td>
                             <td>
-                                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#requirementModal"
                                     data-requirements="{{ json_encode($pr->requirements) }}"
                                     onclick="showRequirements(this)">
