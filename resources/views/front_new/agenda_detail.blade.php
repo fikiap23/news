@@ -19,7 +19,7 @@
 
             <!-- Details Table -->
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-black">
                     <tbody>
                         <tr>
                             <td><strong>Tema</strong></td>
@@ -57,41 +57,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Custom CSS -->
-    <style>
-        .table td,
-        .table th {
-            vertical-align: middle;
-            padding: 15px;
-            font-size: 1.1rem;
-        }
-
-        .table th {
-            width: 25%;
-            background-color: #f8f9fa;
-        }
-
-        .table td {
-            background-color: #ffffff;
-        }
-
-        .btn {
-            font-size: 1rem;
-        }
-
-        .table-bordered {
-            border: 1px solid #dee2e6;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .table-bordered td,
-        .table-bordered th {
-            border: 1px solid #dee2e6;
-        }
-
-        .table-responsive {
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
 @endsection

@@ -16,37 +16,35 @@
         <!-- Daftar Jenis Perizinan Table Section -->
         <div class="mt-5">
             <h2 class="mb-4">Daftar Jenis Perizinan</h2>
-            <div class="table-responsive">
-                <table id="jenisIzinTable" class="table table-bordered">
-                    <thead>
+            <table id="jenisIzinTable" class="table table-bordered text-black">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nama Jenis Izin</th>
+                        <th>Durasi (Hari)</th>
+                        <th>Bidang Izin</th>
+                        <th>Opsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($permitRequirements as $index => $pr)
                         <tr>
-                            <th>#</th>
-                            <th>Nama Jenis Izin</th>
-                            <th>Durasi (Hari)</th>
-                            <th>Bidang Izin</th>
-                            <th>Opsi</th>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $pr->permit_type_name }}</td>
+                            <td>{{ $pr->duration_days }}</td>
+                            <td>{{ $pr->permit_field }}</td>
+                            <td>
+                                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#requirementModal"
+                                    data-requirements="{{ json_encode($pr->requirements) }}"
+                                    onclick="showRequirements(this)">
+                                    Lihat Persyaratan
+                                </button>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($permitRequirements as $index => $pr)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $pr->permit_type_name }}</td>
-                                <td>{{ $pr->duration_days }}</td>
-                                <td>{{ $pr->permit_field }}</td>
-                                <td>
-                                    <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#requirementModal"
-                                        data-requirements="{{ json_encode($pr->requirements) }}"
-                                        onclick="showRequirements(this)">
-                                        Lihat Persyaratan
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -68,73 +66,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Custom CSS -->
-    <style>
-        /* Styling for the modal */
-        .modal-header {
-            background-color: #ff7300;
-            color: white;
-            border-bottom: 2px solid #f3d49b;
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .modal-body {
-            padding: 2rem;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
-
-        .list-group-item {
-            border-radius: 0.375rem;
-            margin-bottom: 10px;
-            font-size: 1rem;
-            padding: 12px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            transition: all 0.3s ease;
-        }
-
-        .list-group-item:hover {
-            background-color: #f1f1f1;
-            border-color: #ff7300;
-        }
-
-        .list-group-item strong {
-            color: #ff7300;
-        }
-
-        .table th,
-        .table td {
-            vertical-align: middle;
-        }
-
-        .table thead {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-
-        .table th {
-            border-top: 2px solid #dee2e6;
-            border-bottom: 2px solid #dee2e6;
-        }
-
-        .table td {
-            border-bottom: 1px solid #dee2e6;
-        }
-
-        .table-hover tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .table-responsive {
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
 
     <!-- Include jsPDF CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -204,7 +135,7 @@
                 doc.setFontSize(14);
                 requirement.requirements.forEach((item) => {
                     const lines = doc.splitTextToSize(`• ${item}`, 180 -
-                    marginLeft); // Split text to fit within the page
+                        marginLeft); // Split text to fit within the page
                     doc.text(lines, marginLeft, yPosition);
                     yPosition += lines.length * 7; // Adjust yPosition based on the number of lines
                 });
