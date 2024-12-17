@@ -15,7 +15,7 @@
         <!-- end header section -->
 
         <!-- start visi misi-section -->
-        <section class="py-5 bg-light">
+        <section class="py-5">
             <div class="container">
                 <div class="row justify-content-center">
                     <!-- Visi Pelayanan -->

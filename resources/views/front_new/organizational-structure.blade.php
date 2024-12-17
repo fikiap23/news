@@ -14,7 +14,7 @@
         <!-- end header section -->
 
         <!-- start main-section -->
-        <section class="py-5 bg-light">
+        <section class="py-5">
             <div class="container">
                 <h2 align="center"> Program Kerja </h2>
                 <p></p>

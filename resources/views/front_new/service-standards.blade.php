@@ -15,7 +15,7 @@
         <!-- end header section -->
 
         <!-- start pdf-section -->
-        <section class="py-5 bg-light">
+        <section class="py-5">
             <div class="container">
                 <div style="margin-top:60px; margin-bottom: 30px; text-align: center;">
                     <h2 style="margin-bottom:30px;" align="center"> Standar Pelayanan </h2>

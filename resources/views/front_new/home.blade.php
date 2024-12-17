@@ -2,9 +2,7 @@
 @section('title')
     {!! !empty(getSEOTools()->home_title) ? getSEOTools()->home_title : __('messages.details.home') !!}
 @endsection
-@section('pageCss')
-    <link href="{{ asset('front_web/build/scss/home.css') }}" rel="stylesheet" type="text/css">
-@endsection
+
 <style>
     /* Inovasi Section */
     .inovasi-section {
@@ -352,7 +350,7 @@
 </style>
 
 @section('content')
-    <div class="home-page">
+    <div class="">
         <!-- start hero section -->
         <section class="hero-section">
             <div class="w-full">
@@ -409,241 +407,236 @@
 
 
         <section>
-            <div class="content-wrap">
-                <div class="container">
-                    <section id="profile" class="profile-section py-60">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <!-- Konten Profil -->
-                                <div class="col-md-8">
-                                    <div class="profile-content">
-                                        <h2 class="text-black mb-3">DPMPTSP KABUPATEN SUMEDANG</h2>
-                                        <p class="fs-16 text-gray">
-                                            Selamat datang di website DPMPTSP Kab. Website ini di gunakan sebagai salah satu
-                                            bentuk memaksimalkan pelayanan publik kepada masyarakat dalam bidang penanaman
-                                            modal, perizinan dan non-perizinan di Kab. Sumedang.
-                                        </p>
-                                        <a href="/visi-misi" class="btn btn-primary mt-3">Detail Profile</a>
+            <div class="container">
+                <section id="profile" class="profile-section py-60">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <!-- Konten Profil -->
+                            <div class="col-md-8">
+                                <div class="profile-content">
+                                    <h2 class="text-black mb-3">DPMPTSP KABUPATEN SUMEDANG</h2>
+                                    <p class="fs-16 text-gray">
+                                        Selamat datang di website DPMPTSP Kab. Website ini di gunakan sebagai salah satu
+                                        bentuk memaksimalkan pelayanan publik kepada masyarakat dalam bidang penanaman
+                                        modal, perizinan dan non-perizinan di Kab. Sumedang.
+                                    </p>
+                                    <a href="/visi-misi" class="btn btn-primary mt-3">Detail Profile</a>
+                                </div>
+                            </div>
+                            <!-- Gambar Profil -->
+                            <div class="col-md-4">
+                                <div class="profile-image">
+                                    <img src="{{ asset('assets/image/logo_dpmtsp.png') }}" alt="Profile Image"
+                                        class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="inovasi" class="inovasi-section py-60">
+                    <div class="container">
+                        <h2 class="text-center mb-5">Inovasi Pelayanan</h2>
+                        <div class="row">
+                            <!-- Item 1 -->
+                            <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up">
+                                <a href="https://mpp.sumedangkab.go.id" target="_blank" class="text-decoration-none ">
+                                    <div class="card h-100">
+                                        <img src="{{ asset('images/inovasi/mpp.jpg') }}" alt="MPP"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">MPP</h5>
+                                            <p class="card-text text-black">Mal Pelayanan Publik</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Gambar Profil -->
-                                <div class="col-md-4">
-                                    <div class="profile-image">
-                                        <img src="{{ asset('assets/image/logo_dpmtsp.png') }}" alt="Profile Image"
-                                            class="img-fluid" />
+                                </a>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
+                                <a href="#" class="text-decoration-none ">
+                                    <div class="card h-100">
+                                        <img src="{{ asset('images/inovasi/layanan_online.jpg') }}" alt="Laperon"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Laperon</h5>
+                                            <p class="card-text text-black">Layanan Perizinan Online</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="200">
+                                <a href="#" class="text-decoration-none ">
+                                    <div class="card h-100">
+                                        <img src="{{ asset('images/inovasi/pakta_integritas.jpg') }}" alt="Pakta Integritas"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Pakta Integritas</h5>
+                                            <p class="card-text text-black">Pakta Integritas Elektronik</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
+                                <a href="#" class="text-decoration-none ">
+                                    <div class="card h-100">
+                                        <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
+                                            alt="One Stop Service" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">One Stop Service</h5>
+                                            <p class="card-text text-black">Tidak berhenti di satu layanan, kami
+                                                berusaha memenuhi
+                                                kebutuhan masyarakat dalam berinvestasi di Kab. Sumedang.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Item 5 -->
+                            <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="400">
+                                <a href="#" class="text-decoration-none ">
+                                    <div class="card h-100">
+                                        <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}" alt="OSS"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Online Single Submission</h5>
+                                            <p class="card-text text-black">Masyarakat hanya melakukan permohonan
+                                                perizinan di
+                                                PTSP tanpa harus ke Dinas Terkait untuk mendapatkan surat rekomendasi,
+                                                karena sistem sudah terintegrasi dengan Dinas terkait.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Item 6 -->
+                            <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="600">
+                                <a href="#" class="text-decoration-none ">
+                                    <div class="card h-100">
+                                        <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}" alt="Cetak Mandiri"
+                                            class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5 class="card-title">Cetak Mandiri</h5>
+                                            <p class="card-text text-black">Pelayanan perizinan dan non-perizinan yang
+                                                memungkinkan pemohon dapat mengunduh SK perizinan dan mencetaknya secara
+                                                mandiri.</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                </div>
-                <div class="container">
-                    <section id="inovasi" class="inovasi-section py-60">
-                        <div class="container">
-                            <h2 class="text-center mb-5">Inovasi Pelayanan</h2>
-                            <div class="row">
-                                <!-- Item 1 -->
-                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up">
-                                    <a href="https://mpp.sumedangkab.go.id" target="_blank" class="text-decoration-none ">
-                                        <div class="card h-100">
-                                            <img src="{{ asset('images/inovasi/mpp.jpg') }}" alt="MPP"
-                                                class="card-img-top" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">MPP</h5>
-                                                <p class="card-text text-black">Mal Pelayanan Publik</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- Item 2 -->
-                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="100">
-                                    <a href="#" class="text-decoration-none ">
-                                        <div class="card h-100">
-                                            <img src="{{ asset('images/inovasi/layanan_online.jpg') }}" alt="Laperon"
-                                                class="card-img-top" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">Laperon</h5>
-                                                <p class="card-text text-black">Layanan Perizinan Online</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- Item 3 -->
-                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="200">
-                                    <a href="#" class="text-decoration-none ">
-                                        <div class="card h-100">
-                                            <img src="{{ asset('images/inovasi/pakta_integritas.jpg') }}"
-                                                alt="Pakta Integritas" class="card-img-top" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">Pakta Integritas</h5>
-                                                <p class="card-text text-black">Pakta Integritas Elektronik</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- Item 4 -->
-                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="300">
-                                    <a href="#" class="text-decoration-none ">
-                                        <div class="card h-100">
-                                            <img src="{{ asset('images/inovasi/one_stop_service.jpg') }}"
-                                                alt="One Stop Service" class="card-img-top" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">One Stop Service</h5>
-                                                <p class="card-text text-black">Tidak berhenti di satu layanan, kami
-                                                    berusaha memenuhi
-                                                    kebutuhan masyarakat dalam berinvestasi di Kab. Sumedang.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- Item 5 -->
-                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="400">
-                                    <a href="#" class="text-decoration-none ">
-                                        <div class="card h-100">
-                                            <img src="{{ asset('images/inovasi/online_single_subb.jpg') }}"
-                                                alt="OSS" class="card-img-top" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">Online Single Submission</h5>
-                                                <p class="card-text text-black">Masyarakat hanya melakukan permohonan
-                                                    perizinan di
-                                                    PTSP tanpa harus ke Dinas Terkait untuk mendapatkan surat rekomendasi,
-                                                    karena sistem sudah terintegrasi dengan Dinas terkait.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- Item 6 -->
-                                <div class="col-lg-4 col-md-6 col-12 mb-4" data-aos="fade-up" data-aos-delay="600">
-                                    <a href="#" class="text-decoration-none ">
-                                        <div class="card h-100">
-                                            <img src="{{ asset('images/inovasi/cetak_mandiri.jpg') }}"
-                                                alt="Cetak Mandiri" class="card-img-top" />
-                                            <div class="card-body">
-                                                <h5 class="card-title">Cetak Mandiri</h5>
-                                                <p class="card-text text-black">Pelayanan perizinan dan non-perizinan yang
-                                                    memungkinkan pemohon dapat mengunduh SK perizinan dan mencetaknya secara
-                                                    mandiri.</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                </section>
+
+
+                <section class="fitur-website">
+                    <h2>FITUR WEBSITE</h2>
+                    <p>Untuk memudahkan pelayanan, kami sertakan fitur sebagai berikut:</p>
+                    <div class="fitur-cards">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4>Daftar Izin Online</h4>
+                                <p>Pendaftaran pengajuan perizinan dilakukan secara online, dengan cara membuat akun.
+                                </p>
                             </div>
                         </div>
-
-                    </section>
-
-
-                    <section class="fitur-website">
-                        <h2>FITUR WEBSITE</h2>
-                        <p>Untuk memudahkan pelayanan, kami sertakan fitur sebagai berikut:</p>
-                        <div class="fitur-cards">
-                            <div class="card">
-                                <div class="card-icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <div class="card-body">
-                                    <h4>Daftar Izin Online</h4>
-                                    <p>Pendaftaran pengajuan perizinan dilakukan secara online, dengan cara membuat akun.
-                                    </p>
-                                </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-headset"></i>
                             </div>
-                            <div class="card">
-                                <div class="card-icon">
-                                    <i class="fas fa-headset"></i>
-                                </div>
-                                <div class="card-body">
-                                    <h4>Helpdesk</h4>
-                                    <p>Digunakan untuk pusat bantuan, kritik, saran atau pengaduan.</p>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                                <div class="card-body">
-                                    <h4>Tracking Izin</h4>
-                                    <p>Digunakan untuk penelusuran status proses pengajuan permohonan izin.</p>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div class="card-body">
-                                    <h4>Grafik Investasi</h4>
-                                    <p>Mempresentasikan potensi dan investasi di Kab. Sumedang dalam bentuk data dan grafik.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
-                                <div class="card-body">
-                                    <h4>Persyaratan Izin</h4>
-                                    <p>Persyaratan yang harus dilengkapi ketika mengajukan permohonan perizinan dan
-                                        non-perizinan.</p>
-                                </div>
-                            </div>
-                            <!-- New Validasi SK Card -->
-                            <div class="card">
-                                <div class="card-icon">
-                                    <i class="fas fa-check-circle"></i> <!-- Icon for validation -->
-                                </div>
-                                <div class="card-body">
-                                    <h4>Validasi SK</h4>
-                                    <p>Fitur untuk memverifikasi dan mengecek keabsahan Surat Keputusan (SK) yang diajukan.
-                                    </p>
-                                </div>
+                            <div class="card-body">
+                                <h4>Helpdesk</h4>
+                                <p>Digunakan untuk pusat bantuan, kritik, saran atau pengaduan.</p>
                             </div>
                         </div>
-                    </section>
-
-                    <section id="proses-perizinan" class="proses-perizinan-section py-60">
-                        <h2 class="text-center mb-5">Tahapan Proses Perizinan</h2>
-                        <p class="text-center mb-5">Berikut adalah proses sederhana dari pengajuan permohonan perizinan di
-                            Kabupaten Sumedang</p>
-                        <div class="row text-center">
-                            <div class="col-md-2 col-sm-4 mb-4">
-                                <div class="step">
-                                    <i class="fas fa-pen-alt fa-3x mb-3" style="color: #ff7300;"></i>
-                                    <h5>DAFTAR</h5>
-                                </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-search"></i>
                             </div>
-                            <div class="col-md-2 col-sm-4 mb-4">
-                                <div class="step">
-                                    <i class="fas fa-check-circle fa-3x mb-3" style="color: #ff7300;"></i>
-                                    <h5>VERIFIKASI</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 mb-4">
-                                <div class="step">
-                                    <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #ff7300;"></i>
-                                    <h5>SURVEY</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 mb-4">
-                                <div class="step">
-                                    <i class="fas fa-signature fa-3x mb-3" style="color: #ff7300;"></i>
-                                    <h5>PENANDATANGAN</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 mb-4">
-                                <div class="step">
-                                    <i class="fas fa-file-invoice-dollar fa-3x mb-3" style="color: #ff7300;"></i>
-                                    <h5>RETRIBUSI</h5>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-4 mb-4">
-                                <div class="step">
-                                    <i class="fas fa-check fa-3x mb-3" style="color: #ff7300;"></i>
-                                    <h5>SELESAI</h5>
-                                </div>
+                            <div class="card-body">
+                                <h4>Tracking Izin</h4>
+                                <p>Digunakan untuk penelusuran status proses pengajuan permohonan izin.</p>
                             </div>
                         </div>
-                    </section>
-                </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4>Grafik Investasi</h4>
+                                <p>Mempresentasikan potensi dan investasi di Kab. Sumedang dalam bentuk data dan grafik.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="card-body">
+                                <h4>Persyaratan Izin</h4>
+                                <p>Persyaratan yang harus dilengkapi ketika mengajukan permohonan perizinan dan
+                                    non-perizinan.</p>
+                            </div>
+                        </div>
+                        <!-- New Validasi SK Card -->
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-check-circle"></i> <!-- Icon for validation -->
+                            </div>
+                            <div class="card-body">
+                                <h4>Validasi SK</h4>
+                                <p>Fitur untuk memverifikasi dan mengecek keabsahan Surat Keputusan (SK) yang diajukan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="proses-perizinan" class="proses-perizinan-section py-60">
+                    <h2 class="text-center mb-5">Tahapan Proses Perizinan</h2>
+                    <p class="text-center mb-5">Berikut adalah proses sederhana dari pengajuan permohonan perizinan di
+                        Kabupaten Sumedang</p>
+                    <div class="row text-center">
+                        <div class="col-md-2 col-sm-4 mb-4">
+                            <div class="step">
+                                <i class="fas fa-pen-alt fa-3x mb-3" style="color: #ff7300;"></i>
+                                <h5>DAFTAR</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 mb-4">
+                            <div class="step">
+                                <i class="fas fa-check-circle fa-3x mb-3" style="color: #ff7300;"></i>
+                                <h5>VERIFIKASI</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 mb-4">
+                            <div class="step">
+                                <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #ff7300;"></i>
+                                <h5>SURVEY</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 mb-4">
+                            <div class="step">
+                                <i class="fas fa-signature fa-3x mb-3" style="color: #ff7300;"></i>
+                                <h5>PENANDATANGAN</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 mb-4">
+                            <div class="step">
+                                <i class="fas fa-file-invoice-dollar fa-3x mb-3" style="color: #ff7300;"></i>
+                                <h5>RETRIBUSI</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 mb-4">
+                            <div class="step">
+                                <i class="fas fa-check fa-3x mb-3" style="color: #ff7300;"></i>
+                                <h5>SELESAI</h5>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <!-- start latest-news-section -->
                 @if (isset($latestPosts) && !$latestPosts->isEmpty())
                     <div class="container">
@@ -731,22 +724,21 @@
                     </div>
                 @endif
                 <!-- end latest-news-section -->
+            </div>
+            <div class="container-fluid">
+                <section class="lokasi-section">
+                    <h2>Lokasi Kami</h2>
+                    <p class="lokasi-description">
+                        Temukan kami di alamat berikut untuk mendapatkan pelayanan terbaik dan informasi lebih lanjut
+                        mengenai layanan kami.
+                    </p>
 
-                <div class="container-fluid">
-                    <section class="lokasi-section">
-                        <h2>Lokasi Kami</h2>
-                        <p class="lokasi-description">
-                            Temukan kami di alamat berikut untuk mendapatkan pelayanan terbaik dan informasi lebih lanjut
-                            mengenai layanan kami.
-                        </p>
-
-                        <div class="map-container">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.251526879751!2d107.91824897420888!3d-6.860429167118236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68d110d776cc7b%3A0x59e7d0b55b7ce695!2sMPP%20Mal%20Pelayanan%20Publik%20-%20(DPMPTSP)%20Kabupaten%20Sumedang!5e0!3m2!1sid!2sid!4v1733183546598!5m2!1sid!2sid"
-                                allowfullscreen="" loading="lazy"></iframe>
-                        </div>
-                    </section>
-                </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.251526879751!2d107.91824897420888!3d-6.860429167118236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68d110d776cc7b%3A0x59e7d0b55b7ce695!2sMPP%20Mal%20Pelayanan%20Publik%20-%20(DPMPTSP)%20Kabupaten%20Sumedang!5e0!3m2!1sid!2sid!4v1733183546598!5m2!1sid!2sid"
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </section>
             </div>
         </section>
     </div>
